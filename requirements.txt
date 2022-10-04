@@ -1,2 +1,7 @@
 sphinx
+sphinx-autoapi
+sphinx_argparse_cli
+sphinx-copybutton
+sphinx-design
 furo
+dissect

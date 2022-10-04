@@ -1,0 +1,21 @@
+.sidebar-tree .reference code {
+    background: none !important;
+}
+
+.sidebar-search-container {
+    margin-left: 15px;
+    margin-right: 10px;
+    border-radius: 10px;
+}
+
+.sidebar-search {
+    border: none !important;
+}
+
+.sd-btn .sd-octicon {
+    vertical-align: text-bottom;
+}
+
+table.docutils {
+    width: 99%;
+}
