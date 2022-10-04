@@ -57,12 +57,12 @@ Using the Docker image
 ~~~~~~~~~~~~~~~~~~~~~~
 
 If you simply want to get started with some of the examples without having to install anything, a basic Docker image
-is available `here <https://hub.docker.com/r/fox-it/dissect>`_.
+is available `here <https://github.com/orgs/fox-it/packages/container/package/dissect>`_ (`mirror <https://hub.docker.com/r/dissect/dissect>`_).
 You can start using this image by executing the following command in your terminal:
 
 .. code-block:: console
 
-    $ docker run -it --rm -v /path/to/targets/:/mnt:ro dissect:stable
+    $ docker run -it --rm -v /path/to/targets/:/mnt:ro ghcr.io/fox-it/dissect:3.2
     (<dissect version>) <container hash>:/workspace$
 
 This will drop you in a shell environment with all the Dissect ``target-*`` :doc:`tools </tools/index>` at your disposal.
