@@ -1,0 +1,92 @@
+[submodule "submodules/dissect.cim"]
+	branch = main
+	path = submodules/dissect.cim
+	url = https://github.com/fox-it/dissect.cim.git
+[submodule "submodules/dissect.cstruct"]
+	branch = main
+	path = submodules/dissect.cstruct
+	url = https://github.com/fox-it/dissect.cstruct.git
+[submodule "submodules/dissect.esedb"]
+	branch = main
+	path = submodules/dissect.esedb
+	url = https://github.com/fox-it/dissect.esedb.git
+[submodule "submodules/dissect.etl"]
+	branch = main
+	path = submodules/dissect.etl
+	url = https://github.com/fox-it/dissect.etl.git
+[submodule "submodules/dissect.eventlog"]
+	branch = main
+	path = submodules/dissect.eventlog
+	url = https://github.com/fox-it/dissect.eventlog.git
+[submodule "submodules/dissect.evidence"]
+	branch = main
+	path = submodules/dissect.evidence
+	url = https://github.com/fox-it/dissect.evidence.git
+[submodule "submodules/dissect.extfs"]
+	branch = main
+	path = submodules/dissect.extfs
+	url = https://github.com/fox-it/dissect.extfs.git
+[submodule "submodules/dissect.fat"]
+	branch = main
+	path = submodules/dissect.fat
+	url = https://github.com/fox-it/dissect.fat.git
+[submodule "submodules/dissect.ffs"]
+	branch = main
+	path = submodules/dissect.ffs
+	url = https://github.com/fox-it/dissect.ffs.git
+[submodule "submodules/dissect.ntfs"]
+	branch = main
+	path = submodules/dissect.ntfs
+	url = https://github.com/fox-it/dissect.ntfs.git
+[submodule "submodules/dissect.ole"]
+	branch = main
+	path = submodules/dissect.ole
+	url = https://github.com/fox-it/dissect.ole.git
+[submodule "submodules/dissect.regf"]
+	branch = main
+	path = submodules/dissect.regf
+	url = https://github.com/fox-it/dissect.regf.git
+[submodule "submodules/dissect.sql"]
+	branch = main
+	path = submodules/dissect.sql
+	url = https://github.com/fox-it/dissect.sql.git
+[submodule "submodules/dissect.target"]
+	branch = main
+	path = submodules/dissect.target
+	url = https://github.com/fox-it/dissect.target.git
+[submodule "submodules/dissect.util"]
+	branch = main
+	path = submodules/dissect.util
+	url = https://github.com/fox-it/dissect.util.git
+[submodule "submodules/dissect.hypervisor"]
+	branch = main
+	path = submodules/dissect.hypervisor
+	url = https://github.com/fox-it/dissect.hypervisor.git
+[submodule "submodules/dissect.volume"]
+	branch = main
+	path = submodules/dissect.volume
+	url = https://github.com/fox-it/dissect.volume.git
+[submodule "submodules/dissect.xfs"]
+	branch = main
+	path = submodules/dissect.xfs
+	url = https://github.com/fox-it/dissect.xfs.git
+[submodule "submodules/dissect.shellitem"]
+	branch = main
+	path = submodules/dissect.shellitem
+	url = https://github.com/fox-it/dissect.shellitem.git
+[submodule "submodules/dissect.clfs"]
+	branch = main
+	path = submodules/dissect.clfs
+	url = https://github.com/fox-it/dissect.clfs.git
+[submodule "submodules/dissect.vmfs"]
+	branch = main
+	path = submodules/dissect.vmfs
+	url = https://github.com/fox-it/dissect.vmfs.git
+[submodule "submodules/acquire"]
+	branch = main
+	path = submodules/acquire
+	url = https://github.com/fox-it/acquire.git
+[submodule "submodules/flow.record"]
+	branch = main
+	path = submodules/flow.record
+	url = https://github.com/fox-it/flow.record.git

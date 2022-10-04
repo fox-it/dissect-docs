@@ -1,0 +1,35 @@
+<svg width="96" height="80" viewBox="0 0 72 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <filter id="glitch">
+    <feGaussianBlur in="SourceAlpha" stdDeviation="0" result="blur" />
+    <feOffset dx="0" dy="0" result="offsetblur">
+      <animate attributeName="dx" from="0" to="0" begin="0.2s" dur="0.5s" repeatCount="indefinite" values="-5;-2;-2;-2;5;0" keyTimes="0;0.125;0.275;0.625;0.875;1" />
+      <animate attributeName="dy" from="0" to="0" begin="0s" dur="0.3s" repeatCount="indefinite" values="1;1.5;3;1.7;-1.7;0" keyTimes="0;0.125;0.275;0.625;0.875;1" />
+    </feOffset>
+    <feOffset dx="60" dy="-12" result="offsetblur2" in="blur">
+      <animate attributeName="dx" from="0" to="0" begin="0s" dur="0.1s" repeatCount="indefinite" values="0;5;-2;-2;-2;-5" keyTimes="0;0.125;0.275;0.625;0.875;1" />
+      <animate attributeName="dy" from="0" to="0" begin="0s" dur="0.3s" repeatCount="indefinite" values="0;-1.7;1.7;-3;1.5;1" keyTimes="0;0.125;0.275;0.625;0.875;1" />
+    </feOffset>
+    <feComponentTransfer result="shadow1" in="offsetblur">
+      <feFuncA type="linear" slope=".8" />
+      <feFuncR type="discrete" tableValues="0" />
+      <feFuncG type="discrete" tableValues="1" />
+      <feFuncB type="discrete" tableValues="1" />
+    </feComponentTransfer>
+    <feComponentTransfer result="shadow2" in="offsetblur2">
+      <feFuncA type="linear" slope=".8" />
+      <feFuncR type="discrete" tableValues="1" />
+      <feFuncG type="discrete" tableValues="0" />
+      <feFuncB type="discrete" tableValues="1" />
+    </feComponentTransfer>
+    <feMerge>
+      <feMergeNode in="shadow1" />
+      <feMergeNode in="shadow2" />
+      <feMergeNode in="SourceGraphic" />
+    </feMerge>
+  </filter>
+</defs>
+<g filter="url(#glitch)">
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M29.141 21.0736L22 16L24.601 28.6822C24.7832 29.653 25.1844 30.5434 25.7453 31.3054C27.6627 34.0162 32.2787 40.548 33.8703 42.8407C34.3866 43.5814 35.2193 44 36.0003 44C36.7807 44 37.6134 43.5814 38.1291 42.8407C38.9657 41.6366 40.6366 39.2625 42.3125 36.8868L40.3135 32.9551C38.756 33.3316 37.09 32.6123 36.3195 31.0978C35.4108 29.3124 36.0944 27.1106 37.8468 26.1847C39.5991 25.2583 41.756 25.9541 42.6647 27.7418C43.4369 29.2551 43.0532 31.058 41.8551 32.1404L43.4495 35.2758C44.553 33.7115 45.5739 32.2672 46.2542 31.3054C46.8156 30.5434 47.2162 29.653 47.3984 28.6822L50 16L42.8584 21.0736H29.141Z" fill="white" />
+</g>
+</svg>
