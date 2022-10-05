@@ -160,25 +160,6 @@ If no discernible style is visible, you can use the following general rules:
 
 Not every parser in ``dissect`` currently adheres to this style, but we try to adhere to these rules for future parsers.
 
-When writing structure definitions for a new parser, try to keep the structure style similar to the original structures, if possible.
-
-If open-source or openly documented structures are available, use them as much as possible. Changing field types or slightly altering structures for performance or compatibility reasons is encouraged.
-For example, ``char[n]`` is faster than ``int8[n]``, or changing a ``GUID field_name`` to ``char field_name[16]``.
-
-If no original structures are available, make an educated guess on what they could look like in the original source. For example, during reverse engineering you see a debug log
-message that uses ``lowerCamelCase`` field names, use that style for your field names.
-
-If no discernible style is visible, you can use the following general rules:
-
-* For a Microsoft file format, use ``UPPERCASE_NAME`` structure names and ``CamelCase`` field names.
-
-  * One exception is that we generally remove field prefixes like ``dw`` and ``cb``, even when copy-pasting structures.
-
-* For other file formats, use ``lowercase_name`` structure and field names.
-
-Not every parser in ``dissect`` currently adheres to this style, but we try to adhere to this rule for future parsers.
-
-
 Test cases
 ----------
 
