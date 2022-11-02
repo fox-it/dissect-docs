@@ -44,7 +44,7 @@ Additionally, you can get the entries of a file programatically using:
 
 .. code-block:: python
 
-    from dissect.thumbcache.thumbcache_file import ThumbcacheFile
+    from dissect.thumbcache import ThumbcacheFile
 
     path = Path("path/to/thumbcache_file.db")
 
@@ -56,7 +56,7 @@ Or only the indexed entries:
 
 .. code-block:: python
 
-    from dissect.thumbcache.thumbcache import Thumbcache
+    from dissect.thumbcache import Thumbcache
 
     path = Path("path/to/thumbcache_files/")
 
