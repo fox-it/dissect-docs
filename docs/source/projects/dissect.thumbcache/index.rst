@@ -7,10 +7,8 @@ dissect.thumbcache
 
     :octicon:`mark-github` View on GitHub
 
-A Dissect module implementing a parsers for the windows Thumbcache file format.
-This format gets used to store thumbnail information.
-Interestingly, the last entry inside a thumbcache file contains random data.
-This entry is often unused, however the data could be anything that was on that specific space on disk first.
+A Dissect module implementing parsers for the thumbcache of Windows systems.
+This is commonly used to see which files were opened on a system.
 
 Installation
 ------------
@@ -25,22 +23,8 @@ This module is also automatically installed if you install the ``dissect`` packa
 
 Usage
 -----
-
-This pacakge is a library which you can use to extract thumbnail images from ``thumbnail_*.idx``.
-
-.. sphinx_argparse_cli::
-    :module: dissect.thumbcache.tools.extract_images
-    :func: main
-    :prog: thumbcache-extract
-    :hook:
-
-.. sphinx_argparse_cli::
-    :module: dissect.thumbcache.tools.extract_images_indexed
-    :func: main
-    :prog: thumbcache-extract-indexed
-    :hook:
-
-Additionally, you can get the entries of a file programatically using:
+This package is a library with a few CLI tools, so you primarily interact with it from Python.
+For example, to access thumbnail entries from ``thumbnail_*.db`` files:
 
 .. code-block:: python
 
@@ -62,9 +46,18 @@ Or only the indexed entries:
 
     cache = Thumbcache(path=path)
     entries = list(cache.entries())
+    
+Tools
+-----
 
+.. sphinx_argparse_cli::
+    :module: dissect.thumbcache.tools.extract_images
+    :func: main
+    :prog: thumbcache-extract
+    :hook:
 
-Reference
----------
-
-For more details, please refer to the API documentation of :mod:`dissect.thumbcache`.
+.. sphinx_argparse_cli::
+    :module: dissect.thumbcache.tools.extract_images_indexed
+    :func: main
+    :prog: thumbcache-extract-indexed
+    :hook:
