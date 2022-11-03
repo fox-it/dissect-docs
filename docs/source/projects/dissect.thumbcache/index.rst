@@ -23,6 +23,7 @@ This module is also automatically installed if you install the ``dissect`` packa
 
 Usage
 -----
+
 This package is a library with a few CLI tools, so you primarily interact with it from Python.
 For example, to access thumbnail entries from ``thumbnail_*.db`` files:
 
@@ -61,3 +62,8 @@ Tools
     :func: main
     :prog: thumbcache-extract-indexed
     :hook:
+
+Reference
+---------
+
+For more details, please refer to the API documentation of :mod:`dissect.thumbcache`.
