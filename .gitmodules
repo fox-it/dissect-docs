@@ -90,3 +90,6 @@
 	branch = main
 	path = submodules/flow.record
 	url = https://github.com/fox-it/flow.record.git
+[submodule "submodules/dissect.thumbcache"]
+	path = submodules/dissect.thumbcache
+	url = https://github.com/fox-it/dissect.thumbcache.git
