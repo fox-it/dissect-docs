@@ -58,7 +58,7 @@ Tools
     :hook:
 
 .. sphinx_argparse_cli::
-    :module: dissect.thumbcache.tools.extract_images_indexed
+    :module: dissect.thumbcache.tools.extract_with_index
     :func: main
     :prog: thumbcache-extract-indexed
     :hook:
