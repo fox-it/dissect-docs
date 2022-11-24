@@ -57,6 +57,36 @@ You can use ``rdump`` on (multiple) files as well. Just point ``rdump`` to the r
 
 The file extension of the record file can be anything you want.
 
+Timeline & datetime fields
+--------------------------
+
+``target-query`` functions that have a ``record`` with the fiedltype ``datetime`` are outputed in a single record. As shown below with the function ``mft``:
+
+.. code-block:: console
+
+    $ target-query -f mft -t targets/EXAMPLE.tar --limit 1 | rdump
+    <filesystem/ntfs/mft/std hostname='MSEDGEWIN10' domain=None creation_time=2019-03-19 21:52:25.169411+00:00 last_modification_time=2019-03-19 21:52:25.169411+00:00 last_change_time=2019-03-19 21:52:25.169411+00:00 last_access_time=2019-03-19 21:52:25.169411+00:00 segment=0 path='c:/$MFT' owner='S-1-5-18' filesize=0.12 GB resident=False inuse=True volume_uuid=None>
+
+The single record contains four different events that occured on the filesystem:
+
+* ``creation_time``
+* ``last_modification_time``
+* ``last_change_time``
+* ``last_access_time``
+
+To analyze a timeline of events that occured every record needs a single ``datetime`` field on which can be filtered to view records in chronological order.
+
+For this purpose the tool ``rmulti-timestamp`` can be used to output multiple ``ts`` enriched records based on the ``datetime`` fields of the original record.
+
+.. code-block:: console
+
+    $ target-query -f mft -t targets/EXAMPLE.tar --limit 1 | rmulti-timestamp | rdump
+    [reading from stdin]
+    <filesystem/ntfs/mft/std ts=2019-03-19 21:52:25.169411 ts_description='creation_time' hostname='MSEDGEWIN10' domain=None creation_time=2019-03-19 21:52:25.169411 last_modification_time=2019-03-19 21:52:25.169411 last_change_time=2019-03-19 21:52:25.169411 last_access_time=2019-03-19 21:52:25.169411 segment=0 path='c:/$MFT' owner='S-1-5-18' filesize=0.12 GB resident=False inuse=True volume_uuid=None>
+    <filesystem/ntfs/mft/std ts=2019-03-19 21:52:25.169411 ts_description='last_modification_time' hostname='MSEDGEWIN10' domain=None creation_time=2019-03-19 21:52:25.169411 last_modification_time=2019-03-19 21:52:25.169411 last_change_time=2019-03-19 21:52:25.169411 last_access_time=2019-03-19 21:52:25.169411 segment=0 path='c:/$MFT' owner='S-1-5-18' filesize=0.12 GB resident=False inuse=True volume_uuid=None>
+    <filesystem/ntfs/mft/std ts=2019-03-19 21:52:25.169411 ts_description='last_change_time' hostname='MSEDGEWIN10' domain=None creation_time=2019-03-19 21:52:25.169411 last_modification_time=2019-03-19 21:52:25.169411 last_change_time=2019-03-19 21:52:25.169411 last_access_time=2019-03-19 21:52:25.169411 segment=0 path='c:/$MFT' owner='S-1-5-18' filesize=0.12 GB resident=False inuse=True volume_uuid=None>
+    <filesystem/ntfs/mft/std ts=2019-03-19 21:52:25.169411 ts_description='last_access_time' hostname='MSEDGEWIN10' domain=None creation_time=2019-03-19 21:52:25.169411 last_modification_time=2019-03-19 21:52:25.169411 last_change_time=2019-03-19 21:52:25.169411 last_access_time=2019-03-19 21:52:25.169411 segment=0 path='c:/$MFT' owner='S-1-5-18' filesize=0.12 GB resident=False inuse=True volume_uuid=None>
+
 Filtering & manipulating records
 --------------------------------
 
