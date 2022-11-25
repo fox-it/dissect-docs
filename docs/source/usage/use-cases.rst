@@ -141,6 +141,29 @@ For demonstration purposes, we again listen in another terminal to port 1337 wit
 
 As you can see, these results are Splunk compatible and will allow the records to be imported into your Splunk instance.
 
+Timeline of records
+~~~~~~~~~~~~~~~~~~~
+
+``target-query`` functions that have a ``record`` with the fiedltype ``datetime`` are outputed in a single record. As shown below with the function ``mft``:
+
+.. code-block:: console
+
+    $ target-query -f mft -t targets/EXAMPLE.tar --limit 1 | rdump
+    <filesystem/ntfs/mft/std hostname='MSEDGEWIN10' domain=None creation_time=2019-03-19 21:52:25.169411+00:00 last_modification_time=2019-03-19 21:52:25.169411+00:00 last_change_time=2019-03-19 21:52:25.169411+00:00 last_access_time=2019-03-19 21:52:25.169411+00:00 segment=0 path='c:/$MFT' owner='S-1-5-18' filesize=0.12 GB resident=False inuse=True volume_uuid=None>
+
+Using ``rmulti-timestamp`` between ``target-query`` outputs multiple ``ts`` enriched records based on the ``datetime`` fields of the original record.
+
+.. code-block:: console
+
+    $ target-query -f mft -t targets/EXAMPLE.tar --limit 1 | rmulti-timestamp | rdump
+    [reading from stdin]
+    <filesystem/ntfs/mft/std ts=2019-03-19 21:52:25.169411 ts_description='creation_time' hostname='MSEDGEWIN10' domain=None creation_time=2019-03-19 21:52:25.169411 last_modification_time=2019-03-19 21:52:25.169411 last_change_time=2019-03-19 21:52:25.169411 last_access_time=2019-03-19 21:52:25.169411 segment=0 path='c:/$MFT' owner='S-1-5-18' filesize=0.12 GB resident=False inuse=True volume_uuid=None>
+    <filesystem/ntfs/mft/std ts=2019-03-19 21:52:25.169411 ts_description='last_modification_time' hostname='MSEDGEWIN10' domain=None creation_time=2019-03-19 21:52:25.169411 last_modification_time=2019-03-19 21:52:25.169411 last_change_time=2019-03-19 21:52:25.169411 last_access_time=2019-03-19 21:52:25.169411 segment=0 path='c:/$MFT' owner='S-1-5-18' filesize=0.12 GB resident=False inuse=True volume_uuid=None>
+    <filesystem/ntfs/mft/std ts=2019-03-19 21:52:25.169411 ts_description='last_change_time' hostname='MSEDGEWIN10' domain=None creation_time=2019-03-19 21:52:25.169411 last_modification_time=2019-03-19 21:52:25.169411 last_change_time=2019-03-19 21:52:25.169411 last_access_time=2019-03-19 21:52:25.169411 segment=0 path='c:/$MFT' owner='S-1-5-18' filesize=0.12 GB resident=False inuse=True volume_uuid=None>
+    <filesystem/ntfs/mft/std ts=2019-03-19 21:52:25.169411 ts_description='last_access_time' hostname='MSEDGEWIN10' domain=None creation_time=2019-03-19 21:52:25.169411 last_modification_time=2019-03-19 21:52:25.169411 last_change_time=2019-03-19 21:52:25.169411 last_access_time=2019-03-19 21:52:25.169411 segment=0 path='c:/$MFT' owner='S-1-5-18' filesize=0.12 GB resident=False inuse=True volume_uuid=None>
+
+This makes it possible to output a timeline of records that can be analyzed in applications like Elasticsearch (``-w elastic://``), Timesketch (``--jsonlines``) or Timeline Explorer (``--csv``) using ``rdump``. These application need a single ``datetime`` field on which can be filtered to view records in chronological order.
+
 Filtering function output using target-query and rdump
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
