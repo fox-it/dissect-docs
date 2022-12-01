@@ -5,7 +5,7 @@ def comment_example(raw_comment: str) -> str:
         raw_comment: A string containing the raw comment
 
     Returns:
-        Data with a ``Comment: `` prefix
+        Data with a ``Comment:`` prefix
     """
     return f"Comment: {raw_comment}"
 
