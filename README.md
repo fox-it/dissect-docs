@@ -20,7 +20,6 @@ cd docs && make html
 If you run into build issues, clean the Sphinx output directory and AutoAPI output:
 
 ```bash
-rm -rf docs/source/api/*/
 cd docs && make clean
 ```
 
