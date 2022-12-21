@@ -16,7 +16,8 @@ plugins that work quickly and easily on a large range of evidence formats. More 
 experience can also leverage Dissect`s full capabilities by creating new tools and plugins using the various Dissect
 APIs and parsers.
 
-Read more about what Dissect is and how it works at :doc:`/overview/index`.
+Read more about what Dissect is and how it works at :doc:`/overview/index`, or `watch an introductory video
+<https://www.youtube.com/watch?v=A2e203LizAM>`_ by `13Cubed <https://www.youtube.com/@13Cubed>`_.
 
 Getting Started
 ---------------
