@@ -91,5 +91,10 @@
 	path = submodules/flow.record
 	url = https://github.com/fox-it/flow.record.git
 [submodule "submodules/dissect.thumbcache"]
+	branch = main
 	path = submodules/dissect.thumbcache
 	url = https://github.com/fox-it/dissect.thumbcache.git
+[submodule "submodules/dissect.executable"]
+	branch = main
+	path = submodules/dissect.executable
+	url = https://github.com/fox-it/dissect.executable.git
