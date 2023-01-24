@@ -8,7 +8,7 @@ dissect.executable
     :octicon:`mark-github` View on GitHub
 
 A Dissect module implementing parsers for various executable formats such as PE, ELF and Macho-O.
-Currently, only ELF is being parsed.
+Currently only the ELF format is supported.
 
 Installation
 ------------
@@ -25,7 +25,7 @@ Usage
 -----
 
 This package is a library with no CLI tools, so you can only interact with it from Python. For example, to open an ELF file
-and start reading from it:
+and print some information from it:
 
 .. code-block:: python
 
@@ -45,8 +45,6 @@ and start reading from it:
         for symbol_table in elf.symbol_tables:
             for symbol in symbol_table:
                 print(str(symbol))
-
-
 
 Reference
 ---------
