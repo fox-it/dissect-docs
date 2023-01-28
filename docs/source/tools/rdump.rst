@@ -60,7 +60,7 @@ The file extension of the record file can be anything you want.
 Timeline & datetime fields
 --------------------------
 
-``target-query`` functions that have a ``record`` with the fiedltype ``datetime`` are outputed in a single record. As shown below with the function ``mft``:
+``target-query`` functions that have a ``record`` with the fieldtype ``datetime`` are outputed in a single record. As shown below with the function ``mft``:
 
 .. code-block:: console
 
@@ -76,11 +76,11 @@ The single record contains four different events that occured on the filesystem:
 
 To analyze a timeline of events that occured every record needs a single ``datetime`` field on which can be filtered to view records in chronological order.
 
-For this purpose the tool ``rmulti-timestamp`` can be used to output multiple ``ts`` enriched records based on the ``datetime`` fields of the original record.
+For this purpose the argument ``--multi-timestamp`` can be used to output multiple ``ts`` enriched records based on the ``datetime`` fields of the original record.
 
 .. code-block:: console
 
-    $ target-query -f mft -t targets/EXAMPLE.tar --limit 1 | rmulti-timestamp | rdump
+    $ target-query -f mft -t targets/EXAMPLE.tar --limit 1 | rdump --multi-timestamp
     [reading from stdin]
     <filesystem/ntfs/mft/std ts=2019-03-19 21:52:25.169411 ts_description='creation_time' hostname='MSEDGEWIN10' domain=None creation_time=2019-03-19 21:52:25.169411 last_modification_time=2019-03-19 21:52:25.169411 last_change_time=2019-03-19 21:52:25.169411 last_access_time=2019-03-19 21:52:25.169411 segment=0 path='c:/$MFT' owner='S-1-5-18' filesize=0.12 GB resident=False inuse=True volume_uuid=None>
     <filesystem/ntfs/mft/std ts=2019-03-19 21:52:25.169411 ts_description='last_modification_time' hostname='MSEDGEWIN10' domain=None creation_time=2019-03-19 21:52:25.169411 last_modification_time=2019-03-19 21:52:25.169411 last_change_time=2019-03-19 21:52:25.169411 last_access_time=2019-03-19 21:52:25.169411 segment=0 path='c:/$MFT' owner='S-1-5-18' filesize=0.12 GB resident=False inuse=True volume_uuid=None>
