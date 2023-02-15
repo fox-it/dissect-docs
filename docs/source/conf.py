@@ -23,7 +23,7 @@ for path in map(str, Path("../../submodules/").resolve().iterdir()):
 # -- Project information -----------------------------------------------------
 
 project = "Dissect"
-copyright = "2022, Fox-IT part of NCC Group"
+copyright = "2023, Fox-IT part of NCC Group"
 author = "Fox-IT part of NCC Group"
 
 # The full version, including alpha/beta/rc tags
@@ -144,4 +144,6 @@ autosectionlabel_prefix_document = True
 
 copybutton_prompt_text = r">>> |\.\.\. |\$ |In \[\d*\]: | {2,5}\.\.\.: | {5,8}: "
 copybutton_prompt_is_regexp = True
+copybutton_line_continuation_character = "\\"
+copybutton_here_doc_delimiter = "EOT"
 copybutton_selector = "div:not(.no-copybutton) > div.highlight > pre"
