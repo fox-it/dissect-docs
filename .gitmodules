@@ -98,3 +98,7 @@
 	branch = main
 	path = submodules/dissect.executable
 	url = https://github.com/fox-it/dissect.executable.git
+[submodule "submodules/dissect.squashfs"]
+	branch = main
+	path = submodules/dissect.squashfs
+	url = https://github.com/fox-it/dissect.squashfs.git

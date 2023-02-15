@@ -1,5 +1,5 @@
 dissect.executable
-================
+==================
 
 .. button-link:: https://github.com/fox-it/dissect.executable
     :color: primary
@@ -38,10 +38,10 @@ and print some information from it:
 
         for segment in elf.segments:
             print(str(segment))
-        
+
         for section in elf.section_table:
             print(str(section))
-        
+
         for symbol_table in elf.symbol_tables:
             for symbol in symbol_table:
                 print(str(symbol))
