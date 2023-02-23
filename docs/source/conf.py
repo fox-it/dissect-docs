@@ -147,3 +147,4 @@ copybutton_prompt_is_regexp = True
 copybutton_line_continuation_character = "\\"
 copybutton_here_doc_delimiter = "EOT"
 copybutton_selector = "div:not(.no-copybutton) > div.highlight > pre"
+copybutton_exclude = ".linenos"
