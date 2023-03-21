@@ -22,7 +22,7 @@ The table below contains references to articles where Dissect is used to solve p
 .. list-table:: References to articles on Dissect
    :widths: 25 50 25
    :header-rows: 1
-   :align: left
+   :class: left-text-align
 
    * - Publish Date
      - Title
@@ -52,7 +52,7 @@ The table below contains tutorials and starter guides written by community users
 .. list-table:: References to tutorials and starter guides on Dissect
    :widths: 25 50 25
    :header-rows: 1
-   :align: left
+   :class: left-text-align
 
    * - Publish Date
      - Title 
