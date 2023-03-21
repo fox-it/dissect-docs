@@ -58,7 +58,7 @@ The table below contains tutorials and starter guides written by community users
      - Title 
      - Author
    * - 2023-01-22
-     - `How to install and use Dissect (Forensic Framework) <https://muchipopo.com/forensic/dissect/?_x_tr_sl&_x_tr_tl&_x_tr_hl>`_
+     - `How to install and use Dissect (Forensic Framework) <https://muchipopo.com/forensic/dissect/>`_
      - Muchipopo
    * - 2023-12-19 
      - `The Dissect Effect - An Open Source IR Framework <https://www.youtube.com/watch?v=A2e203LizAM>`_
