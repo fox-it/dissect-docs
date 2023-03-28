@@ -8,7 +8,7 @@ Developing for Dissect
 Development
 -----------
 
-Dissect is build and tested against Python 3.9 (CPython and PyPy). Older versions may not work, as features are used which
+Dissect is built and tested against Python 3.9 (CPython and PyPy). Older versions may not work, as features are used which
 may not yet be supported by these versions (for example ``@cached_property`` is only supported since Python 3.9).
 Newer versions will probably work, but are not guaranteed to.
 
@@ -24,17 +24,17 @@ Branches & Tags
 
 Development is done on so-called feature branches. When making changes, create a feature branch with a useful and short
 name like ``feature/some_new_awsome_feature`` or ``fix/some_bug_fix``. Using a namespace prefix like ``feature/`` or
-``fix/`` may help keep different types of changes clear.
+``fix/`` keeps different types of changes clear.
 
 When you are done with building the feature or creating the fix, do a final run of the unit tests and linting and make a
 pull request. The code will be reviewed and tested again in our CI pipeline.
 
-Be aware that a feature branch should contain only a single, self contained feature or fix. On acceptance, the commits
+Be aware that a feature branch should contain only a single, self-contained, feature or fix. On acceptance, the commits
 in the feature branch will be squashed into a single commit. If there are reasons to deviate from this, each *commit* on
-the feature branch should contain a single, self contained feature or fix. Also make sure to discuss up front if you
+the feature branch should contain a single, self-contained, feature or fix. Also make sure to discuss up front if you
 think there is reason to deviate from the single feature/fix per feature branch.
 
-If the pull request is accepted, the commit will land in the ``main`` branch. The ``HEAD`` of this branch is the potential
+If the pull request is accepted, the commit will be merged into the ``main`` branch. The ``HEAD`` of this branch is the potential
 release candidate for the project. Once a release is done, it will be tagged with a version number.
 
 Building & testing

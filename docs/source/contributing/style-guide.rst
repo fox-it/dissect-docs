@@ -1,25 +1,28 @@
 Style guide
 ===========
 
-This is a basic style guide for the dissect projects. The goal of this guide is to help improve the quality of the code
+This is a basic style guide for the Dissect projects. The goal of this guide is to help improve the quality of the code
 by making it more uniform in appearance which should increase the understandability and maintainability. When submitting
-code for inclusion in one of the dissect projects, it helps to follow this guide. This will make the reviewing process
+code for inclusion in one of the Dissect projects, it helps to follow this guide. This will make the reviewing process
 easier and reduces the number of iterations to get it the code in a mergable shape.
 
-Although certain things are enforced in the build pipeline, the current code does not adhere everywhere and always to
-all these guidelines. The reason is that it already has quite some history. Nonetheless, by following these guidelines
-we improve the code as we go.
+Although certain style checks are enforced in the build pipeline, the current code does not always adhere to
+all these guidelines. The reason for the latter is that Dissect contains code that was written a long time before this guide
+was developed. Changing existing code to match this style guide is a continuous process, but new code should definitely
+follow this guide.
 
 A note on refactoring
 ---------------------
 
 For the parts of these guidelines which are not enforced by our build pipeline we generally deal with them in the
 following way. As a rule, new code should always strive to follow these guidelines. For code that gets modified and
-is not yet fully following these guidelines, there are the following options. If the change is large, it is best to
-refactor the function, method or class according to these guidelines. If the change is minor, or if it wouldn't fit
-in the context of the rest of the code in the class, file or sub-project, refactoring for things like type hinting
-and adding docstrings may be postponed until a larger change or refactor. Paramount however is that the change you
-make is understandable and clear in its functioning.
+is not yet fully following these guidelines, there are the following options:
+
+- If the change is large, it is best to refactor the function, method or class according to these guidelines.
+- If the change is minor, or if it wouldn't fit in the context of the rest of the code in the class, file or sub-project, refactoring for things like type hinting
+and adding docstrings may be postponed until a larger change or refactor.
+
+Paramount however is that the change you make is understandable and clear in its functioning.
 
 PEP 8 and Black
 ---------------
@@ -43,7 +46,7 @@ Import order
 ------------
 
 When importing other modules or files we group the imports into 3 groups. First are the builtin modules, next the modules
-from external projects *including* other dissect projects, e.g. PyYAML, and finally the modules from the project itself.
+from external projects *including* other Dissect projects, e.g. PyYAML, and finally the modules from the project itself.
 The imports within the 3 groups should be in alphabetical order, as in the example below:
 
 .. code-block:: python
