@@ -46,8 +46,11 @@ extensions = [
     "sphinx_argparse_cli",
     "sphinx_copybutton",
     "sphinx_design",
-    "autoapi.extension",
 ]
+
+# Allow disabling of time consuming autoapi generation
+if not os.getenv("NO_AUTOAPI"):
+    extensions.append("autoapi.extension")
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
