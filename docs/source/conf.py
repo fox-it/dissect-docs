@@ -94,6 +94,7 @@ html_theme_options = {
         "color-brand-content": "var(--color-brand-primary)",
         "color-background-hover": "#3574B3",
         "color-background-hover--transparent": "var(--color-background-hover)",
+        "color-api-background" : "var(--color-background-secondary)",
         "color-api-background-hover": "#EFEFF4FF",
         "color-sidebar-background": "var(--color-brand-primary)",
         "color-sidebar-background-border": "var(--color-background-hover)",
