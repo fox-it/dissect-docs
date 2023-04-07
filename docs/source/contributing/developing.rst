@@ -36,7 +36,7 @@ To build and test Dissect projects, `tox <https://tox.wiki/en/latest/>`_ is used
 Style guide
 ~~~~~~~~~~~
 
-Dissect has published a :doc:`style guide </contributing/style-guide>` for code, documentation and commit messages.
+Dissect has a :doc:`style guide </contributing/style-guide>` for code, documentation and commit messages.
 It helps to improve the quality of the code by making it more uniform in appearance which should increase the understandability and
 maintainability. It will also make the reviewing process easier and reduces the number of iterations to get the code in
 a mergeable shape.
