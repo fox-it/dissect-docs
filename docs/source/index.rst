@@ -121,6 +121,7 @@ For more information about what Dissect is and how it works, read on at :doc:`/o
 
     /contributing/developing
     /contributing/style-guide
+    /contributing/tooling
     License </license>
 
 .. toctree::
