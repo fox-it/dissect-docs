@@ -63,8 +63,7 @@ If linting fails, you can try to automatically fix the linting using the followi
     $ tox -e fix
     
 .. warning::     
-    Always check the results of ``tox -e fix`` before submitting as it is possible that the suggested changes may alter the code in 
-    an unintended way.
+    Always check the results of ``tox -e fix`` before submitting as the proposed changes may not always be the most optimal solution.
 
 Testing documentation
 ~~~~~~~~~~~~~~~~~~~~~
@@ -82,9 +81,9 @@ You can generate the API documentation in HTML format using ``tox`` for viewing 
 
 .. code-block:: console
 
-    $ tox -e FIXME
+    $ tox -e docsbuild
 
-This will create the `FIXME build` directory with the generated documentation in HTML format.
+This will create the `tests/docs./build/html` directory with the generated documentation in HTML format.
 Apart from the styling, this will show you how your documentation will appear 
 on https://docs.dissect.tools if your changes are accepted.
 
@@ -96,14 +95,7 @@ After the build process has finished, you can view the documentation in, for exa
 
 .. code-block:: console
      
-     $ firefox build/html/index.html
-
-
-If you experience build issues, you can clean up your environment using:
-
-.. code-block:: console
-    
-    $ make clean FIXME
+     $ firefox tests/docs/build/html/index.html
 
 
 Checking external URLs
@@ -116,11 +108,11 @@ You can check for broken links by invoking the following command:
 
 .. code-block:: console
 
-    $ tox -e FIXME linkcheck
+    $ tox -e docslinkcheck
 
 
 You will see the results of the checks in your terminal, but they can also be found in the file 
-`FIXME build/linkcheck/output.txt`.
+``tests/docs/build/linkcheck/output.txt``.
 
 Understanding linkcheck output
 """"""""""""""""""""""""""""""  
