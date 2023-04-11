@@ -83,7 +83,7 @@ You can generate the API documentation in HTML format using ``tox`` for viewing 
 
     $ tox -e docsbuild
 
-This will create the `tests/docs./build/html` directory with the generated documentation in HTML format.
+This will create the `tests/docs/build/html` directory with the generated documentation in HTML format.
 Apart from the styling, this will show you how your documentation will appear 
 on https://docs.dissect.tools if your changes are accepted.
 

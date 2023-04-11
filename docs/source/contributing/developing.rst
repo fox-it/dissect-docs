@@ -47,7 +47,7 @@ Branching
 Each project has a ``main`` branch. The ``HEAD`` of this ``main`` branch is the potential release candidate for the project.
 
 Development is done on feature branches. When making changes, create a feature branch with a useful and short
-name like ``feature/some_new_awsome_feature`` or ``fix/some_bug_fix``. Using a namespace prefix like ``feature/`` or
+name like ``feature/some_new_awesome_feature`` or ``fix/some_bug_fix``. Using a namespace prefix like ``feature/`` or
 ``fix/`` keeps different types of changes clear.
 
 Feature branches should contain only a single, self-contained, feature or fix. On acceptance, the commits
@@ -72,13 +72,13 @@ Contributor License Agreement
 """""""""""""""""""""""""""""
 
 We require all contributors to accept our Contributor License Ageement (CLA) before including contributions into our code base.
-The process of signing is very simple and is only required once:
+The process of accepting the agreement is very simple and is only required once:
 
 1. Submit your pull request
 2. If this is your first submission, a comment on your pull request will be posted by our DissectBot with the CLA text
 3. When you agree with the terms and conditions you reply with a GitHub comment as shown in the CLA text.
 
-Once the signing has been completed, the pull request will be processed.
+Once you have accepted the CLA, the pull request will be processed.
 
 Any future pull requests from the same account will be processed immediately.
 
