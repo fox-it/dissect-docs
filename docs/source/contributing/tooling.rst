@@ -81,7 +81,7 @@ You can generate the API documentation in HTML format using ``tox`` for viewing 
 
 .. code-block:: console
 
-    $ tox -e docsbuild
+    $ tox -e docs-build
 
 This will create the ``tests/docs/build/html`` directory with the generated documentation in HTML format.
 Apart from the styling, this will show you how your documentation will appear
@@ -108,7 +108,7 @@ You can check for broken links by invoking the following command:
 
 .. code-block:: console
 
-    $ tox -e docslinkcheck
+    $ tox -e docs-linkcheck
 
 
 You will see the results of the checks in your terminal, but they can also be found in the file
