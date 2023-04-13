@@ -7,7 +7,7 @@ of both code and documentation.
 Applicability
 -------------
 
-This guide is applicable to both new and exisiting code and the Dissect build pipeline enforces the most important rules.
+This guide is applicable to both new and existing code and the Dissect build pipeline enforces the most important rules.
 Certain exceptions are made for older parts of the code as they were written before the creation of this guide.
 
 New code
@@ -21,7 +21,7 @@ Older code
 ^^^^^^^^^^
 
 When submitting changes to existing code that does not yet adhere to this style guide, a choice should be made
-whether or not to make the change conformant to the guidelines. You can use the rules below to help you decide
+whether to make the change conformant to the guidelines. You can use the rules below to help you decide
 what to do in these cases.
 
 If the change in existing code is
@@ -43,7 +43,7 @@ PEP 8 and Black
 ^^^^^^^^^^^^^^^
 
 The code should adhere to the `PEP 8 <https://peps.python.org/pep-0008/>`_ Python code style. The adherence to PEP 8
-is checked using `Flake8 <https://flake8.pycqa.org/>`_. Flake ``E203`` errors can be ignored due to the ambigious nature
+is checked using `Flake8 <https://flake8.pycqa.org/>`_. Flake ``E203`` errors can be ignored due to the ambiguous nature
 of these errors (see `<https://github.com/PyCQA/pycodestyle/issues/373>`_).
 
 The formatting of the code layout is further refined by using `Black <https://black.readthedocs.io/en/stable/>`_.
@@ -56,7 +56,7 @@ Maximum line length
 ^^^^^^^^^^^^^^^^^^^
 
 Lines should be limited to 120 characters. For modern console sizes this gives a bit more room compared to the
-standard 80 character limit without sacrificing readability, probably even increasing it.
+standard 80-character limit without sacrificing readability, probably even increasing it.
 
 Type hinting
 ^^^^^^^^^^^^
@@ -102,7 +102,7 @@ To prevent this, add a comma (``,``) after the last item of the tuple, like this
         param2,
     )
 
-Coincidentally, this also gives cleaner code diffs when adding or removing items from the tuple later on.
+Coincidentally, this also gives cleaner code diffs when adding or removing items from the tuple later.
 
 Naming variables
 ^^^^^^^^^^^^^^^^

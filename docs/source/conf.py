@@ -46,7 +46,8 @@ extensions = [
     "sphinx_argparse_cli",
     "sphinx_copybutton",
     "sphinx_design",
-    "autoapi.extension",
+    'sphinxcontrib.plantuml'
+#    "autoapi.extension",
 ]
 
 # Add any paths that contain templates here, relative to this directory.

@@ -61,8 +61,8 @@ If linting fails, you can try to automatically fix the linting using the followi
 .. code-block:: console
 
     $ tox -e fix
-    
-.. warning::     
+
+.. warning::
     Always check the results of ``tox -e fix`` before submitting as the proposed changes may not always be the most optimal solution.
 
 Testing documentation
@@ -70,7 +70,7 @@ Testing documentation
 
 There is tooling to:
 
-- generate the API documentation for manual inspection in a web browser 
+- generate the API documentation for manual inspection in a web browser
 - automatically check for broken URLs in the documentation.
 
 
@@ -83,25 +83,25 @@ You can generate the API documentation in HTML format using ``tox`` for viewing 
 
     $ tox -e docsbuild
 
-This will create the `tests/docs/build/html` directory with the generated documentation in HTML format.
-Apart from the styling, this will show you how your documentation will appear 
+This will create the ``tests/docs/build/html`` directory with the generated documentation in HTML format.
+Apart from the styling, this will show you how your documentation will appear
 on https://docs.dissect.tools if your changes are accepted.
 
 
-**Note**: It is not unusual that warnings and errors appear; you can safely ignore them as long as
-the building of the documentation does not fail in its entirety.
+.. note::
+    It is not unusual that warnings and errors appear while building; you can safely ignore them as long as the building of the documentation does not fail in its entirety.
 
 After the build process has finished, you can view the documentation in, for example, Firefox:
 
 .. code-block:: console
-     
+
      $ firefox tests/docs/build/html/index.html
 
 
 Checking external URLs
 ^^^^^^^^^^^^^^^^^^^^^^
 
-If you include external website URLs in your API documentation, it is good to validate if these 
+If you include external website URLs in your API documentation, it is good to validate if these
 links are still valid before commiting your changes.
 
 You can check for broken links by invoking the following command:
@@ -111,16 +111,20 @@ You can check for broken links by invoking the following command:
     $ tox -e docslinkcheck
 
 
-You will see the results of the checks in your terminal, but they can also be found in the file 
+You will see the results of the checks in your terminal, but they can also be found in the file
 ``tests/docs/build/linkcheck/output.txt``.
 
+The following section helps you understand the results of the command.
+
 Understanding linkcheck output
-""""""""""""""""""""""""""""""  
+""""""""""""""""""""""""""""""
 
-Each URL that is checked will result in a line containing the file and linenumber containing the URL, 
-the result of the check (see below) and the actual URL that was checked.
+Each line in ``tests/docs/build/linkcheck/output.txt`` corresponds to one URL that has been checked and shows:
+- the filename and line number where the URL is mentioned
+- the result of the check
+- the actual URL that was checked.
 
-Use the following table to process the output:
+Use the following table to interpret the result of the check:
 
 .. list-table:: How to process linkcheck results
    :widths: 20 40 40
@@ -136,8 +140,13 @@ Use the following table to process the output:
      - The URL resolves after following a redirect
      - No change required
    * - broken
-     - The URL doesn't appear to be working
-     - Determine the cause of failure: check in the HTML if the URL is rendered properly. Does the website block the check but does the URL function when using a browser? In the latter case, the link can be kept, otherwise consider removing the link.
+     - The URL doesn't appear to be working.
+     -
+        - If the refererenced page has been moved, replace the URL with its new location
+        - If the refererenced page is no longer available, consider creating an `archive.org <https://archive.org>`_ URL
+        - Check in the HTML if the URL is rendered properly
+        - URLs containing ``(`` and ``)`` should have these characters escaped as ``%28`` and ``%29`` respectively
+        - Check if the URL works when clicking from the generated HTML. If it works the link can be kept, otherwise consider removing the link.
    * - *other*
      - An unforeseen error occured
      - Manually check if the link is still valid; remove the link if necessary.
