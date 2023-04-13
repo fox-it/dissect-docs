@@ -85,7 +85,7 @@ Any future pull requests from the same account will be processed immediately.
 Dependencies
 ~~~~~~~~~~~~
 
-Dissect has a policy of 'least dependencies', meaning that the amount of dependencies on other Python packages should be as small
+Dissect has a policy of 'least dependencies', meaning that the number of dependencies on other Python packages should be as small
 as possible. This limits licensing issues and keeps the software supply chain manageable.
 
 Dissect already has a curated set of dependencies covering a lot of functionality. When adding new dependencies to Dissect, please
@@ -97,7 +97,7 @@ Test cases
 ~~~~~~~~~~
 
 New code and large refactors should have unit tests accompanying the changes even though not all existing code currently has unit tests.
-See :doc:`tooling </contributing/tooling>` for information on how execute test cases.
+See :doc:`tooling </contributing/tooling>` for information on how to execute test cases.
 
 
 Documentation
