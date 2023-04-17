@@ -1,6 +1,11 @@
 Tooling
 =======
 
+This page covers the available tooling to help you build and test both code and documentation.
+
+Build system
+~~~~~~~~~~~~
+
 Each project includes tooling for building and testing code and documentation.
 
 The build system adheres to `PEP 517 <https://peps.python.org/pep-0517/>`_, `PEP 518 <https://peps.python.org/pep-0518/>`_
