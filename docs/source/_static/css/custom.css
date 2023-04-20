@@ -19,3 +19,7 @@
 table.docutils {
     width: 99%;
 }
+
+table.left-text-align th {
+    text-align: left;
+}

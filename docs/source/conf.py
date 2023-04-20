@@ -46,8 +46,11 @@ extensions = [
     "sphinx_argparse_cli",
     "sphinx_copybutton",
     "sphinx_design",
-    "autoapi.extension",
 ]
+
+# Allow disabling of time consuming autoapi generation
+if not os.getenv("NO_AUTOAPI"):
+    extensions.append("autoapi.extension")
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
@@ -91,6 +94,7 @@ html_theme_options = {
         "color-brand-content": "var(--color-brand-primary)",
         "color-background-hover": "#3574B3",
         "color-background-hover--transparent": "var(--color-background-hover)",
+        "color-api-background" : "var(--color-background-secondary)",
         "color-api-background-hover": "#EFEFF4FF",
         "color-sidebar-background": "var(--color-brand-primary)",
         "color-sidebar-background-border": "var(--color-background-hover)",

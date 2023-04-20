@@ -13,7 +13,7 @@ Currently only supports the persistent variant.
 Installation
 ------------
 
-``dissect.clfs`` is available on `PyPI <https://pypi.org/project/dissect.c;fs/>`_.
+``dissect.clfs`` is available on `PyPI <https://pypi.org/project/dissect.clfs/>`_.
 
 .. code-block:: console
 
