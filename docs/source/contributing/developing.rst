@@ -12,12 +12,11 @@ ask you to read our documentation on the development process, style guide and to
 
 These pages are organized as follows:
 
-1. `Development process`_: information regarding the development process, including branching, review process and expectations on
-testing.
+- `Development process`_: information regarding the development process, including branching, review process and expectations on testing.
 
-2. :doc:`Style guide </contributing/style-guide>`: information on how to style code and documentation for a uniform style across all Dissect projects.
+- :doc:`Style guide </contributing/style-guide>`: information on how to style code and documentation for a uniform style across all Dissect projects.
 
-3. :doc:`Tooling </contributing/tooling>`: information regarding the available tooling for building and testing code and documentation.
+- :doc:`Tooling </contributing/tooling>`: information regarding the available tooling for building and testing code and documentation.
 
 
 Development process
@@ -27,11 +26,24 @@ Development process
 Python and tox versions
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-Dissect is built and tested against Python 3.9 (CPython and PyPy). Older versions may not work, as features are used which
-may not yet be supported by these versions (for example ``@cached_property`` is only supported since Python 3.9).
+Dissect is built and tested for the following Python versions:
+
+- CPython 3.9, 3.10 and 3.11.
+- PyPy 3.9.
+
+Older versions than specified may not work, as some features are not supported by these versions
+(for example ``@cached_property`` is only supported since Python 3.9).
+
+
 Newer versions will probably work, but are not guaranteed to.
 
-To build and test Dissect projects, `tox <https://tox.wiki/en/latest/>`_ is used. A minimum version of 3.8 is required.
+
+To build and test Dissect projects, `tox <https://tox.wiki/en/latest/>`_ is used.
+A minimum version of 4.2.4 is required (when using ``tox`` version 3.3.0 or higher,
+it will automatically bootstrap to this minimum version).
+
+More information on available tooling can be found on the :doc:`tooling </contributing/tooling>` page.
+
 
 Style guide
 ~~~~~~~~~~~

@@ -7,6 +7,8 @@ Build system
 ~~~~~~~~~~~~
 
 Each project includes tooling for building and testing code and documentation.
+The :doc:`developing for Dissect page </contributing/developing>` lists the supported Python
+and ``tox`` versions.
 
 The build system adheres to `PEP 517 <https://peps.python.org/pep-0517/>`_, `PEP 518 <https://peps.python.org/pep-0518/>`_
 and `PEP 626 <https://peps.python.org/pep-0626>`_.
