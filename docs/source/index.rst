@@ -35,10 +35,7 @@ The easiest way to get started is to install the latest version of all Dissect p
 It is recommended that you use a `virtual environment <https://docs.python.org/3/tutorial/venv.html>`_.
 
 .. note ::
-
-    Dissect is built and tested against Python 3.9 (CPython and PyPy). Older versions may not work, as
-    features are used which may not yet be supported by these versions. Newer versions will probably work, but are not
-    guaranteed to.
+    .. include:: /versions.rst
 
 To quickly get familiar with Dissect, read on to :doc:`/usage/introduction`. If you're interested in what makes it
 tick, continue reading at :doc:`/overview/index`.
