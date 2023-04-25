@@ -44,6 +44,12 @@ Linting is done using flake8 and unit tests (if applicable) are run against the 
 Make sure that the default Python version on your system is 3.9 if you want to run the unit tests using a supported
 Python version.
 
+.. important::
+
+    Some repositories require ``git lfs`` (Large File Storage) to retrieve testdata needed for testing. If you had this installed prior
+    to cloning the repository, no further action is required to complete the tests. Otherwise, install ``git lfs`` and type
+    ``git lfs pull`` in the repository to download the testdata.
+
 To explicitly run the unit tests against a Python version use:
 
 .. code-block:: console
