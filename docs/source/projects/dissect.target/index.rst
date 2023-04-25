@@ -42,7 +42,6 @@ The ``Target.open`` function works transparently on all targets for which a supp
 
 For more advanced examples, please refer to :doc:`/advanced/api`.
 
-
 Reference
 ---------
 
