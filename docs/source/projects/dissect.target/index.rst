@@ -31,12 +31,14 @@ For example, to print the hostname, version and all users records:
 
     from dissect.target import Target
 
-    target = Target("/path/to/target")
+    target = Target.open("/path/to/target")
     print("Hostname:", target.hostname)
     print("Version:", target.version)
 
     for user in target.users():
         print(user)
+
+The ``Target.open`` function works transparently on all targets for which a supported loader (see :doc:`/advanced/loaders`) exists.
 
 For more advanced examples, please refer to :doc:`/advanced/api`.
 
