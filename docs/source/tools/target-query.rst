@@ -159,3 +159,14 @@ The ``--report-dir`` argument
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Use the ``--report-dir`` argument when you want to write the query result report to a specific location.
+
+Loading separate files instead of targets
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To query separate (log) files instead of a target use the log:// uri.
+Currently only the evt/evtx plugins support this feature.
+
+.. code-block:: console
+
+    $ target-query log:///path/to/evtxs/* -f evtx
+
