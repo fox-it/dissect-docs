@@ -5,87 +5,128 @@ Developing for Dissect
 
     Thinking about writing your own Dissect module? Awesome! We kindly ask that you use the ``dissect.contrib.*`` namespace!
 
-Development
------------
 
-Dissect is build and tested against Python 3.9 (CPython and PyPy). Older versions may not work, as features are used which
-may not yet be supported by these versions (for example ``@cached_property`` is only supported since Python 3.9).
-Newer versions will probably work, but are not guaranteed to.
 
-To build and test Dissect projects, `tox <https://tox.wiki/en/latest/>`_ is used. A minimum version of 3.8 is required.
+We very much welcome contributions from the community that improve Dissect. Before making your first contribution, we
+ask you to read our documentation on the development process, style guide and tooling carefully as they will help you make the contributing process as easy as possible.
 
-When developing for Dissect, please make sure you follow :doc:`the style guide </contributing/style-guide>`. It helps to
-improve the quality of the code by making it more uniform in appearance which should increase the understandability and
+These pages are organized as follows:
+
+- `Development process`_: information regarding the development process, including branching, review process and expectations on testing.
+
+- :doc:`Style guide </contributing/style-guide>`: information on how to style code and documentation for a uniform style across all Dissect projects.
+
+- :doc:`Tooling </contributing/tooling>`: information regarding the available tooling for building and testing code and documentation.
+
+
+Development process
+-------------------
+
+
+Python and tox versions
+~~~~~~~~~~~~~~~~~~~~~~~
+
+.. include:: /versions.rst
+
+
+To build and test Dissect projects, `tox <https://tox.wiki/en/latest/>`_ is used.
+A minimum version of 4.2.4 is required (when using ``tox`` version 3.3.0 or higher,
+it will automatically bootstrap to this minimum version).
+
+More information on available tooling can be found on the :doc:`tooling </contributing/tooling>` page.
+
+
+Style guide
+~~~~~~~~~~~
+
+Dissect has a :doc:`style guide </contributing/style-guide>` for code, documentation and commit messages.
+It helps to improve the quality of the code by making it more uniform in appearance which should increase the understandability and
 maintainability. It will also make the reviewing process easier and reduces the number of iterations to get the code in
-a mergable shape.
+a mergeable shape.
 
-Branches & Tags
-~~~~~~~~~~~~~~~
+Branching
+~~~~~~~~~
 
-Development is done on so-called feature branches. When making changes, create a feature branch with a useful and short
-name like ``feature/some_new_awsome_feature`` or ``fix/some_bug_fix``. Using a namespace prefix like ``feature/`` or
-``fix/`` may help keep different types of changes clear.
+Each project has a ``main`` branch. The ``HEAD`` of this ``main`` branch is the potential release candidate for the project.
 
-When you are done with building the feature or creating the fix, do a final run of the unit tests and linting and make a
-pull request. The code will be reviewed and tested again in our CI pipeline.
+Development is done on feature branches. When making changes, create a feature branch with a useful and short
+name like ``feature/some_new_awesome_feature`` or ``fix/some_bug_fix``. Using a namespace prefix like ``feature/`` or
+``fix/`` keeps different types of changes clear.
 
-Be aware that a feature branch should contain only a single, self contained feature or fix. On acceptance, the commits
+Feature branches should contain only a single, self-contained, feature or fix. On acceptance, the commits
 in the feature branch will be squashed into a single commit. If there are reasons to deviate from this, each *commit* on
-the feature branch should contain a single, self contained feature or fix. Also make sure to discuss up front if you
+the feature branch should contain a single, self-contained, feature or fix. Also make sure to discuss up front if you
 think there is reason to deviate from the single feature/fix per feature branch.
 
-If the pull request is accepted, the commit will land in the ``main`` branch. The ``HEAD`` of this branch is the potential
-release candidate for the project. Once a release is done, it will be tagged with a version number.
+Submission and review process
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Building & testing
-------------------
+When you have finished work in your feature branch and the unit tests and linting tests pass, you can submit
+a pull request.
 
-The build uses PEP 517 and PEP 518. Together with ``tox``'s ``isolated_build`` feature this ensures there are no hidden
-dependencies on locally installed packages.
+Each pull request will be reviewed before including it in the official code base. Before manual review takes place,
+we will run our CI pipeline which executes unit tests and formatting checks. If your pull request does not pass these tests, manual
+review will not commence.
 
-The ``tox.ini`` configuration file together with the ``pyproject.toml`` and ``setup.py`` files will make sure the correct
-versions of all build, test and install dependencies (including the version of ``tox`` itself) are present or are
-installed during the build and test runs.
+If the pull request is accepted, the commit will be merged into the ``main`` branch.
+Your contribution will then be incorporated in the next release.
 
-Building
-~~~~~~~~
+Contributor License Agreement
+"""""""""""""""""""""""""""""
 
-To build source and wheel distributions of a project, run ``tox`` with the ``build`` testenv:
+We require all contributors to accept our Contributor License Ageement (CLA) before including contributions into our code base.
+The process of accepting the agreement is very simple and is only required once:
 
-.. code-block:: console
+1. Submit your pull request
+2. If this is your first submission, a comment on your pull request will be posted by our DissectBot with the CLA text
+3. When you agree with the terms and conditions you reply with a GitHub comment as shown in the CLA text.
 
-    $ tox -e build
+Once you have accepted the CLA, the pull request will be processed.
 
-The source and wheel distributions are put in the ``dist/`` directory in the root of the project. Building is done using
-the default CPython 3 version on your system.
+Any future pull requests from the same account will be processed immediately.
 
-Testing
-~~~~~~~
+Dependencies
+~~~~~~~~~~~~
 
-The default ``tox`` run will lint and unit test the code:
+Dissect has a policy of 'least dependencies', meaning that the number of dependencies on other Python packages should be as small
+as possible. This limits licensing issues and keeps the software supply chain manageable.
 
-.. code-block:: console
+Dissect already has a curated set of dependencies covering a lot of functionality. When adding new dependencies to Dissect, please
+add the reason for doing so in a commit message.
 
-    $ tox
+Dependencies should be added to ``pyproject.toml``.
 
-Linting is done using flake8 and unit tests (if applicable) are run against the default installed CPython 3 and PyPy 3.
-Make sure that the default Python version on your system is 3.9 if you want to run the unit tests using a supported
-Python version.
+Test cases
+~~~~~~~~~~
 
-To explicitly run the unit tests against a Python version use:
+New code and large refactors should have unit tests accompanying the changes even though not all existing code currently has unit tests.
+See :doc:`tooling </contributing/tooling>` for information on how to execute test cases.
 
-.. code-block:: console
 
-    $ tox -e py310
+Documentation
+~~~~~~~~~~~~~
 
-Or in case of using PyPy:
+Each project generates its own API reference documentation from the docstrings in the code using ``sphinx-autoapi``.
+All this documentation will be included under the 'API Reference' header on https://docs.dissect.tools.
 
-.. code-block:: console
+The :doc:`style guide </contributing/style-guide>` explains how to format the docstrings for a uniform styling across
+all the different projects.
 
-    $ tox -e pypy310
+There is also tooling to preview and check the auto-generated API documentation before submitting your code which
+is described in :doc:`tooling </contributing/tooling>`.
 
-To run just the linting:
+Releases and versioning
+~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block:: console
+Releases are done by the Dissect core team. Each release has a unique version number.
 
-    $ tox -e lint
+New releases are made from the ``main`` branch. Once a release is done, that version of the code is tagged with a version number.
+Version numbers are of the form ``x.y``, where
+
+- ``x`` is an epoch number
+- ``y`` is an iteration number.
+
+There are no compatibility
+guarantees between the different Python packages with the same ``x`` version. Only a fixed set of packages at the time of
+release should be expected to work well together. This set of packages is published in a release of the ``dissect`` Python
+package through the requirements in its ``pyproject.toml`` file.

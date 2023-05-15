@@ -1,50 +1,79 @@
 Style guide
 ===========
 
-This is a basic style guide for the dissect projects. The goal of this guide is to help improve the quality of the code
-by making it more uniform in appearance which should increase the understandability and maintainability. When submitting
-code for inclusion in one of the dissect projects, it helps to follow this guide. This will make the reviewing process
-easier and reduces the number of iterations to get it the code in a mergable shape.
+This is a basic style guide for the Dissect projects. The goal of this guide is to increase the understandability and maintainability
+of both code and documentation.
 
-Although certain things are enforced in the build pipeline, the current code does not adhere everywhere and always to
-all these guidelines. The reason is that it already has quite some history. Nonetheless, by following these guidelines
-we improve the code as we go.
+Applicability
+-------------
 
-A note on refactoring
----------------------
+This guide is applicable to both new and existing code and the Dissect build pipeline enforces the most important rules.
+Certain exceptions are made for older parts of the code as they were written before the creation of this guide.
 
-For the parts of these guidelines which are not enforced by our build pipeline we generally deal with them in the
-following way. As a rule, new code should always strive to follow these guidelines. For code that gets modified and
-is not yet fully following these guidelines, there are the following options. If the change is large, it is best to
-refactor the function, method or class according to these guidelines. If the change is minor, or if it wouldn't fit
-in the context of the rest of the code in the class, file or sub-project, refactoring for things like type hinting
-and adding docstrings may be postponed until a larger change or refactor. Paramount however is that the change you
-make is understandable and clear in its functioning.
+New code
+^^^^^^^^
+
+When submitting new code for inclusion in one of the Dissect projects, your code should adhere
+to this guide unless there is a valid reason not to do so. This motivation should be added to your eventual
+Pull Request.
+
+Older code
+^^^^^^^^^^
+
+When submitting changes to existing code that does not yet adhere to this style guide, a choice should be made
+whether to make the change conformant to the guidelines. You can use the rules below to help you decide
+what to do in these cases.
+
+If the change in existing code is
+
+- large, it is best to refactor the function, method or class according to these guidelines.
+- small and rewriting the code for guideline conformance would not be proportional to the change itself, you may submit the code using the original styling.
+
+.. note::
+    Regardless of conformance to this style guide, any change you make should be understandable and clear in its functioning.
+
+
+Code style and formatting
+-------------------------
+
+This section lists how to format code in a readable and consistent manner and which specifications and tools are used to
+enforce them.
 
 PEP 8 and Black
----------------
+^^^^^^^^^^^^^^^
 
 The code should adhere to the `PEP 8 <https://peps.python.org/pep-0008/>`_ Python code style. The adherence to PEP 8
-is checked using `Flake8 <https://flake8.pycqa.org/>`_. As PEP 8 is not completely unambiguous and Flake8 also makes
-certain choices as to how to interpret it, we decided to ignore all flake ``E203`` errors
-(see `<https://github.com/PyCQA/pycodestyle/issues/373>`_).
+is checked using `Flake8 <https://flake8.pycqa.org/>`_. Flake ``E203`` errors can be ignored due to the ambiguous nature
+of these errors (see `<https://github.com/PyCQA/pycodestyle/issues/373>`_).
 
-We also set the line limit at 120 characters. For modern console sizes this gives a bit more room compared to the
-standard 80 character limit without sacrificing readability, probably even increasing it.
-
-The formatting of the code layout is further refined by using `Black <https://black.readthedocs.io/en/stable/>`_. This is
-done for a number of reasons: to have a way to automatically format the code, to have it be consistent between files and
-projects regardless of the author and, most importantly, to not have to spend energy on thinking what the exact formatting
-should be.
+The formatting of the code layout is further refined by using `Black <https://black.readthedocs.io/en/stable/>`_.
+Black provides functionality to automatically format code and enforces consistent coding style between files and projects regardless
+of the author. It also relieves authors of the burden of having to actively think about the formatting.
 
 PEP 8 and Black styles are mandatory. This is configured in the project's ``tox.ini`` files and tested for by our build pipeline.
 
-Import order
-------------
+Maximum line length
+^^^^^^^^^^^^^^^^^^^
 
-When importing other modules or files we group the imports into 3 groups. First are the builtin modules, next the modules
-from external projects *including* other dissect projects, e.g. PyYAML, and finally the modules from the project itself.
-The imports within the 3 groups should be in alphabetical order, as in the example below:
+Lines should be limited to 120 characters. For modern console sizes this gives a bit more room compared to the
+standard 80-character limit without sacrificing readability, probably even increasing it.
+
+Type hinting
+^^^^^^^^^^^^
+
+New functions and classes should be fully type hinted. The combination of type hinting and docstrings helps in understanding
+what the function or class does and how it should be used.
+
+Import order
+^^^^^^^^^^^^
+
+Import statements for files and modules are divided into three groups and should be ordered as indicated below:
+
+1. builtin modules
+2. modules from external projects *including* other Dissect projects, e.g. PyYAML
+3. modules from the project itself.
+
+The imports within each group should be in alphabetical order, as in the example below:
 
 .. code-block:: python
 
@@ -60,50 +89,11 @@ The imports within the 3 groups should be in alphabetical order, as in the examp
     import this_dissect_project
     from this_dissect_project import bla
 
+Formatting tuples
+^^^^^^^^^^^^^^^^^
 
-Type hinting
-------------
-
-New functions and classes should be fully type hinted. The combination of type hinting and docstrings helps in understanding
-what the function or class does and how it should be used.
-
-Docstring style
----------------
-
-Functions and classes should have docstrings detailing what that function or class does and/or how it should be used. We
-follow the `Google docstring format <https://google.github.io/styleguide/pyguide.html#s3.8-comments-and-docstrings>`_ and
-use the ``sphinx-apidoc`` tool to automatically generate the API documentation.
-
-The first line of a docstring should contain a short sentence describing the nature of the function/class, followed by an
-empty line and optionally a more verbose explanation detailing how the function/class goes about doing its thing and/or how
-it should be used. Finally, add an indented list of arguments, return value(s) and exceptions which can be raised according
-to the Google docstring format. Typing of these parameters should be done through type hinting.
-
-An example of how to use the docstring to comment a function/method.
-
-.. literalinclude:: codestyle.py
-
-The examples above look like this:
-
-.. automodule:: codestyle
-    :members:
-
-The most important takeaways are:
-
-* Use ``typehints`` so type information gets automatically added to the documentation
-* ``Args:`` To document parameters
-* ``Returns:`` To document what it specifically returns
-* ``Raises:`` To document if it raises a specific exception and why
-
-Misc styling recommendations
-----------------------------
-
-Tuples and Black
-~~~~~~~~~~~~~~~~
-
-As Black tries to cram as much content on a single line as possible, it may sometimes interfere with aesthetics. One instance
-is when you want a tuple of items formatted over multiple lines. To prevent them from being put on a single line by Black is
-to add a comma (``,``) after the last item of the tuple, like this:
+Care should be taken when formatting tuples as Black attempts to reformat all elements into a single line.
+To prevent this, add a comma (``,``) after the last item of the tuple, like this:
 
 .. code-block:: python
 
@@ -112,18 +102,25 @@ to add a comma (``,``) after the last item of the tuple, like this:
         param2,
     )
 
-Coincidentally, this also gives cleaner code diffs when adding or removing items from the tuple later on.
+Coincidentally, this also gives cleaner code diffs when adding or removing items from the tuple later.
 
 Naming variables
-~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^
 
-Naming variables is always a hard problem. A short list to think of when naming variables:
+Naming variables can be challenging. When deciding on a variable name, take the following rules into account:
 
-* Single-character variable names are frowned upon.
-* Variables which are named after their type (list, dict etc.) are generally not a good choice.
+* Avoid single-character variable names.
+* Don't name variables after their type (list, dict etc.).
 
-dissect.cstruct definitions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Incorporating dissect.cstruct definitions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Writing structure definitions is an essential part of writing a new parser. The following rules show how to
+format them properly.
+
+Split definition and loading
+""""""""""""""""""""""""""""
 
 When using ``dissect.cstruct`` to define and load C structures, split the definition of the structure and the loading of the
 structure:
@@ -139,14 +136,18 @@ structure:
 This increases readability and allows you to add a ``# noqa: E501`` after the string defining the C structure. This is useful
 if the definition comes from an external source which has lines that are too long, but you want to keep the original layout.
 
-When writing structure definitions for a new parser, try to keep the structure style similar to the original structures, if
-possible.
+Styling structure definitions
+"""""""""""""""""""""""""""""
 
-If open-source or openly documented structures are available, use them as much as possible. Changing field types or slightly
+The main rule for styling structure definitions is to keep the style similar to the original structures when this is possible.
+
+Below follows more specific rules depending on the availability of the structures:
+
+1. If open-source or openly documented structures are available, use them as much as possible. Changing field types or slightly
 altering structures for performance or compatibility reasons is encouraged. For example, ``char[n]`` is faster than ``int8[n]``,
 or changing a ``GUID field_name`` to ``char field_name[16]``.
 
-If no original structures are available, make an educated guess on what they could look like in the original source.
+2. If no original structures are available, make an educated guess on what they could look like in the original source.
 For example, during reverse engineering you see a debug log message that uses ``lowerCamelCase`` field names, use that
 style for your field names.
 
@@ -154,24 +155,53 @@ If no discernible style is visible, you can use the following general rules:
 
 * For a Microsoft file format, use ``UPPERCASE_NAME`` structure names and ``CamelCase`` field names.
 
-  * One exception is that we generally remove field prefixes like ``dw`` and ``cb``, even when copy-pasting structures.
+  * One exception is that field prefixes like ``dw`` and ``cb`` should be removed, even when copy-pasting structures.
 
 * For other file formats, use ``lowercase_name`` structure and field names.
 
-Not every parser in ``dissect`` currently adheres to this style, but we try to adhere to these rules for future parsers.
+Documentation style and formatting
+----------------------------------
 
-Test cases
-----------
+New code needs to be documented properly using docstrings. To understand how documentation
+is organised and generated, check out the :doc:`developing for Dissect </contributing/developing>` page.
 
-We try to unit test as much of the code as possible. As this project originally evolved without a lot of test cases, it is
-a sort of catch-up game. New code and large refactors should have unit tests accompanying the changes.
+Use of docstrings
+^^^^^^^^^^^^^^^^^
 
-Commit style, tags and branches
--------------------------------
+Functions and classes should have docstrings detailing what that function or class does and/or how it should be used. They
+should be formatted as described in the `Google docstring format <https://google.github.io/styleguide/pyguide.html#s3.8-comments-and-docstrings>`_.
 
-All development should be done on so-called feature branches. Each branch must contain only a single feature or change.
-These branches are rebased and squashed on top of the ``main`` branch. The idea is to have the ``main`` branch always in
-a (more or less) releasable state.
+The first line of a docstring should contain a short sentence describing the nature of the function/class, followed by an
+empty line and optionally a more verbose explanation detailing how the function/class goes about doing its thing and/or how
+it should be used. Finally, add an indented list of arguments, return value(s) and exceptions which can be raised according
+to the Google docstring format.
+
+Typing of parameters should be done through type hinting.
+
+Use the ``References:`` clause when referencing external resources such as URLs to websites.
+
+Example docstrings
+^^^^^^^^^^^^^^^^^^
+
+An example of how to use the docstring to comment a function/method:
+
+.. literalinclude:: codestyle.py
+
+The examples above look like this:
+
+.. automodule:: codestyle
+    :members:
+
+The most important takeaways are:
+
+* Use ``typehints`` so type information gets automatically added to the documentation
+* ``Args:`` To document parameters
+* ``Returns:`` To document what it specifically returns
+* ``Raises:`` To document if it raises a specific exception and why
+
+
+Commit message style and formatting
+-----------------------------------
 
 Commit messages should adhere to the following points:
 
@@ -184,7 +214,10 @@ Commit messages should adhere to the following points:
 * Wrap the body at 72 characters
 * Use the body to explain the what and why vs. the how
 
-An example of a commit message:
+Example commit message
+^^^^^^^^^^^^^^^^^^^^^^
+
+An example of a properly formatted commit message:
 
 .. code-block:: text
 
@@ -193,9 +226,3 @@ An example of a commit message:
     Sometimes extra null bytes can be present at the end of the NTFS allocator
     table, this patch makes sure they are not included in the next header
     structure.
-
-When the ``main`` branch gets released, it is tagged with a version in the form of ``x.y``. This version is not strictly
-a semantic version number. The ``x`` is more like an epoch and the ``y`` an iteration number. There are no compatibility
-guarantees between the different Python packages with the same ``x`` version. Only the set of packages at the time of
-release should be expected to work well together. This set of packages is codified in a release of the ``dissect`` Python
-package through the requirements in its ``setup.py``.

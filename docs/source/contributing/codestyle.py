@@ -19,6 +19,9 @@ def function_with_an_exception() -> None:
 
     This function is only for illustratory purposes.
 
+    References:
+        - https://docs.dissect.tools/
+
     Raises:
         CodestyleException: Gets raised as an example
     """
