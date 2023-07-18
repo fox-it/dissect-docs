@@ -20,18 +20,18 @@ an MSEdge Windows VM. These VM images were obtained from
 
 Our investigation material consists of:
 
-* ``SCHARDT.001`` (DD image, `mirror <https://files.dissect.tools/images/SCHARDT.001>`_)
-* ``SCHARDT.002`` (DD image, `mirror <https://files.dissect.tools/images/SCHARDT.002>`_)
-* ``SCHARDT.003`` (DD image, `mirror <https://files.dissect.tools/images/SCHARDT.003>`_)
-* ``SCHARDT.004`` (DD image, `mirror <https://files.dissect.tools/images/SCHARDT.004>`_)
-* ``SCHARDT.005`` (DD image, `mirror <https://files.dissect.tools/images/SCHARDT.005>`_)
-* ``SCHARDT.006`` (DD image, `mirror <https://files.dissect.tools/images/SCHARDT.006>`_)
-* ``SCHARDT.007`` (DD image, `mirror <https://files.dissect.tools/images/SCHARDT.007>`_)
-* ``SCHARDT.008`` (DD image, `mirror <https://files.dissect.tools/images/SCHARDT.008>`_)
-* ``4Dell Latitude CPi.E01`` (EnCase image, `mirror <https://files.dissect.tools/images/4Dell+Latitude+CPi.E01>`_)
-* ``4Dell Latitude CPi.E02`` (EnCase image, `mirror <https://files.dissect.tools/images/4Dell+Latitude+CPi.E02>`_)
-* ``IE11-Win81-VMWare-disk1.vmdk`` (Full VMDK file, `mirror <https://files.dissect.tools/images/IE11-Win81-VMWare-disk1.vmdk>`_)
-* ``MSEDGEWIN10_20220708124036.tar``  (``acquire`` container, `mirror <https://files.dissect.tools/images/MSEDGEWIN10_20220708124036.tar>`_)
+* ``SCHARDT.001`` (DD image, `mirror <https://files.dissect.tools/images/SCHARDT.001>`_, 636 MB)
+* ``SCHARDT.002`` (DD image, `mirror <https://files.dissect.tools/images/SCHARDT.002>`_, 636 MB)
+* ``SCHARDT.003`` (DD image, `mirror <https://files.dissect.tools/images/SCHARDT.003>`_, 636 MB)
+* ``SCHARDT.004`` (DD image, `mirror <https://files.dissect.tools/images/SCHARDT.004>`_, 636 MB)
+* ``SCHARDT.005`` (DD image, `mirror <https://files.dissect.tools/images/SCHARDT.005>`_, 636 MB)
+* ``SCHARDT.006`` (DD image, `mirror <https://files.dissect.tools/images/SCHARDT.006>`_, 636 MB)
+* ``SCHARDT.007`` (DD image, `mirror <https://files.dissect.tools/images/SCHARDT.007>`_, 636 MB)
+* ``SCHARDT.008`` (DD image, `mirror <https://files.dissect.tools/images/SCHARDT.008>`_, 199 MB)
+* ``4Dell Latitude CPi.E01`` (EnCase image, `mirror <https://files.dissect.tools/images/4Dell+Latitude+CPi.E01>`_, 641 MB)
+* ``4Dell Latitude CPi.E02`` (EnCase image, `mirror <https://files.dissect.tools/images/4Dell+Latitude+CPi.E02>`_, 400 MB)
+* ``IE11-Win81-VMWare-disk1.vmdk`` (Full VMDK file, `mirror <https://files.dissect.tools/images/IE11-Win81-VMWare-disk1.vmdk>`_, 8.0 GB)
+* ``MSEDGEWIN10_20220708124036.tar``  (``acquire`` container, `mirror <https://files.dissect.tools/images/MSEDGEWIN10_20220708124036.tar>`_, 469 MB)
 
 While Dissect will work fine under Windows, a Unix based system is assumed when following along with these first steps.
 
