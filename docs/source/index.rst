@@ -111,6 +111,7 @@ For more information about what Dissect is and how it works, read on at :doc:`/o
     /overview/index
     /projects/index
     /usage/index
+    /tutorial/index
     /tools/index
     /advanced/index
     /api/index
