@@ -8,6 +8,5 @@ furo
 # These dependencies are needed to generate docs for dissect.target and
 # flow.record.
 defusedxml
-fusepy
 msgpack
 structlog
