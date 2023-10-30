@@ -11,4 +11,5 @@ Tools
     /tools/target-dump
     /tools/target-dd
     /tools/target-mount
+    /tools/target-info
     /tools/rdump

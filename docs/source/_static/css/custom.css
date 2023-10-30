@@ -23,3 +23,8 @@ table.docutils {
 table.left-text-align th {
     text-align: left;
 }
+
+.pre-wrap > .highlight > pre {
+    white-space: pre-wrap !important; 
+    word-break: break-all; 
+}
