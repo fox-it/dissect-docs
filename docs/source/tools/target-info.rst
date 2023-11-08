@@ -9,7 +9,7 @@ The following output types are supported:
 - Record output (``-r``)
 - JSON output (``-j`` and ``-J``)
 
-The command below demonstrates ``target-info`` output on an :doc:`/tools/acquire` image.
+The command below demonstrates ``target-info`` output on an :doc:`/tools/acquire` file.
 
 .. code-block:: console
 
@@ -28,7 +28,7 @@ The command below demonstrates ``target-info`` output on an :doc:`/tools/acquire
     Install date   : 2020-04-29 10:48:49+00:00
     Last activity  : 2023-01-02 13:37:00+00:00
 
-The command below demonstrates ``target-info`` output in JSON format using the option ``-j``. Use the option ``-J`` to generate compressed JSON output.
+The command below demonstrates ``target-info`` output in JSON format using the option ``-j``. Use the option ``-J`` to generate JSON line output.
 
 .. code-block:: console
 
