@@ -5,11 +5,6 @@ acquire
 This makes ``acquire`` an excellent tool to, among others, speed up the process of digital forensic triage.
 ``acquire`` uses ``dissect`` to gather forensic artifacts from the raw disk, if possible.
 
-``acquire`` gathers artifacts based on modules. These modules are paths or globs on a filesystem which acquire attempts to gather.
-Multiple modules can be executed at once, which have been collected together inside a profile.
-These profiles (used with ``--profile``) are  ``full``, ``default``, ``minimal`` and ``none``.
-Depending on what operating system gets detected, different artifacts are collected.
-
 The most basic usage of ``acquire`` is as follows:
 
 .. code-block:: console
@@ -18,6 +13,16 @@ The most basic usage of ``acquire`` is as follows:
 
 The tool requires administrative access to read raw disk data instead of using the operating system for file access.
 However, there are some options available to use the operating system as a fallback option. (e.g ``--fallback`` or ``--force-fallback``)
+
+
+Filesystem information
+----------------------
+
+``acquire`` gathers artifacts based on modules. 
+These modules are paths or globs on a filesystem which acquire attempts to gather.
+Multiple modules can be executed at once, which have been collected together inside a profile.
+These profiles (used with ``--profile``) are  ``full``, ``default``, ``minimal`` and ``none``.
+Depending on the detected operating system, different artifacts are collected.
 
 The following list shows the modules belonging to each ``profile``.
 
