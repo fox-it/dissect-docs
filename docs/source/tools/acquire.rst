@@ -66,6 +66,19 @@ These arguments do the following:
 
 You can specify these arguments multiple times for every file, directory or glob you want to collect.
 
+.. code-block:: text
+
+      default profile:
+        windows: Netstat, WinProcesses, WinProcEnv, WinArpCache,
+                 WinRDPSessions, WinDnsClientCache
+
+      extensive profile:
+        windows: Netstat, WinProcesses, WinProcEnv, WinArpCache,
+                 WinRDPSessions, WinDnsClientCache
+        linux  : Proc, Sys
+        bsd    : Proc, Sys
+        esxi   : Proc, Sys
+
 Deployment
 ----------
 
