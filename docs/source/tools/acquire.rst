@@ -66,6 +66,34 @@ These arguments do the following:
 
 You can specify these arguments multiple times for every file, directory or glob you want to collect.
 
+Volatile information
+--------------------
+
+Acquire has support for volatile information collection.
+In other words, information that will be lost once a computer shuts off.
+These are special modules that will only be executed at the end of all the other modules.
+
+Acquire collects volatile windows information using this methods, which it stores in the ``$metadata$`` directory inside the acquire container.
+
+* commands: Specific commands, either cmd or powershell.
+* ctypes: Calling windows internals with python to store information.
+
+For linux systems, acquire uses a volatile stream to interpret the ``proc`` and ``sys`` filesystem, and acquire information from there.
+Thise information will then be stored in their respective directory on the ``acquire`` container.
+
+
+Profiles
+^^^^^^^^
+
+*new in Acquire 3.11*
+
+With the addition of volatile profiles ( used with ``--volatile-profile``) you can more easily add the volatile information.
+There are currently three profiles ``extensive``, ``default`` and ``none``.
+As with ``--profile``, the type of collected artifacts depend on the detected operating system.
+``--volatile-profile`` can work together with ``--profile``, without any issue.
+
+The following list shows the modules that belong to each ``volatile profile``.
+
 .. code-block:: text
 
       default profile:
