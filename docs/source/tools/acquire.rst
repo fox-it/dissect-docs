@@ -24,33 +24,36 @@ The following list shows the modules belonging to each ``profile``.
 .. code-block:: text
 
     full profile:
-      windows: AV, ActivitiesCache, Appcompat, BITS, DHCP, DNS,
-               Drivers, ETL, EventLogs, History, Misc, NTDS,
-               NTFS, Prefetch, QuarantinedFiles, Recents,
-               RecycleBin, Registry, RemoteAccess, Syscache,
-               Tasks, WBEM, WindowsNotifications
-      linux  : Etc, Boot, Home, Var
-      bsd    : Etc, Boot, Home, Var, BSD
-      esxi   : Bootbanks, ESXi, VMFS
-      osx    : Etc, Home, Var, OSX, History
+      windows: NTFS, EventLogs, Registry, Tasks, PowerShell,
+               Prefetch, Appcompat, PCA, Misc, ETL, Recents,
+               RecycleBin, Drivers, Syscache, WBEM, AV, BITS,
+               DHCP, DNS, ActiveDirectory, RemoteAccess,
+               ActivitiesCache, History, NTDS, QuarantinedFiles,
+               WindowsNotifications, SSH, IIS
+      linux  : Etc, Boot, Home, SSH, Var, History, WebHosting
+      bsd    : Etc, Boot, Home, SSH, Var, BSD
+      esxi   : Bootbanks, ESXi, SSH, VMFS
+      osx    : Etc, Home, Var, OSX, OSXApplicationsInfo, History,
+               SSH
 
     default profile:
-      windows: NTFS, EventLogs, Registry, Tasks, ETL, Recents,
-               RecycleBin, Drivers, Prefetch, Appcompat,
-               Syscache, WBEM, AV, BITS, DHCP, DNS, Misc,
-               RemoteAccess, ActivitiesCache
-      linux  : Etc, Boot, Home, Var
-      bsd    : Etc, Boot, Home, Var, BSD
-      esxi   : Bootbanks, ESXi, VMFS
-      osx    : Etc, Home, Var, OSX
+      windows: NTFS, EventLogs, Registry, Tasks, PowerShell,
+               Prefetch, Appcompat, PCA, Misc, ETL, Recents,
+               RecycleBin, Drivers, Syscache, WBEM, AV, BITS,
+               DHCP, DNS, ActiveDirectory, RemoteAccess,
+               ActivitiesCache
+      linux  : Etc, Boot, Home, SSH, Var
+      bsd    : Etc, Boot, Home, SSH, Var, BSD
+      esxi   : Bootbanks, ESXi, SSH, VMFS
+      osx    : Etc, Home, Var, OSX, OSXApplicationsInfo
 
     minimal profile:
-      windows: NTFS, EventLogs, Registry, Tasks, Prefetch,
-               Appcompat, Misc
-      linux  : Etc, Boot, Home, Var
-      bsd    : Etc, Boot, Home, Var, BSD
-      esxi   : Bootbanks, ESXi
-      osx    : Etc, Home, Var, OSX
+      windows: NTFS, EventLogs, Registry, Tasks, PowerShell,
+               Prefetch, Appcompat, PCA, Misc
+      linux  : Etc, Boot, Home, SSH, Var
+      bsd    : Etc, Boot, Home, SSH, Var, BSD
+      esxi   : Bootbanks, ESXi, SSH
+      osx    : Etc, Home, Var, OSX, OSXApplicationsInfo
 
 
 Profile ``none`` is a special case where no module gets collected.
