@@ -11,18 +11,18 @@ The most basic usage of ``acquire`` is as follows:
 
     $ sudo acquire
 
-The tool requires administrative access to read raw disk data instead of using the operating system for file access.
-However, there are some options available to use the operating system as a fallback option. (e.g ``--fallback`` or ``--force-fallback``)
+The tool requires administrative access to read raw disk data.
+However, there are some options available to use the local operating systems's filesystem as a fallback option. (e.g ``--fallback`` or ``--force-fallback``)
 
 
-Filesystem information
+Filesystem acquisition
 ----------------------
 
-``acquire`` gathers artifacts based on modules. 
-These modules are paths or globs on a filesystem which acquire attempts to gather.
-Multiple modules can be executed at once, which have been collected together inside a profile.
+``acquire`` gathers artifacts based on modules.
+These modules contain paths or globs that ``acquire`` attempts to gather from a filesystem.
+``acquire`` can execute multiple modules at once, where a collection of them are combined into a profile.
 These profiles (used with ``--profile``) are  ``full``, ``default``, ``minimal`` and ``none``.
-Depending on the detected operating system, different artifacts are collected.
+Depending on the detected operating system, ``acquire`` collects different artifacts.
 
 The following list shows the modules belonging to each ``profile``.
 
@@ -62,7 +62,7 @@ The following list shows the modules belonging to each ``profile``.
 
 
 Profile ``none`` is a special case where no module gets collected.
-This profile, is used in combination with ``--dir``, ``--file`` or ``--glob`` to collect specific paths from a target.
+``profiles`` can be used in combination with ``--dir``, ``--file`` or ``--glob`` to collect specific paths from a target.
 These arguments do the following:
 
 * ``--dir``: Collects a directory recursively.
@@ -71,11 +71,11 @@ These arguments do the following:
 
 You can specify these arguments multiple times for every file, directory or glob you want to collect.
 
-Volatile information
+Volatile acquisition
 --------------------
 
-Acquire has support for volatile information collection.
-In other words, information that will be lost once a computer shuts off.
+``acquire`` has support for volatile information collection.
+In other words, information that will be lost once a computer turns off.
 These are special modules that will only be executed at the end of all the other modules.
 
 Acquire collects volatile windows information using this methods, which it stores in the ``$metadata$`` directory inside the acquire container.
@@ -83,8 +83,9 @@ Acquire collects volatile windows information using this methods, which it store
 * commands: Specific commands, either cmd or powershell.
 * ctypes: Calling windows internals with python to store information.
 
-For linux systems, acquire uses a volatile stream to interpret the ``proc`` and ``sys`` filesystem, and acquire information from there.
-Thise information will then be stored in their respective directory on the ``acquire`` container.
+For linux systems, acquire has the ability to interpret the ``proc`` and ``sys`` filesystem.
+It stores this information inside their respective directory on the ``acquire`` container.
+E.g. ``/proc/1/...`` or ``/sys/fs/...``.
 
 
 Profiles
@@ -92,10 +93,15 @@ Profiles
 
 *new in Acquire 3.11*
 
-With the addition of volatile profiles ( used with ``--volatile-profile``) you can more easily add the volatile information.
-There are currently three profiles ``extensive``, ``default`` and ``none``.
-As with ``--profile``, the type of collected artifacts depend on the detected operating system.
-``--volatile-profile`` can work together with ``--profile``, without any issue.
+With the addition of volatile profiles ( used with ``--volatile-profile``) multiple volatile modules can be collected at once.
+There are currently three of these profiles ``default``, ``extensive`` and ``none``.
+
+* ``default``: Collect a set of volatile information.
+* ``extensive``: Collect a lot, if not all, the volatile information. Usually the modules that either take a lot of time or are very involved.
+* ``none``: Do not collect any volatile information.
+
+As with ``--profile``, what gets collected depends on the detected operating system.
+Both ``--volatile-profile`` and ``--profile`` can be used simultaneously.
 
 The following list shows the modules that belong to each ``volatile profile``.
 
