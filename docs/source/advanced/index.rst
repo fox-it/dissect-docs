@@ -5,6 +5,7 @@ Advanced
 
     /advanced/api
     /advanced/targets
+    /advanced/children
     /advanced/loaders
     /advanced/containers
     /advanced/volumes
