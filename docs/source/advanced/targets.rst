@@ -140,3 +140,7 @@ in ``ProgramData/Microsoft/Windows/Hyper-V/data.vmcx`` that tells us where all o
 Then we can then use these paths and tell ``dissect.target`` to load another target from there. Reading all of these
 files will still happen from ``\\.\PhysicalDrive0``, passing through the various abstraction layers of ``dissect.target``.
 This allows Dissect to read the disks from running virtual machines, regardless of locks the operating has on these files.
+
+.. hint::
+
+    Learn more about child targets :doc:`here </advanced/children>`.
