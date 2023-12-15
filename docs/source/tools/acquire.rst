@@ -20,7 +20,8 @@ Filesystem acquisition
 
 ``acquire`` gathers artifacts based on modules.
 These modules contain paths or globs that ``acquire`` attempts to gather from a filesystem.
-``acquire`` can execute multiple modules at once, where a collection of them are combined into a profile.
+``acquire`` can execute multiple modules at once.
+Instead of specifying modules manually, it's possible to use a predefined collection known as a profile.
 These profiles (used with ``--profile``) are  ``full``, ``default``, ``minimal`` and ``none``.
 Depending on the detected operating system, ``acquire`` collects different artifacts.
 
@@ -74,27 +75,18 @@ You can specify these arguments multiple times for every file, directory or glob
 Volatile acquisition
 --------------------
 
-``acquire`` has support for volatile information collection.
-In other words, information that will be lost once a computer turns off.
-These are special modules that will only be executed at the end of all the other modules.
-
-Acquire collects volatile windows information using this methods, which it stores in the ``$metadata$`` directory inside the acquire container.
-
-* commands: Specific commands, either cmd or powershell.
-* ctypes: Calling windows internals with python to store information.
-
-For linux systems, acquire has the ability to interpret the ``proc`` and ``sys`` filesystem.
-It stores this information inside their respective directory on the ``acquire`` container.
-E.g. ``/proc/1/...`` or ``/sys/fs/...``.
-
-
-Profiles
-^^^^^^^^
-
 *new in Acquire 3.11*
 
-With the addition of volatile profiles ( used with ``--volatile-profile``) multiple volatile modules can be collected at once.
-There are currently three of these profiles ``default``, ``extensive`` and ``none``.
+Use ``--volatile-profile`` to obtain artifacts that are not persistent (but in RAM).
+Volatile Windows artifacts are stored in de ``$metadata$`` folder in the resulting archive. 
+Windows volatile artifacts are acquired through the use of internal Windows commands and the Python c-types interface.
+For Linux systems, ``proc`` and ``sys`` are acquired (saved under ``/proc/1/...`` or ``/sys/fs/...``). 
+
+Volatile Profiles
+^^^^^^^^^^^^^^^^^
+
+Like regular *profiles*, the *volatile profiles* allow you to run predefined groups of modules.
+The following volatile profiles are available:
 
 * ``default``: Collect a set of volatile information.
 * ``extensive``: Collect a lot, if not all, the volatile information. Usually the modules that either take a lot of time or are very involved.
