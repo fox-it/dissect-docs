@@ -77,10 +77,10 @@ Volatile acquisition
 
 *new in Acquire 3.11*
 
-Use ``--volatile-profile`` to obtain artifacts that are not persistent (but in RAM).
+Use ``--volatile-profile`` to obtain artifacts that are not persistent on disk but are located in RAM.
 Volatile Windows artifacts are stored in de ``$metadata$`` folder in the resulting archive. 
-Windows volatile artifacts are acquired through the use of internal Windows commands and the Python c-types interface.
-For Linux systems, ``proc`` and ``sys`` are acquired (saved under ``/proc/1/...`` or ``/sys/fs/...``). 
+Windows volatile artifacts are acquired through the use of internal Windows commands and the Python ``ctypes`` interface.
+For Linux systems, ``proc`` and ``sys`` are acquired and stored under ``/proc/1/...`` or ``/sys/fs/...`` respectively. 
 
 Volatile Profiles
 ^^^^^^^^^^^^^^^^^
