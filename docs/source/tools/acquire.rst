@@ -63,7 +63,7 @@ The following list shows the modules belonging to each ``profile``.
 
 
 Profile ``none`` is a special case where no module gets collected.
-``profiles`` can be used in combination with ``--dir``, ``--file`` or ``--glob`` to collect specific paths from a target.
+Profiles can be used in combination with ``--dir``, ``--file`` or ``--glob`` to collect specific paths from a target.
 These arguments do the following:
 
 * ``--dir``: Collects a directory recursively.
