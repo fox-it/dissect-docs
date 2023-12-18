@@ -7,14 +7,14 @@ acquire
 
     :octicon:`mark-github` View on GitHub
 
-``acquire`` is a tool to quickly gather forensic artifacts from disk images or a live system into a lightweight container.
+``acquire`` is a tool to quickly gather forensic artefacts from disk images or a live system into a lightweight container.
 This makes ``acquire`` an excellent tool to, among others, speed up the process of digital forensic triage.
 It uses Dissect to gather that information from the raw disk, if possible.
 
-``acquire`` gathers artifacts based on modules. These modules are paths or globs on a filesystem which acquire attempts to gather.
+``acquire`` gathers artefacts based on modules. These modules are paths or globs on a filesystem which acquire attempts to gather.
 Multiple modules can be executed at once, which have been collected together inside a profile.
 These profiles (used with ``--profile``) are  ``full``, ``default``, ``minimal`` and ``none``.
-Depending on what operating system gets detected, different artifacts are collected.
+Depending on what operating system gets detected, different artefacts are collected.
 
 Installation
 ------------

@@ -1,9 +1,9 @@
 acquire
 =======
 
-``acquire`` is a tool to quickly gather forensic artifacts from disk images or a live system into a lightweight container.
+``acquire`` is a tool to quickly gather forensic artefacts from disk images or a live system into a lightweight container.
 This makes ``acquire`` an excellent tool to, among others, speed up the process of digital forensic triage.
-``acquire`` uses ``dissect`` to gather forensic artifacts from the raw disk, if possible.
+``acquire`` uses ``dissect`` to gather forensic artefacts from the raw disk, if possible.
 
 The most basic usage of ``acquire`` is as follows:
 
@@ -18,12 +18,12 @@ However, there are some options available to use the local operating systems's f
 Filesystem acquisition
 ----------------------
 
-``acquire`` gathers artifacts based on modules.
+``acquire`` gathers artefacts based on modules.
 These modules contain paths or globs that ``acquire`` attempts to gather from a filesystem.
 ``acquire`` can execute multiple modules at once.
 Instead of specifying modules manually, it's possible to use a predefined collection known as a profile.
 These profiles (used with ``--profile``) are  ``full``, ``default``, ``minimal`` and ``none``.
-Depending on the detected operating system, ``acquire`` collects different artifacts.
+Depending on the detected operating system, ``acquire`` collects different artefacts.
 
 The following list shows the modules belonging to each ``profile``.
 
@@ -77,7 +77,7 @@ Volatile acquisition
 
 *new in Acquire 3.11*
 
-Use ``--volatile-profile`` to obtain artifacts that are not persistent on disk but are located in RAM.
+Use ``--volatile-profile`` to obtain artefacts that are not persistent on disk but are located in RAM.
 Volatile Windows artifacts are stored in de ``$metadata$`` folder in the resulting archive. 
 Windows volatile artifacts are acquired through the use of internal Windows commands and the Python ``ctypes`` interface.
 For Linux systems, ``proc`` and ``sys`` are acquired and stored under ``/proc/1/...`` or ``/sys/fs/...`` respectively. 
