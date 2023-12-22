@@ -63,7 +63,7 @@ The following list shows the modules belonging to each ``profile``.
 
 
 Profile ``none`` is a special case where no module gets collected.
-Profiles can be used in combination with ``--dir``, ``--file`` or ``--glob`` to collect specific paths from a target.
+Profiles can be used in combination with ``--dir``, ``--file`` or ``--glob`` to collect specific user-defined paths from a target.
 These arguments do the following:
 
 * ``--dir``: Collects a directory recursively.
@@ -75,25 +75,17 @@ You can specify these arguments multiple times for every file, directory or glob
 Volatile acquisition
 --------------------
 
-*new in Acquire 3.11*
-
 Use ``--volatile-profile`` to obtain artefacts that are not persistent on disk but are located in RAM.
-Volatile Windows artifacts are stored in de ``$metadata$`` folder in the resulting archive.
-Windows volatile artifacts are acquired through the use of internal Windows commands and the Python ``ctypes`` interface.
-For Linux systems, ``proc`` and ``sys`` are acquired and stored under ``/proc/1/...`` or ``/sys/fs/...`` respectively.
+Volatile Windows artefacts are stored under the ``$metadata$`` folder in the resulting archive.
+Windows volatile artefacts are gathered through the use of internal Windows commands and Python's ``ctypes`` interface.
+For Linux systems, ``/proc`` and ``/sys`` are gathered and stored under ``/proc/1/...`` or ``/sys/fs/...`` respectively in the resulting archive.
 
 Volatile Profiles
 ^^^^^^^^^^^^^^^^^
 
-Like regular *profiles*, the *volatile profiles* allow you to run predefined groups of modules.
-The following volatile profiles are available:
-
-* ``default``: Collect a set of volatile information.
-* ``extensive``: Collect a lot, if not all, the volatile information. Usually the modules that either take a lot of time or are very involved.
-* ``none``: Do not collect any volatile information.
-
+Like regular *profiles*, the *volatile profiles* allow you to run predefined groups of volatile modules.
+These profiles, are ``default``, ``extensive`` and ``none``, where ``none`` is the default.
 As with ``--profile``, what gets collected depends on the detected operating system.
-Both ``--volatile-profile`` and ``--profile`` can be used simultaneously.
 
 The following list shows the modules that belong to each ``volatile profile``.
 
@@ -109,6 +101,8 @@ The following list shows the modules that belong to each ``volatile profile``.
         linux  : Proc, Sys
         bsd    : Proc, Sys
         esxi   : Proc, Sys
+
+Both ``--volatile-profile`` and ``--profile`` can be used simultaneously.
 
 Deployment
 ----------
