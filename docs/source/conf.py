@@ -20,6 +20,8 @@ sys.path.insert(0, os.path.abspath("./contributing"))
 for path in map(str, Path("../../submodules/").resolve().iterdir()):
     sys.path.insert(0, path)
 
+sys.path.append(os.path.abspath("./_ext"))
+
 # -- Project information -----------------------------------------------------
 
 project = "Dissect"
@@ -46,6 +48,7 @@ extensions = [
     "sphinx_argparse_cli",
     "sphinx_copybutton",
     "sphinx_design",
+    "dissect_plugins",
 ]
 
 # Allow disabling of time consuming autoapi generation
@@ -94,7 +97,7 @@ html_theme_options = {
         "color-brand-content": "var(--color-brand-primary)",
         "color-background-hover": "#3574B3",
         "color-background-hover--transparent": "var(--color-background-hover)",
-        "color-api-background" : "var(--color-background-secondary)",
+        "color-api-background": "var(--color-background-secondary)",
         "color-api-background-hover": "#EFEFF4FF",
         "color-sidebar-background": "var(--color-brand-primary)",
         "color-sidebar-background-border": "var(--color-background-hover)",
