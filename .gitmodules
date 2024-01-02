@@ -102,3 +102,9 @@
 	branch = main
 	path = submodules/dissect.squashfs
 	url = https://github.com/fox-it/dissect.squashfs.git
+[submodule "submodules/dissect.btrfs"]
+	path = submodules/dissect.btrfs
+	url = https://github.com/fox-it/dissect.btrfs.git
+[submodule "submodules/dissect.jffs"]
+	path = submodules/dissect.jffs
+	url = https://github.com/fox-it/dissect.jffs.git
