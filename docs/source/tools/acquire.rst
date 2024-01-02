@@ -75,7 +75,7 @@ You can specify these arguments multiple times for every file, directory or glob
 Volatile acquisition
 --------------------
 
-Use ``--volatile-profile`` to obtain artefacts that are not persistent on disk but are located in RAM.
+Use ``--volatile-profile`` to obtain artefacts that are not persistent on disk but are located in memory.
 Volatile Windows artefacts are stored under the ``$metadata$`` folder in the resulting archive.
 Windows volatile artefacts are gathered through the use of internal Windows commands and Python's ``ctypes`` interface.
 For Linux systems, ``/proc`` and ``/sys`` are gathered and stored under ``/proc/1/...`` or ``/sys/fs/...`` respectively in the resulting archive.
@@ -102,7 +102,7 @@ The following list shows the modules that belong to each ``volatile profile``.
         bsd    : Proc, Sys
         esxi   : Proc, Sys
 
-Both ``--volatile-profile`` and ``--profile`` can be used simultaneously.
+Both ``--volatile-profile`` and ``--profile`` can be used simultaneously and configured separately from each other.
 
 Deployment
 ----------
