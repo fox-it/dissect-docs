@@ -1,5 +1,5 @@
 dissect.jffs
-===========
+============
 
 .. button-link:: https://github.com/fox-it/dissect.jffs
     :color: primary
