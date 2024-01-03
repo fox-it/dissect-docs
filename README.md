@@ -28,6 +28,9 @@ cd docs && make clean
 When writing documentation you can use the convenience command below. This rebuilds 
 the Sphinx project when source files change and automatically reloads your browser.
 
+Please note that in order for the `make watch` command to work, you will have to 
+run `make html` first at least once.
+
 ```bash
 cd docs && make watch
 ```
