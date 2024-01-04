@@ -146,7 +146,7 @@ The list of functions will grow by contributions of the Dissect team and the com
 If you have an idea for a new plugin/function feel free to :doc:`contribute </contributing/developing>`.
 
 Let's suppose we want to get more information about one of these functions, for example ``runkeys``. We can do so by supplying the ``--help`` option to said function.
-This gives you a short description of the function, sources about the type of artifacts, and the kind of output you can expect.
+This gives you a short description of the function, sources about the type of artefacts, and the kind of output you can expect.
 
 .. code-block:: console
 

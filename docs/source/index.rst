@@ -4,7 +4,7 @@ Dissect
 Welcome to the official documentation of Dissect!
 
 Dissect is a collection of Python libraries and tools to facilitate enterprise-scale incident response and forensics.
-It supports you, the analyst, from the moment of acquisition of artifacts, to normalisation and processing.
+It supports you, the analyst, from the moment of acquisition of artefacts, to normalisation and processing.
 
 Dissect frees you from limitations by data formats and platforms and takes away concerns about how to access
 investigation data. You can focus on performing analysis, developing complex analysis plugins or performing
