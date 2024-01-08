@@ -10,6 +10,8 @@ Start by checking out the submodules if you haven't done so already:
 git submodule update --init --recursive
 ```
 
+If you want to update all submodules add `--remote` to the previous command.
+
 Create a new virtual environment, install the dependencies and build the Sphinx project.
 
 ```bash
@@ -21,6 +23,16 @@ If you run into build issues, clean the Sphinx output directory and AutoAPI outp
 
 ```bash
 cd docs && make clean
+```
+
+When writing documentation you can use the convenience command below. This rebuilds 
+the Sphinx project when source files change and automatically reloads your browser.
+
+Please note that in order for the `make watch` command to work, you will have to 
+run `make html` first at least once.
+
+```bash
+cd docs && make watch
 ```
 
 ## Contributing
