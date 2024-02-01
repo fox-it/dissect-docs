@@ -19,6 +19,39 @@ These pages are organized as follows:
 - :doc:`Tooling </contributing/tooling>`: information regarding the available tooling for building and testing code and documentation.
 
 
+Path resolution policy
+----------------------
+
+Starting from ``Dissect V3.11``, we decided that new plugins will only provide the original parsed ``path`` value in its records.
+We recommend external contributors to follow the same policy.
+This keeps the information inside the records as close to the truth as possible.
+
+However, the resolved path can still be accessed by using the ``--resolve`` or ``--hash`` flags in :doc:`target-query </tools/target-query>`.
+ese flags add additional fields to the record using the identifier/name of the field as a prefix making it easier to identify its origin.
+As an example, lets say we have the following information inside a record:
+
+.. code-block::
+
+    some_name=%SystemRoot%\Temp\file
+
+
+The ``--resolve`` adds, as the name, the resolved path to the record and transforms the information above to:
+
+.. code-block::
+
+    some_name=%SystemRoot%\Temp\file
+    some_name_resolved=C:\Windows\Temp\file
+
+
+While the ``--hash`` flag adds extends the ``--resolve`` information and includes the ``digest`` to it.
+
+.. code-block::
+
+    some_name=%SystemRoot%\Temp\file
+    some_name_resolved=C:\Windows\Temp\file
+    some_name_digest=(...,...,...)
+
+
 Development process
 -------------------
 
