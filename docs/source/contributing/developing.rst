@@ -22,20 +22,20 @@ These pages are organized as follows:
 Path resolution policy
 ----------------------
 
-Starting from ``Dissect V3.11``, we decided that new plugins will only provide the original parsed ``path`` value in its records.
+Starting from Dissect version 3.11, we decided that new plugins will only provide the original parsed ``path`` value in its records.
 We recommend external contributors to follow the same policy.
 This keeps the information inside the records as close to the truth as possible.
 
-However, the resolved path can still be accessed by using the ``--resolve`` or ``--hash`` flags in :doc:`target-query </tools/target-query>`.
+A resolved path can still be accessed by using the ``--resolve`` or ``--hash`` flags in :doc:`target-query </tools/target-query>`.
 ese flags add additional fields to the record using the identifier/name of the field as a prefix making it easier to identify its origin.
-As an example, lets say we have the following information inside a record:
+For example, lets say we have a record with the following field:
 
 .. code-block::
 
     some_name=%SystemRoot%\Temp\file
 
 
-The ``--resolve`` adds, as the name, the resolved path to the record and transforms the information above to:
+When using ``--resolve``, the resolved path will be added to the record in a new field with the suffix ``_resolved``:
 
 .. code-block::
 
