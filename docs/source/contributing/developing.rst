@@ -43,7 +43,7 @@ When using ``--resolve``, the resolved path will be added to the record in a new
     some_name_resolved=C:\Windows\Temp\file
 
 
-While the ``--hash`` flag adds extends the ``--resolve`` information and includes the ``digest`` to it.
+The ``--hash`` flag extends the ``--resolve`` information and includes a ``_digest`` suffixed field as well, which contains the file digest triple (if the file exists):
 
 .. code-block::
 
