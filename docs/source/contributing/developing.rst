@@ -22,7 +22,7 @@ These pages are organized as follows:
 Path resolution policy
 ----------------------
 
-Starting from Dissect version 3.11, we decided that new plugins will only provide the original parsed ``path`` value in its records.
+Starting from Dissect version 3.11, the policy is for plugins to only provide the original parsed ``path`` value in returned records.
 We recommend external contributors to follow the same policy,
 this keeps the path information in the records as close to the truth as possible.
 
