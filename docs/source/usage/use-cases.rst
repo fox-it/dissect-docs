@@ -162,7 +162,7 @@ Using ``rdump`` with the argument ``--multi-timestamp`` outputs multiple ``ts`` 
     <filesystem/ntfs/mft/std ts=2019-03-19 21:52:25.169411 ts_description='last_change_time' hostname='MSEDGEWIN10' domain=None creation_time=2019-03-19 21:52:25.169411 last_modification_time=2019-03-19 21:52:25.169411 last_change_time=2019-03-19 21:52:25.169411 last_access_time=2019-03-19 21:52:25.169411 segment=0 path='c:/$MFT' owner='S-1-5-18' filesize=0.12 GB resident=False inuse=True volume_uuid=None>
     <filesystem/ntfs/mft/std ts=2019-03-19 21:52:25.169411 ts_description='last_access_time' hostname='MSEDGEWIN10' domain=None creation_time=2019-03-19 21:52:25.169411 last_modification_time=2019-03-19 21:52:25.169411 last_change_time=2019-03-19 21:52:25.169411 last_access_time=2019-03-19 21:52:25.169411 segment=0 path='c:/$MFT' owner='S-1-5-18' filesize=0.12 GB resident=False inuse=True volume_uuid=None>
 
-This makes it possible to output a timeline of records that can be analyzed in applications like Elasticsearch (``-w elastic://``), Timesketch (``--jsonlines``) or Timeline Explorer (``--csv``) using ``rdump``. These application need a single ``datetime`` field on which can be filtered to view records in chronological order.
+This makes it possible to output a timeline of records that can be analyzed in applications like Elasticsearch (``-w elastic://``), Timesketch (``--jsonlines``) or Timeline Explorer (``--csv``) using ``rdump``. This application needs a single ``datetime`` field on which can be filtered to view records in chronological order.
 
 Filtering function output using target-query and rdump
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
