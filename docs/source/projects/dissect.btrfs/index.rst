@@ -9,6 +9,10 @@ dissect.btrfs
 
 A Dissect module implementing a parser for the Btrfs file system, a commonly used Linux filesystem.
 
+One of the dependencies of this project, ``python-lzo``, does not release any wheels for ``PyPy`` on ``Windows``.
+Therefore, we excluded this dependency for ``PyPy`` on ``Windows`` and use a pure python fallback located in :doc:`/projects/dissect.util/index`.
+
+
 Installation
 ------------
 
