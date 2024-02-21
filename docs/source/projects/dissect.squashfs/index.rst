@@ -20,6 +20,8 @@ Installation
 
 This module is also automatically installed if you install the ``dissect`` package.
 
+This project has a dependency on ``python-lzo``. It will be installed by default, except on PyPy installations on Windows since no binary wheels are provided for that combination. If ``python-lzo`` is not installed, it will fall back on a (slower) pure Python implementation provided by :doc:`/projects/dissect.util/index`. You can manually install ``python-lzo`` (given you have the proper dependencies and build environment for that) to use the faster C-based implementation.
+
 Usage
 -----
 
