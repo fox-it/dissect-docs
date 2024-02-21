@@ -20,8 +20,7 @@ Installation
 
 This module is also automatically installed if you install the ``dissect`` package.
 
-One of the dependencies of this project, ``python-lzo``, does not release any wheels for ``PyPy`` on ``Windows``.
-Therefore, we excluded this dependency for ``PyPy`` on ``Windows`` and use a pure python fallback located in :doc:`/projects/dissect.util/index`.
+This project has a dependency on ``python-lzo``. It will be installed by default, except on PyPy installations on Windows since no binary wheels are provided for that combination. If ``python-lzo`` is not installed, it will fall back on a (slower) pure Python implementation provided by :doc:`/projects/dissect.util/index`. You can manually install ``python-lzo`` (given you have the proper dependencies and build environment for that) to use the faster C-based implementation.
 
 Usage
 -----
