@@ -1,6 +1,7 @@
 from pathlib import Path
 from typing import Any
 
+from dissect.target.exceptions import PluginError
 from dissect.target.helpers import docs
 from dissect.target.plugin import load, plugins
 from sphinx.application import Sphinx
@@ -103,7 +104,15 @@ def _format_template(name: str, plugins: list[dict]) -> str:
     func_name = name.split(".")[-1] if "." in name else name
     variants = []
     for plugin in plugins:
-        plugin_class = load(plugin)
+        try:
+            plugin_class = load(plugin)
+        except PluginError as e:
+            LOGGER.warning(
+                colorize("bold", "[Dissect] ")
+                + colorize("darkred", f"Error loading plugin {plugin['module']}: {e}")
+            )
+            continue
+
         class_doc = docs.get_docstring(plugin_class)
 
         if (ns := plugin["namespace"]) and name == ns:
