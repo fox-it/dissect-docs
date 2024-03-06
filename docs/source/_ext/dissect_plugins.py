@@ -59,15 +59,15 @@ def builder_inited(app: Sphinx) -> None:
         if plugin["module"].startswith("general."):
             continue
 
-        if plugin["namespace"]:
-            plugin_map.setdefault(plugin["namespace"], []).append(plugin)
+        if ns := plugin["namespace"]:
+            plugin_map.setdefault(ns, []).append(plugin)
 
         for export in plugin["exports"]:
             if export == "get_all_records":  # TODO we need to remove this
                 continue
 
-            if plugin["namespace"]:
-                export = f"{plugin['namespace']}.{export}"
+            if ns:
+                export = f"{ns}.{export}"
             plugin_map.setdefault(export, []).append(plugin)
 
     for name, plugin in status_iterator(
