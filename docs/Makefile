@@ -5,6 +5,7 @@
 # from the environment for the first two.
 SPHINXOPTS    ?= -jauto
 SPHINXBUILD   ?= sphinx-build
+SPHINXWATCH   ?= sphinx-autobuild
 SOURCEDIR     = source
 BUILDDIR      = build
 
@@ -17,6 +18,9 @@ help:
 clean: Makefile
 	rm -rf source/api/*/
 	@$(SPHINXBUILD) -M clean "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+
+watch: Makefile
+	@$(SPHINXWATCH) --watch source "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(0)
 
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).

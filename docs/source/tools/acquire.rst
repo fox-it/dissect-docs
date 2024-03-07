@@ -1,14 +1,9 @@
 acquire
 =======
 
-``acquire`` is a tool to quickly gather forensic artifacts from disk images or a live system into a lightweight container.
+``acquire`` is a tool to quickly gather forensic artefacts from disk images or a live system into a lightweight container.
 This makes ``acquire`` an excellent tool to, among others, speed up the process of digital forensic triage.
-``acquire`` uses ``dissect`` to gather forensic artifacts from the raw disk, if possible.
-
-``acquire`` gathers artifacts based on modules. These modules are paths or globs on a filesystem which acquire attempts to gather.
-Multiple modules can be executed at once, which have been collected together inside a profile.
-These profiles (used with ``--profile``) are  ``full``, ``default``, ``minimal`` and ``none``.
-Depending on what operating system gets detected, different artifacts are collected.
+``acquire`` uses ``dissect`` to gather forensic artefacts from the raw disk, if possible.
 
 The most basic usage of ``acquire`` is as follows:
 
@@ -16,45 +11,59 @@ The most basic usage of ``acquire`` is as follows:
 
     $ sudo acquire
 
-The tool requires administrative access to read raw disk data instead of using the operating system for file access.
-However, there are some options available to use the operating system as a fallback option. (e.g ``--fallback`` or ``--force-fallback``)
+The tool requires administrative access to read raw disk data.
+However, there are some options available to use the local operating systems's filesystem as a fallback option. (e.g ``--fallback`` or ``--force-fallback``)
+
+
+Filesystem acquisition
+----------------------
+
+``acquire`` gathers artefacts based on modules.
+These modules contain paths or globs that ``acquire`` attempts to gather from a filesystem.
+``acquire`` can execute multiple modules at once.
+Instead of specifying modules manually, it's possible to use a predefined collection known as a profile.
+These profiles (used with ``--profile``) are  ``full``, ``default``, ``minimal`` and ``none``.
+Depending on the detected operating system, ``acquire`` collects different artefacts.
 
 The following list shows the modules belonging to each ``profile``.
 
 .. code-block:: text
 
     full profile:
-      windows: AV, ActivitiesCache, Appcompat, BITS, DHCP, DNS,
-               Drivers, ETL, EventLogs, History, Misc, NTDS,
-               NTFS, Prefetch, QuarantinedFiles, Recents,
-               RecycleBin, Registry, RemoteAccess, Syscache,
-               Tasks, WBEM, WindowsNotifications
-      linux  : Etc, Boot, Home, Var
-      bsd    : Etc, Boot, Home, Var, BSD
-      esxi   : Bootbanks, ESXi, VMFS
-      osx    : Etc, Home, Var, OSX, History
+      windows: NTFS, EventLogs, Registry, Tasks, PowerShell,
+               Prefetch, Appcompat, PCA, Misc, ETL, Recents,
+               RecycleBin, Drivers, Syscache, WBEM, AV, BITS,
+               DHCP, DNS, ActiveDirectory, RemoteAccess,
+               ActivitiesCache, History, NTDS, QuarantinedFiles,
+               WindowsNotifications, SSH, IIS
+      linux  : Etc, Boot, Home, SSH, Var, History, WebHosting
+      bsd    : Etc, Boot, Home, SSH, Var, BSD
+      esxi   : Bootbanks, ESXi, SSH, VMFS
+      osx    : Etc, Home, Var, OSX, OSXApplicationsInfo, History,
+               SSH
 
     default profile:
-      windows: NTFS, EventLogs, Registry, Tasks, ETL, Recents,
-               RecycleBin, Drivers, Prefetch, Appcompat,
-               Syscache, WBEM, AV, BITS, DHCP, DNS, Misc,
-               RemoteAccess, ActivitiesCache
-      linux  : Etc, Boot, Home, Var
-      bsd    : Etc, Boot, Home, Var, BSD
-      esxi   : Bootbanks, ESXi, VMFS
-      osx    : Etc, Home, Var, OSX
+      windows: NTFS, EventLogs, Registry, Tasks, PowerShell,
+               Prefetch, Appcompat, PCA, Misc, ETL, Recents,
+               RecycleBin, Drivers, Syscache, WBEM, AV, BITS,
+               DHCP, DNS, ActiveDirectory, RemoteAccess,
+               ActivitiesCache
+      linux  : Etc, Boot, Home, SSH, Var
+      bsd    : Etc, Boot, Home, SSH, Var, BSD
+      esxi   : Bootbanks, ESXi, SSH, VMFS
+      osx    : Etc, Home, Var, OSX, OSXApplicationsInfo
 
     minimal profile:
-      windows: NTFS, EventLogs, Registry, Tasks, Prefetch,
-               Appcompat, Misc
-      linux  : Etc, Boot, Home, Var
-      bsd    : Etc, Boot, Home, Var, BSD
-      esxi   : Bootbanks, ESXi
-      osx    : Etc, Home, Var, OSX
+      windows: NTFS, EventLogs, Registry, Tasks, PowerShell,
+               Prefetch, Appcompat, PCA, Misc
+      linux  : Etc, Boot, Home, SSH, Var
+      bsd    : Etc, Boot, Home, SSH, Var, BSD
+      esxi   : Bootbanks, ESXi, SSH
+      osx    : Etc, Home, Var, OSX, OSXApplicationsInfo
 
 
 Profile ``none`` is a special case where no module gets collected.
-This profile, is used in combination with ``--dir``, ``--file`` or ``--glob`` to collect specific paths from a target.
+Profiles can be used in combination with ``--dir``, ``--file`` or ``--glob`` to collect specific user-defined paths from a target.
 These arguments do the following:
 
 * ``--dir``: Collects a directory recursively.
@@ -62,6 +71,38 @@ These arguments do the following:
 * ``--glob``: Collects any file or directory that matches the specific glob pattern. (e.g ``/path*/test`` would collect for example ``/path1/test`` and ``/path_to_other_test_file/test``)
 
 You can specify these arguments multiple times for every file, directory or glob you want to collect.
+
+Volatile acquisition
+--------------------
+
+Use ``--volatile-profile`` to obtain artefacts that are not persistent on disk but are located in memory.
+Volatile Windows artefacts are stored under the ``$metadata$`` folder in the resulting archive.
+Windows volatile artefacts are gathered through the use of internal Windows commands and Python's ``ctypes`` interface.
+For Linux systems, ``/proc`` and ``/sys`` are gathered and stored under ``/proc/1/...`` or ``/sys/fs/...`` respectively in the resulting archive.
+
+Volatile Profiles
+^^^^^^^^^^^^^^^^^
+
+Like regular *profiles*, the *volatile profiles* allow you to run predefined groups of volatile modules.
+These profiles, are ``default``, ``extensive`` and ``none``, where ``none`` is the default.
+As with ``--profile``, what gets collected depends on the detected operating system.
+
+The following list shows the modules that belong to each ``volatile profile``.
+
+.. code-block:: text
+
+      default profile:
+        windows: Netstat, WinProcesses, WinProcEnv, WinArpCache,
+                 WinRDPSessions, WinDnsClientCache
+
+      extensive profile:
+        windows: Netstat, WinProcesses, WinProcEnv, WinArpCache,
+                 WinRDPSessions, WinDnsClientCache
+        linux  : Proc, Sys
+        bsd    : Proc, Sys
+        esxi   : Proc, Sys
+
+Both ``--volatile-profile`` and ``--profile`` can be used simultaneously and configured separately from each other.
 
 Deployment
 ----------

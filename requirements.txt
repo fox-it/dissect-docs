@@ -3,6 +3,7 @@ sphinx-autoapi
 sphinx_argparse_cli
 sphinx-copybutton
 sphinx-design
+sphinx-autobuild
 furo
 
 # These dependencies are needed to generate docs for dissect.target and
