@@ -1,32 +1,74 @@
-Dissect
-=======
+Welcome to Dissect!
+===================
 
-Welcome to the official documentation of Dissect!
-
-Dissect is a collection of Python libraries and tools to facilitate enterprise-scale incident response and forensics.
-It supports you, the analyst, from the moment of acquisition of artefacts, to normalisation and processing.
-
-Dissect frees you from limitations by data formats and platforms and takes away concerns about how to access
-investigation data. You can focus on performing analysis, developing complex analysis plugins or performing
-research. You know, the cool stuff that we brag about on birthday parties. With Dissect, you can go from intake call
-to patient zero in a matter of hours, even in infrastructures with thousands of systems.
-
-With Dissect, beginner and intermediate analysts get direct access to a large collection of artefact parsers and
-plugins that work quickly and easily on a large range of evidence formats. More advanced analysts with scripting
-experience can also leverage Dissect`s full capabilities by creating new tools and plugins using the various Dissect
-APIs and parsers.
+Effortlessly investigate **forensic artefacts** from any source with **Dissect**.
+With Dissect, you can go from intake call to patient zero in a matter of hours,
+even in infrastructures with thousands of systems.
 
 
-.. note ::
-    Read more about what Dissect is and how it works at :doc:`/overview/index` or check out what others
-    have written about Dissect in :doc:`/resources/dissect-in-action`.
+Quick Demo
+----------
+
+In just a couple of seconds you can query a forensic image or even explore it
+using **target-shell**!
+
+.. image:: /images/demo.gif
 
 
-Getting Started
----------------
+Usage Example
+-------------
 
-The easiest way to get started is to install the latest version of all Dissect projects from
-`PyPI <https://pypi.python.org/pypi/dissect>`_:
+One of the most prominent tools that Dissect offers is called **target-query**.
+With this simple one-liner you can extract all user accounts from an image: 
+
+.. code-block:: console
+
+    $ target-query pc.img -f users
+    
+    <windows/user ... name='systemprofile' ...>
+    <windows/user ... name='LocalService' ...>
+    <windows/user ... name='NetworkService' ...>
+    <windows/user ... name='Mr. Evil' ...>
+    
+To see what other useful artefacts you can query use ``-l``:
+
+.. code-block:: console
+
+    $ target-query pc.img -l
+
+This will list all Dissect functions that are available for this image.
+For a complete list of all functions, regardless of the image, just omit the image argument.
+
+
+Key features
+------------
+
+Dissect is a powerful artefact extractor and parser that saves you a lot of time.
+With Dissect you can:
+
+* Quickly **extract** artefacts from any source (like IMG, EWF, Kape, DD, VDI, PVM)
+* Access artefacts from almost any **OS** (like Windows, macOS, Linux/Unix, ESXi)
+* Access almost any **filesystem** (like NTFS, EXT, XFS, QNX6)
+* **Parse** (binary) logs, registry entries, cookies, history and more
+* **Export** findings to text, JSON, CSV or stream to datastores like Splunk, Elastic, MySQL
+* **Feed, filter and script** to process found data in any way you like
+* Investigate images with powerful tools like **target-shell**, **target-mount** or the **Python API**
+
+Using these features, you can for instance (among other things):
+
+* Make a timeline of the event log from all investigation data at once
+* Identify anomalies in artefacts such as services, tasks and run keys over a large amount of investigation data
+* Perform incident response on partially ransomwared (encrypted) virtual machine disks
+* Perform complex IOC checks on thousands of hosts in a couple of hours
+* Export all USN journal records from a Bitlocker-encrypted disk to Splunk without waiting for decryption
+* Collect forensic artefacts from all live virtual machines directly from the hypervisor with no down time
+* Export all artefacts easily to any data format you want, for example CSV, JSON or Avro, or stream directly to Splunk or Elastic
+
+
+Easy to setup
+-------------
+
+Dissect can be installed using pip:
 
 .. code-block:: console
 
@@ -36,83 +78,59 @@ It is recommended that you use a `virtual environment <https://docs.python.org/3
 
 .. note ::
     .. include:: /versions.rst
+    
+You can also try dissect directly from within your browser:
 
-To quickly get familiar with Dissect, read on to :doc:`/usage/introduction`. If you're interested in what makes it
-tick, continue reading at :doc:`/overview/index`.
+`try.dissect.tools <https://try.dissect.tools>`_
+    
 
-Installing individual projects
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Dissect is a collection of libraries and tools, so every Dissect project is individually installable. You'll find that
-installing the ``dissect`` package from PyPI will install all available ``dissect.*`` packages for you! If, however,
-you just want to work with the NTFS and registry parsers in your own scripts, you can opt to only install or depend
-on those specific projects:
-
-.. code-block:: console
-
-    $ pip install dissect.ntfs dissect.regf
-
-You can find an overview of all available Dissect projects and their documentation at :doc:`/projects/index`.
-
-Using the Docker image
-~~~~~~~~~~~~~~~~~~~~~~
+Setup with Docker
+-----------------
 
 If you simply want to get started with some of the examples without having to install anything, a basic Docker image
 is available `here <https://github.com/orgs/fox-it/packages/container/package/dissect>`_ (`mirror <https://hub.docker.com/r/dissect/dissect>`_).
 You can start using this image by executing the following command in your terminal:
-
+ 
 .. code-block:: console
 
-    $ docker run -it --rm -v /path/to/targets/:/mnt:ro ghcr.io/fox-it/dissect:3.2
+    $ docker run -it --rm -v /path/to/targets/:/mnt:ro ghcr.io/fox-it/dissect:3.11
     (<dissect version>) <container hash>:/workspace$
 
-This will drop you in a shell environment with all the Dissect ``target-*`` :doc:`tools </tools/index>` at your disposal.
-The purpose of the ``-v`` option is to mount a local directory inside the Docker container. You can use this to interact
-with local data from within the Docker container.
 
-Browser demo
-~~~~~~~~~~~~
+Learn more
+----------
 
-If you don't feel like doing the above, then there is an interactive browser demo available at
-`try.dissect.tools <https://try.dissect.tools>`_ to play around with!
+Excited? Great, so are we!
+The next step is to get to know Dissect a little better.
 
-You can select evidence files from your local system, such as VMDK or EWF files, and explore some of the capabilities
-of Dissect. Nothing gets uploaded to a server, it all happens locally thanks to `Pyodide <https://pyodide.org/en/stable/>`_!
+* Visit :doc:`/usage/introduction` for an in-depth introduction into Dissect
+* Visit :doc:`/tools/index` for an overview of each tool in the Dissect suite
 
-.. caution::
+Or you can start by taking a look at some community articles and videos:
+:doc:`/resources/dissect-in-action` or
+:doc:`/resources/talks-and-conferences` to begin with.
 
-    The browser demo was developed as a quick demo and is bound to be unstable. Not everything may work as expected.
 
-Summary
--------
 
-It's difficult to explain the full capabilities of Dissect in a few sentences, but it can best be summarized as
-an attempt to bring "it just works" to the field of digital forensics. Analysts no longer need to concern themselves
-with thinking about *how* they get artefacts from their source data and can instead focus on *what* artefacts
-they want to analyse.
-
-For example, with Dissect you can:
-
-* Make a timeline of the event log from all investigation data at once;
-* Identify anomalies in artefacts such as services, tasks and run keys over a large amount of investigation data;
-* Perform incident response on partially ransomwared (encrypted) virtual machine disks;
-* Perform complex IOC checks on thousands of hosts in a couple of hours;
-* Export all USN journal records from a Bitlocker-encrypted disk to Splunk without waiting for decryption;
-* Collect forensic artefacts from all live virtual machines directly from the hypervisor with no down time;
-* Export all artefacts easily to any data format you want, for example CSV, JSON or Avro, or stream directly to Splunk or Elastic;
-* ... and much more.
-
-For more information about what Dissect is and how it works, read on at :doc:`/overview/index`.
 
 .. toctree::
     :hidden:
-
+    
     Home <self>
-    /overview/index
-    /projects/index
+
+.. toctree::
+    :caption: Basics
+    :hidden:
+
     /usage/index
     /tools/index
-    /plugins/index
+    
+.. toctree::
+    :caption: Advanced
+    :hidden:
+
+    /overview/index
+    /projects/index
     /advanced/index
     /api/index
 
