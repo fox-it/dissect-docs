@@ -49,7 +49,7 @@ With Dissect you can:
 * Quickly **extract** artefacts from any source (like IMG, EWF, Kape, DD, VDI, PVM)
 * Access artefacts from almost any **OS** (like Windows, macOS, Linux/Unix, ESXi)
 * Access almost any **filesystem** (like NTFS, EXT, XFS, QNX6)
-* **Parse** (binary) logs, registry entries, cookies, history and more
+* **Parse** (binary) logs, registry entries, cookies, history and more, directly from the source
 * **Export** findings to text, JSON, CSV or stream to datastores like Splunk, Elastic, MySQL
 * **Feed, filter and script** to process found data in any way you like
 * Investigate images with powerful tools like **target-shell**, **target-mount** or the **Python API**
