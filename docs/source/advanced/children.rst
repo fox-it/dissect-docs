@@ -5,11 +5,11 @@ Child targets are nested targets. Targets can contain nested targets, this is al
 the target is an hypervisor. After retrieving a child target, it behaves just like a regular target, all
 the plugin methods are available. The following child targets are supported:
 
-* ESXi
-* Hyper-V 
+* VMware ESXi (also known as vSphere)
+* VMWare Workstation
+* Microsoft Hyper-V 
+* Windows Subsystem for Linux (WSL2)
 * Virtuozzo
-* VMWare
-* WSL
 
 To obtain a list of nested targets use ``list_children``:
 
