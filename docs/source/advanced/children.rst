@@ -1,9 +1,9 @@
 Children
 ========
 
-Child targets are nested targets. Targets can contain nested targets, this is almost always the case if
-the target is an hypervisor. After retrieving a child target, it behaves just like a regular target, all
-the plugin methods are available. The following child targets are supported:
+Dissect supports the concept of targets within targets, referred to as child or nested targets. This can be useful when dealing with hypervisors, where we can individually address each virtual machine as a separate target. Child targets behave just like regular targets, so all functionality and plugins we can expect on a regular target is available on a child target.
+
+Child targets can be anything that Dissect already supports, but we also provide some automatic detection of child targets for certain systems. Automatic child target detection is currently supported for:
 
 * VMware ESXi (also known as vSphere)
 * VMWare Workstation
