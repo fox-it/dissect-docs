@@ -1,15 +1,53 @@
 Children
 ========
 
-Dissect supports the concept of targets within targets, referred to as child or nested targets. This can be useful when dealing with hypervisors, where we can individually address each virtual machine as a separate target. Child targets behave just like regular targets, so all functionality and plugins we can expect on a regular target is available on a child target.
+Dissect also supports the concept of targets within targets, referred to as child targets. For example, when a
+target contains a ``.vmdk`` file within itself, we can tell ``dissect.target`` to load that target from within the
+context of the first target. This can be useful when dealing with hypervisors.
 
-Child targets can be anything that Dissect already supports, but we also provide some automatic detection of child targets for certain systems. Automatic child target detection is currently supported for:
+Say, for example, we opened a Hyper-V target locally from ``\\.\PhysicalDrive0``, we can parse the metadata
+in ``ProgramData/Microsoft/Windows/Hyper-V/data.vmcx`` that tells us where all of the virtual machines are stored.
+Then we can then use these paths and tell ``dissect.target`` to load another target from there. Reading all of these
+files will still happen from ``\\.\PhysicalDrive0``, passing through the various abstraction layers of ``dissect.target``.
+This allows Dissect to read the disks from running virtual machines, regardless of locks the operating has on these files.
+
+Child targets can be anything that Dissect already supports, but we also provide some automatic detection of 
+child targets for certain systems. Automatic child target detection is currently supported for:
 
 * VMware ESXi (also known as vSphere)
 * VMWare Workstation
 * Microsoft Hyper-V 
 * Windows Subsystem for Linux (WSL2)
 * Virtuozzo
+
+Using child targets
+-------------------
+
+To apply ``target-query`` to child targets simply add the ``--children`` flag like this:
+
+.. code-block:: console
+
+    $ target-query /path/to/target -f hostname --children
+
+Replace the example path ``/path/to/target`` with the path to the host image.
+To just query a specific child, simply use the ``--child`` option and provide the path to
+the file within the host target that contains the child target:
+
+.. code-block:: console
+
+    $ target-query /path/to/target -f hostname --child /virtualmachines/host123.vmcx
+
+
+When using ``target-shell`` you can access the child target by using the ``enter`` command:
+
+.. code-block:: console
+
+    $ enter host123.vmcx
+
+
+Child target API
+----------------
+
 
 To obtain a list of nested targets use ``list_children``:
 
