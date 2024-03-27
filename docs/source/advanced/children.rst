@@ -6,8 +6,8 @@ target contains a ``.vmdk`` file within itself, we can tell ``dissect.target`` t
 context of the first target. This can be useful when dealing with hypervisors.
 
 Say, for example, we opened a Hyper-V target locally from ``\\.\PhysicalDrive0``, we can parse the metadata
-in ``ProgramData/Microsoft/Windows/Hyper-V/data.vmcx`` that tells us where all of the virtual machines are stored.
-Then we can then use these paths and tell ``dissect.target`` to load another target from there. Reading all of these
+in ``ProgramData/Microsoft/Windows/Hyper-V/data.vmcx`` which tells us where all of the virtual machines are stored.
+We can then use these paths and tell ``dissect.target`` to load another target from there. Reading all of these
 files will still happen from ``\\.\PhysicalDrive0``, passing through the various abstraction layers of ``dissect.target``.
 This allows Dissect to read the disks from running virtual machines, regardless of locks the operating has on these files.
 
