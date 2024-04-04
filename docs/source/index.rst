@@ -87,7 +87,7 @@ You can also try dissect directly from within your browser:
 Setup with Docker
 -----------------
 
-If you simply want to get started with some of the examples without having to install anything, a basic Docker image
+If you simply want to get started with some of the :doc:`examples </usage/introduction>` without having to install anything, a basic Docker image
 is available `here <https://github.com/orgs/fox-it/packages/container/package/dissect>`_ (`mirror <https://hub.docker.com/r/dissect/dissect>`_).
 You can start using this image by executing the following command in your terminal:
  
