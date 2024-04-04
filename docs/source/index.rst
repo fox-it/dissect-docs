@@ -36,7 +36,7 @@ To see what other useful artefacts you can query use ``-l``:
 
     $ target-query pc.img -l
 
-This will list all Dissect functions that are available for this image.
+This will list all Dissect functions and artefacts that are available for this image.
 For a complete list of all functions, regardless of the image, just omit the image argument.
 
 
