@@ -10,7 +10,7 @@ Quick Demo
 ----------
 
 In just a couple of seconds you can query a forensic image or even explore it
-using **target-shell**!
+using :doc:`/tools/target-shell`!
 
 .. image:: /images/demo.gif
 
@@ -18,7 +18,7 @@ using **target-shell**!
 Usage Example
 -------------
 
-One of the most prominent tools that Dissect offers is called **target-query**.
+One of the most prominent tools that Dissect offers is called :doc:`/tools/target-query`.
 With this simple one-liner you can extract all user accounts from an image: 
 
 .. code-block:: console
@@ -110,7 +110,7 @@ Or you can start by taking a look at some community articles and videos:
 :doc:`/resources/dissect-in-action` or
 :doc:`/resources/talks-and-conferences` to begin with.
 
-
+Get in touch, join us on `github <https://github.com/fox-it/dissect.target>`_!
 
 
 .. toctree::
