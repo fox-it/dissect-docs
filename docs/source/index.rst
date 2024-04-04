@@ -1,7 +1,7 @@
 Welcome to Dissect!
 ===================
 
-Effortlessly investigate **forensic artefacts** from any source with **Dissect**.
+Effortlessly extract and investigate **forensic artefacts** from any source with **Dissect**.
 With Dissect, you can go from intake call to patient zero in a matter of hours,
 even in infrastructures with thousands of systems.
 
