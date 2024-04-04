@@ -65,7 +65,7 @@ Using these features, you can for instance (among other things):
 * Export all artefacts easily to any data format you want, for example CSV, JSON or Avro, or stream directly to Splunk or Elastic.
 
 
-Easy to setup
+Easy to install
 -------------
 
 Dissect can be installed using pip:
