@@ -56,13 +56,13 @@ With Dissect you can:
 
 Using these features, you can for instance (among other things):
 
-* Make a timeline of the event log from all investigation data at once
-* Identify anomalies in artefacts such as services, tasks and run keys over a large amount of investigation data
-* Perform incident response on partially ransomwared (encrypted) virtual machine disks
-* Perform complex IOC checks on thousands of hosts in a couple of hours
-* Export all USN journal records from a Bitlocker-encrypted disk to Splunk without waiting for decryption
-* Collect forensic artefacts from all live virtual machines directly from the hypervisor with no down time
-* Export all artefacts easily to any data format you want, for example CSV, JSON or Avro, or stream directly to Splunk or Elastic
+* Make a **timeline** of the event log from all your investigation data at once.
+* Identify **anomalies** in artefacts such as services, tasks and run keys over a large amount of investigation data.
+* Do incident response on partially **ransomwared** (encrypted) virtual machine disks.
+* Extract artefacts from **LVM, RAID** and other disk setups, without any manual configuration.
+* Perform complex **IOC checks** on thousands of hosts in a couple of hours.
+* Collect forensic artefacts from all **live** virtual machines directly from the hypervisor with no down time.
+* Export all artefacts easily to any data format you want, for example CSV, JSON or Avro, or stream directly to Splunk or Elastic.
 
 
 Easy to setup
