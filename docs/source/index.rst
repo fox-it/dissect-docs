@@ -94,7 +94,7 @@ You can start using this image by executing the following command in your termin
 .. code-block:: console
 
     $ docker run -it --rm -v /path/to/targets/:/mnt:ro ghcr.io/fox-it/dissect:3.11
-    (<dissect version>) <container hash>:/workspace$
+    (<dissect version>) <container hash>:/workspace$ target-query -l
 
 
 Learn more
