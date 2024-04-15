@@ -66,7 +66,7 @@ Using these features, you can for instance (among other things):
 
 
 Easy to install
--------------
+---------------
 
 Dissect can be installed using pip:
 
