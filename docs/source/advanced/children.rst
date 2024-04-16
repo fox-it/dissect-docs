@@ -37,8 +37,14 @@ the file within the host target that contains the child target:
 
     $ target-query /path/to/target -f hostname --child /virtualmachines/host123.vmcx
 
+Alternatively you can use the index number of the child:
 
-When using ``target-shell`` you can access the child target by using the ``enter`` command:
+.. code-block:: console
+
+    $ target-query /path/to/target -f hostname --child 1
+
+When using :doc:`target-shell </tools/target-shell>` you can access the child target by using the ``enter`` command
+on the file that contains the child target:
 
 .. code-block:: console
 
@@ -89,7 +95,10 @@ available:
 
     supported_children = child_plugins()
 
-To craft your own child plugin, subclass the ``ChildTargetPlugin`` and implement the
+To craft your own child plugin, subclass the :class:`ChildTargetPlugin <dissect.target.plugin.ChildTargetPlugin>` and implement the
 ``list_children()`` method. Use the ``__type__`` attribute to specify the type of the child plugin (i.e. "wsl").
 
+.. seealso::
+
+    The :class:`HyperV <dissect.target.plugins.child.hyperv>` child plugin is a good example to get started!
 
