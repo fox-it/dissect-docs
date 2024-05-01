@@ -61,7 +61,7 @@ Using these features, you can for instance (among other things):
 * Do **incident response** on virtual machine disks encrypted by ransomware.
 * **Extract artefacts** from LVM, RAID and other disk setups, without any manual configuration.
 * Perform complex **IOC checks** on thousands of hosts in a couple of hours.
-* Collect forensic artefacts from all live virtual machines directly from the hypervisor with no down time.
+* Collect forensic artefacts from running virtual machines directly from the hypervisor without down time.
 * Export all artefacts easily to any data format you want, for example CSV, JSON or Avro, or stream directly to Splunk or Elastic.
 
 
