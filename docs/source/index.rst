@@ -62,7 +62,7 @@ Using these features, you can for instance (among other things):
 * **Extract artefacts** from LVM, RAID and other disk setups, without any manual configuration.
 * Perform complex **IOC checks** on thousands of hosts in a couple of hours.
 * Collect forensic artefacts from running virtual machines directly from the hypervisor without down time.
-* Export all artefacts easily to any data format you want, for example CSV, JSON or Avro, or stream directly to Splunk or Elastic.
+* Export all artefacts easily to multiple data formats. For example CSV, JSON or Avro, or stream it directly to Splunk or Elastic.
 
 
 Easy to install
