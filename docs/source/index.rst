@@ -65,33 +65,14 @@ Using these features, you can for instance (among other things):
 * Export all artefacts easily to multiple data formats. For example CSV, JSON or Avro, or stream it directly to Splunk or Elastic.
 
 
-Easy to install
--------------
-
-Dissect can be installed using pip:
-
-.. code-block:: console
-
-    $ pip install dissect
-
-It is recommended that you use a `virtual environment <https://docs.python.org/3/tutorial/venv.html>`_.
-
-.. note ::
-    .. include:: /versions.rst
-    
-You can also try dissect directly from within your browser:
-
-`https://try.dissect.tools <https://try.dissect.tools>`_
-    
-
 Learn more
 ----------
 
 Excited? Great, so are we!
 The next step is to get to know Dissect a little better.
 
-
-* Try the :doc:`/tutorial` to get started!
+* First, :doc:`/install` Dissect
+* Try the :doc:`/tutorial` to get started
 * Visit :doc:`/usage/introduction` for an in-depth introduction into Dissect
 * Visit :doc:`/tools/index` for an overview of each tool in the Dissect suite
 

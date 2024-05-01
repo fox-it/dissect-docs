@@ -64,11 +64,6 @@ You can apply multiple functions if you want:
 
     $ target-query host.img -f runkeys,users
     
-.. note ::
-
-    You can only combine functions that have the same output type.
-    If you don't, only the records will be shown.
-    
 If you have a lot of functions you wish to apply, wildcards (and other glob-rules) can be used:
 
 .. code-block:: console
@@ -87,7 +82,7 @@ Plugins
 ~~~~~~~
 
 Each function available in **target-query** is actually a plugin.
-Creating your own plugins is also possible. With the ``--plugin-path`` flag you can point
+Using custom plugins is also possible. With the ``--plugin-path`` flag you can point
 Dissect to your own plugin folder:
 
 .. code-block:: console
@@ -117,6 +112,16 @@ To limit the number of results, use the ``--limit`` option like this:
 Besides the regular format, target-query can use ``-j`` option to output as JSON.
 After you have generated some data you might want to process it further, you can use
 :doc:`rdump <rdump>` (Record Dumper) for this.
+
+If you want to use a tool like ``grep`` to search the results of a query, you need to
+add the ``-s`` option to turn the records into searchable strings:
+
+.. code-block:: console
+
+    $ target-query host.img -f users -s  | grep "Moriarty"
+
+    <windows/user ... name='Moriarty' home='%SystemDrive%\\Moriarty'>
+
 
 .. note::
 

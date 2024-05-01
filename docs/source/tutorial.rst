@@ -97,15 +97,66 @@ You now see a list of plugins that you can use with the ``-f`` option.
 Try a couple of them.
 
 If we want to query for suspicious programs that might have been installed
-on this machine we use the following command to generate a spreadsheet with
-all binary files:
+on this machine, one option could be to search for all the files with an ``.exe``
+extension and then try to identify a malicious one. To this end, we select the
+plugin ``walkfs`` that yields all files in the image:
+
+.. code-block:: console
+
+    $ target-query SCHARDT.img -f walkfs
+    
+    <filesystem/entry path='\sysvol\...\Local Settings' size=0 ...>
+    <filesystem/entry path='\sysvol\...\desktop.ini' size=62.0 ...>
+    
+This command returns a huge list of files. Our next step is to  narrow this
+list down to only files ending with ``.exe``. To accomplish this, we send
+the results to another Dissect tool called ``rdump`` and apply a
+Python expression:
+
+.. code-block:: console
+
+    $ target-query SCHARDT.img -f walkfs | rdump -s "r.path.suffix=='.exe'"
+    
+    <filesystem/entry path='\sysvol\...\pacman.exe' size=811.0 ...>
+    <filesystem/entry path='\sysvol\...\trojan.exe' size=62.0 ...>
+
+
+Here we use the ``-s`` option for rdump to filter on a particular file extension.
+The expression ``r.path.suffix=='.exe'`` is a snippet of Python that examines
+the suffix of each path and only includes the ones ending with ``.exe``.
+You can use any Python expression you like!
+
+While this list is much better, it could use a better formatting.
+We use the ``-F`` option from ``rdump`` to filter the columns:
+
+.. code-block:: console
+
+    $ target-query SCHARDT.img -f walkfs | rdump -s "r.path.suffix=='.exe'" -F path,ctime,mtime,size
+    
+This reduces the number characters per line significantly.
+However due to the formatting, it is still hard to read
+(hence no output example is shown, because it is basically the same)
+To make it even more readable, we add the
+``-C`` option to convert it to a comma separated format:
+
+.. code-block:: console
+
+    $ target-query SCHARDT.img -f walkfs | rdump -s "r.path.suffix=='.exe'" -F path,ctime,mtime,size -C
+    
+    \sysvol\pacman.exe,2004-08-19 22:25:09.860123+00:00,2004-08-19 23:05:15.852375+00:00,41.6 KB
+    \sysvol\docview.exe,2004-08-19 22:25:09.860123+00:00,2004-08-19 23:05:15.852375+00:00,41.6 KB
+    \sysvol\trojan.exe,2004-08-19 22:25:09.860123+00:00,2004-08-19 23:05:15.852375+00:00,41.6 KB
+
+This already looks much more compact and searchable. Finally we can use put the resulting table
+in a spreadsheet for further investigation. We accomplish this by simply adding ``> db.csv``
 
 .. code-block:: console
 
     $ target-query SCHARDT.img -f walkfs | rdump -s "r.path.suffix=='.exe'" -F path,ctime,mtime,size -C > db.csv
 
-Here we use the ``-s`` option for rdump to filter on a particular file extension.
-We use a *python expression* here (you can use any Python expression you like).
+You can now open the ``db.csv`` file in your favourite spreadsheet program and
+search for well known malicious executables.
+
 For more details see :doc:`rdump <rdump>`.
 
 Finally, to inspect the system as if you were logged into it via a shell, invoke:
