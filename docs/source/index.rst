@@ -18,7 +18,7 @@ Usage Example
 -------------
 
 One of the most prominent tools that Dissect offers is called *target-query*.
-With this simple one-liner you can extract all user accounts from an image: 
+With this simple command you can for example extract all user accounts from a disk image: 
 
 .. code-block:: console
 
