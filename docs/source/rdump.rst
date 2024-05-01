@@ -8,7 +8,7 @@ They are transformed to text by the default mechanism. An example is given below
 
     <record key1="value1" key2="value2" >
 
-With rdump you can transform the stream of records to your liking. The rdump utility allows you to:
+With ``rdump`` you can transform the stream of records to your liking. The ``rdump`` utility allows you to:
 
 * select certain fields from the records
 * filter certain records
