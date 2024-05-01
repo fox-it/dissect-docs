@@ -9,8 +9,8 @@ to extract useful information from it. The basic usage format is:
 
     $ target-query <TARGET> -f <FUNCTION_NAME>
 
-Here <TARGET> is the file that contains the forensic image and <FUNCTION_NAME> is the name
-of the function you wish to apply.
+Here <TARGET> is the file you wish to query. In most cases this is a forensic image. 
+<FUNCTION_NAME> is the name of the function you wish to apply.
 
 Loading
 ~~~~~~~
