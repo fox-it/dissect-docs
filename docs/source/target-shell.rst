@@ -32,7 +32,7 @@ enter the system32 folder of the machine. Use ``exit`` to exit the shell.
     is required.
     
 Use ``cat`` to view the contents of text files (use ``zcat`` for compressed files and
-``hexdump`` for binaries).
+``hexdump`` for binary files).
 
 If you see an interesting file or directory you can save it with:
 
