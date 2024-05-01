@@ -15,8 +15,10 @@ Here <TARGET> is the file you wish to query. In most cases this is a forensic im
 Loading
 ~~~~~~~
 
-Dissect attempts to determine the file format automatically and attempts to select an appropriate loader.
-If the image is split into multiple files, just feed it the first.
+
+By default, Dissect attempts to determine the file format automatically and selects the appropriate loader.
+If the image is split into multiple files, just feed it the first. (For example with an EWF image, just target the 
+.E01 file) 
 
 If you wish to override auto-detection, use the ``-L`` option to explicitly specify the loader that
 has to be used:
