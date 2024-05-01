@@ -81,7 +81,7 @@ It is recommended that you use a `virtual environment <https://docs.python.org/3
     
 You can also try dissect directly from within your browser:
 
-`try.dissect.tools <https://try.dissect.tools>`_
+`https://try.dissect.tools <https://try.dissect.tools>`_
     
 
 Learn more
