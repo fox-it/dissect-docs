@@ -26,7 +26,7 @@ Before you install Dissect it is recommended to create a `virtual environment <h
 
     $ pip install dissect
 
-That's all, you're now ready to use Dissect. To get you started, grab a test forensic image `here <https://cfreds.nist.gov/>`_.
+That's all, you're now ready to use Dissect. If you want to try it out, grab a test forensic image `here <https://cfreds.nist.gov/>`_.
 
 
 Browser demo
