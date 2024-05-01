@@ -1,8 +1,8 @@
 rdump
 -----
 
-By default target-query generates records. Records are binary representations of artefacts that
-appear like this if they are transformed to text by the default mechanism:
+By default, target-query generates records. Records in this sense are binary representations of parsed artefacts.
+They are transformed to text by the default mechanism. An example is given below:
 
 .. code-block:: console
 
