@@ -46,7 +46,7 @@ Filtering
 
 Filtering records can be done through the ``-s`` option.
 The selection option must be a Python-expression, where the record is represented with the symbol ``r``.
-So to eliminate all records that have no domain value:
+So to eliminate all records that for example have no domain value:
 
 .. code-block:: console
 
