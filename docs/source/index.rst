@@ -46,9 +46,9 @@ Key features
 Dissect is a powerful artefact extractor and parser that saves you a lot of time.
 With Dissect you can:
 
-* Quickly **extract artefacts** from any source (like IMG, EWF, Kape, DD, VDI, PVM)
-* Access artefacts from almost any OS (like Windows, macOS, Linux/Unix, ESXi)
-* Access almost any filesystem (like NTFS, EXT, XFS, QNX6)
+* Quickly **extract artefacts** from any source (for example IMG, EWF, Kape, DD, VDI, PVM)
+* Access artefacts from almost any OS (for example Windows, macOS, Linux/Unix, ESXi)
+* Access almost any filesystem (for example NTFS, EXT, XFS, QNX6)
 * **Parse logs**, registry entries, cookies, history and more, directly from the source
 * Export findings to text, JSON, CSV or stream to datastores like Splunk, Elastic, MySQL
 * Feed, filter and script to process found data in any way you like
