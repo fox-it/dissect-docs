@@ -9,6 +9,10 @@ First of all, we install Python and create a venv:
 
     $ python3 -m venv dissect
 
+.. note ::
+
+    Learn how to :doc:`install Dissect </install>`
+
 Now activate the virtual environment to get some work done:
 
 
@@ -117,8 +121,8 @@ Python expression:
 
     $ target-query SCHARDT.img -f walkfs | rdump -s "r.path.suffix=='.exe'"
     
-    <filesystem/entry path='\sysvol\...\pacman.exe' size=811.0 ...>
-    <filesystem/entry path='\sysvol\...\trojan.exe' size=62.0 ...>
+    <filesystem/entry path='\sysvol\...\winfo.exe' size=811.0 ...>
+    <filesystem/entry path='\sysvol\...\pwdump.exe' size=1162.0 ...>
 
 
 Here we use the ``-s`` option for rdump to filter on a particular file extension.
@@ -143,9 +147,10 @@ To make it even more readable, we add the
 
     $ target-query SCHARDT.img -f walkfs | rdump -s "r.path.suffix=='.exe'" -F path,ctime,mtime,size -C
     
-    \sysvol\pacman.exe,2004-08-19 22:25:09.860123+00:00,2004-08-19 23:05:15.852375+00:00,41.6 KB
-    \sysvol\docview.exe,2004-08-19 22:25:09.860123+00:00,2004-08-19 23:05:15.852375+00:00,41.6 KB
-    \sysvol\trojan.exe,2004-08-19 22:25:09.860123+00:00,2004-08-19 23:05:15.852375+00:00,41.6 KB
+    \sysvol\winfo.exe,2004-08-19 22:25:09.860123+00:00,2004-08-19 23:05:15.852375+00:00,41.6 KB
+    \sysvol\pwdump.exe,2004-08-19 22:25:09.860123+00:00,2004-08-19 23:05:15.852375+00:00,41.6 KB
+    \sysvol\...\LookAtLan.exe,2004-08-19 22:25:09.860123+00:00,2004-08-19 23:05:15.852375+00:00,41.6 KB
+
 
 This already looks much more compact and searchable. Finally we can use put the resulting table
 in a spreadsheet for further investigation. We accomplish this by simply adding ``> db.csv``
@@ -159,7 +164,9 @@ search for well known malicious executables.
 
 For more details see :doc:`rdump <rdump>`.
 
-Finally, to inspect the system as if you were logged into it via a shell, invoke:
+In our database we find a program that can be
+used for hacking: LookAtLan.exe. We can open a shell to the image to further investigate the
+compromised system and locate the hacking program:
 
 .. code-block:: console
 
@@ -167,6 +174,17 @@ Finally, to inspect the system as if you were logged into it via a shell, invoke
     
 Using :doc:`target-shell <target-shell>`, you can now navigate inside the target image by using the regular UNIX commands like
 ``ls``, ``cd``, ``find``, ``stat`` and so on.
+
+So we can navigate to one of the suspicious files we found like this:
+
+.. code-block:: console
+
+    N-1A9ODN6ZXK4LQ /> cd C:\Program Files\Look@LAN\
+    N-1A9ODN6ZXK4LQ /C:/Program Files/Look@LAN> ls
+    ...
+    LookAtLan.exe
+    ...
+
 
 This was just a quick introduction to the basic tools that are at your disposal.
 To get an understanding of the basics of Dissect see:

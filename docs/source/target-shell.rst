@@ -34,7 +34,7 @@ enter the system32 folder of the machine. Use ``exit`` to exit the shell.
 Use ``cat`` to view the contents of text files (use ``zcat`` for compressed files and
 ``hexdump`` for binary files).
 
-If you see an interesting file or directory you can save it with:
+If you see an interesting file or directory you can save it to your local disk with:
 
 .. code-block:: console
 
@@ -45,6 +45,18 @@ To search the file system one might employ the ``find`` command like this:
 .. code-block:: console
 
     /> find -name kernel*
+
+Besides exploring the contents of the disk, you can use target-shell to
+explore the registry as well (on Unixy systems you can explore the configuration
+tree under /etc in a similar way).
+
+.. code-block:: console
+
+    N-1A9ODN6ZXK4LQ /> registry
+    N-1A9ODN6ZXK4LQ/registry > ls
+    HKEY_LOCAL_MACHINE
+    HKEY_USERS
+
 
 There are many more commands available, to see them all, simply enter ``help``.
 On top of that, every command has its own ``-h`` flag for a detailed description

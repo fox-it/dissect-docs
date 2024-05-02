@@ -12,6 +12,10 @@ to extract useful information from it. The basic usage format is:
 Here <TARGET> is the file you wish to query. In most cases this is a forensic image. 
 <FUNCTION_NAME> is the name of the function you wish to apply.
 
+.. note ::
+
+    Here are some :doc:`basic examples </index>` of target-query
+
 Loading
 ~~~~~~~
 
