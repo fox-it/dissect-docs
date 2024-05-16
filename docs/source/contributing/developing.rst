@@ -119,11 +119,6 @@ review will not commence.
 If the pull request is accepted, the commit will be merged into the ``main`` branch.
 Your contribution will then be incorporated in the next release.
 
-.. note::
-
-    Each Dissect project now has issues associated to the repository.
-    If you want to contribute, yet you do not know where to start, looking at the ``good first issue`` label is a great start!
-
 Contributor License Agreement
 """""""""""""""""""""""""""""
 
