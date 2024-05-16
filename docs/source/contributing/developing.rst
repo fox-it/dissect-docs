@@ -19,6 +19,12 @@ These pages are organized as follows:
 - :doc:`Tooling </contributing/tooling>`: information regarding the available tooling for building and testing code and documentation.
 
 
+Each Dissect project now contains a list of tasks that we want to implement, which can be found under the ``issues`` tab.
+
+.. note::
+
+   If you want to contribute, yet you do not know where to start, looking at the ``good first issue`` label is a great start!
+
 Path resolution policy
 ----------------------
 
