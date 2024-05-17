@@ -106,7 +106,7 @@ When creating the pull request please do the following:
 
 * Make sure the commits are in the style of our :doc:`style guide </contributing/style-guide>`.
 * Include a description of the proposed changes and how to test them.
-* Associate the pull request with an issue either in the UI or using Github closing keywords::
+* Associate the pull request with an issue either in the UI or using GitHub closing keywords::
 
   * close(|s|d) #<nr>
   * fix(|es|ed) #<nr>
