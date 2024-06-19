@@ -122,6 +122,29 @@ The following record descriptor extensions are available:
 +------------------------------------+--------------------+--------------+
 
 
+GroupedRecord
+-------------
+
+A ``GroupedRecord`` holds multiple records and offers a flat view of the records.
+Suppose you wish to record an event system that contains events with triggers and
+events with actions. You could use a ``GroupedRecord`` to compose records reflecting
+these combinations:
+
+.. code-block:: python
+
+    if action:
+        yield GroupedRecord("event/grouped", [event, action])
+    elif trigger:
+        yield GroupedRecord("event/grouped", [event, trigger])
+
+
+If two records have the same fieldname, the first one will prevail.
+
+.. warning::
+ 
+    Note that, this record type cannot be used to nest records. Nesting records is not
+    possible.
+
 DynamicDescriptor
 -----------------
 
@@ -146,6 +169,5 @@ In this case you might want to communicate that ``f`` at least contains a digest
 
 This allows other tools that are interested in records having specific field types
 to check if your plugin function provides this.
-
 
 
