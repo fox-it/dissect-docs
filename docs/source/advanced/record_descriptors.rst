@@ -21,7 +21,7 @@ record descriptor:
 
 A record is composed of various :ref:`field types <advanced/plugins:records>`.
 
-The ``TargetRecordDescriptor`` will add basic target information to complete your record.
+The :data:`~dissect.target.helpers.record.TargetRecordDescriptor` will add basic target information to complete your record.
 You can now generate records by filling the structure like this:
 
 .. code-block:: python
