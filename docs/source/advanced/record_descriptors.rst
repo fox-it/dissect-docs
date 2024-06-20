@@ -35,7 +35,7 @@ You can now generate records by filling the structure like this:
     )
 
 
-Target related information like hostname and domain will be automatically added if you provide your target
+Target related information like ``hostname`` and ``domain`` will be automatically added if you provide your target
 by setting the ``_target`` field. There are some default record descriptors extending 
 ``TargetRecordDescriptor`` available for common scenarios:
 
