@@ -25,7 +25,7 @@ record descriptor:
 A record is composed of various :ref:`field types <advanced/plugins:records>`
 and their corresponding names.
 
-The :data:`~dissect.target.helpers.record.TargetRecordDescriptor` will add basic target information to complete your record.
+The :func:`~dissect.target.helpers.record.TargetRecordDescriptor` will add basic target information to complete your record.
 You can now generate records by filling the structure like this:
 
 .. code-block:: python
@@ -41,7 +41,7 @@ You can now generate records by filling the structure like this:
 
 Target related information like ``hostname`` and ``domain`` will be automatically added if you provide your target
 by setting the ``_target`` field. There are some default record descriptors extending 
-``TargetRecordDescriptor`` available for common scenarios:
+:func:`~dissect.target.helpers.record.TargetRecordDescriptor` available for common scenarios:
 
 +--------------------------+--------------------+
 | Record Descriptor        | Additional Fields  |
@@ -66,11 +66,13 @@ by setting the ``_target`` field. There are some default record descriptors exte
 
 If you create your own record descriptor, it is often practical to use existing ones as a basis.
 This helps to keep the naming uniform. To extend existing record descriptors use
-``create_extended_descriptor()``.
+:func:`~dissect.target.helpers.record.create_extended_descriptor`.
 
 For instance, to create a record descriptor for browser downloads you could use:
 
 .. code-block:: python
+
+    from dissect.target.helpers.record import create_extended_descriptor
 
     Descriptor = create_extended_descriptor([UserRecordDescriptorExtension])
     
@@ -99,6 +101,8 @@ It is also possible to use multiple existing record descriptor extensions as the
 descriptor:
 
 .. code-block:: python
+
+    from dissect.target.helpers.record import create_extended_descriptor
 
     UserRegistryRecordDescriptor = create_extended_descriptor(
         [
@@ -129,12 +133,14 @@ The following record descriptor extensions are available:
 GroupedRecord
 -------------
 
-A ``GroupedRecord`` holds multiple records and offers a flat view of the records.
+A :class:`~flow.record.base.GroupedRecord` holds multiple records and offers a flat view of the records.
 Suppose you wish to record an event system that contains events with triggers and
-events with actions. You could use a ``GroupedRecord`` to compose records reflecting
+events with actions. You could use a :class:`~flow.record.base.GroupedRecord` to compose records reflecting
 these combinations:
 
 .. code-block:: python
+
+    from flow.record import GroupedRecord
 
     if action:
         yield GroupedRecord("event/grouped", [event, action])
@@ -152,7 +158,7 @@ If two records have the same fieldname, the first one will prevail.
 DynamicDescriptor
 -----------------
 
-The ``DynamicDescriptor()`` (:class:`~dissect.target.helpers.record.DynamicDescriptor`) function returns a plain record descriptor with the provided types.
+The :func:`~dissect.target.helpers.record.DynamicDescriptor` function returns a plain record descriptor with the provided types.
 This function can be used if your plugin creates its own record descriptor dynamically but you still
 wish to provide certain field types through the export decorator.
 
