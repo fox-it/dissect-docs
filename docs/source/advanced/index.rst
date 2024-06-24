@@ -10,3 +10,4 @@ Advanced
     /advanced/volumes
     /advanced/filesystems
     /advanced/plugins
+    /advanced/record_descriptors
