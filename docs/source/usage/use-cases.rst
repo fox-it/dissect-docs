@@ -24,7 +24,7 @@ argument, while using the basic OS functions. You can write this to a csv file t
 
 .. code-block:: console
 
-    $ target-query targets/ -f hostname,domain,OS,version,ips --cmdb -d ";" > docs/CMDB.csv
+    $ target-query targets/ -f hostname,domain,os,version,ips --cmdb -d ";" > docs/CMDB.csv
 
 Pushing query results to a search platform
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
