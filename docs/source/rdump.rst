@@ -10,12 +10,12 @@ They are transformed to text by the default mechanism. An example is given below
 
 With ``rdump`` you can transform the stream of records to your liking. The ``rdump`` utility allows you to:
 
-* select certain fields from the records
-* filter certain records
-* create additional derived fields
-* limit the output
-* format the results
-* write the results through an adapter
+* Select certain fields from the records.
+* Filter certain records.
+* Create additional derived fields.
+* Limit the output.
+* Format the results.
+* Write the results through an adapter.
 
 .. hint::
 
