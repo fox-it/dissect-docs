@@ -9,7 +9,7 @@ to extract useful information from it. The basic usage format is:
 
     $ target-query <TARGET> -f <FUNCTION_NAME>
 
-Here <TARGET> is the file you wish to query. In most cases this is a forensic image. 
+Here, <TARGET> is the file you wish to query. In most cases, this will be a forensic image or a lightweight forensic package (such as Acquire).
 <FUNCTION_NAME> is the name of the function you wish to apply.
 
 .. note ::
