@@ -113,9 +113,7 @@ To limit the number of results, use the ``--limit`` option like this:
     
     $ target-query host.img -f walkfs --limit 10
 
-Besides the regular format, target-query can use ``-j`` option to output as JSON.
-After you have generated some data you might want to process it further, you can use
-:doc:`rdump <rdump>` (Record Dumper) for this.
+In addition to its regular output, target-query can use the -j option to produce JSON-formatted results. To work with records efficiently, consider using the Dissect utility rdump. This tool allows you to convert records into JSON, CSV, or even stream them directly to platforms like Splunk or Elastic. You can learn more about how to use rdump on the dedicated rdump page.
 
 If you want to use a tool like ``grep`` to search the results of a query, you need to
 add the ``-s`` option to turn the records into searchable strings:
