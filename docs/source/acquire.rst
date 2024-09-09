@@ -36,6 +36,16 @@ Profiles
 By default, Acquire runs the ``full`` profile, meaning it will collect as much as it can.
 You can select specific artefacts you are interested in or you can select a profile.
 
+Selecting a single artefact:
+.. code-block:: console
+
+    $ acquire --evtx 
+
+Selecting a acquisition profile:
+.. code-block:: console
+
+    $ acquire --profile full 
+
 You can select a profiles with the ``--profile`` option.
 There are 4 basic profiles ``full`` (default), ``default``, ``minimal`` and ``none``.
     
