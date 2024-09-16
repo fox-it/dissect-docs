@@ -96,6 +96,7 @@ Get in touch, join us on `github <https://github.com/fox-it/dissect.target>`_!
     Tutorial </tutorial>
     Querying </target-query>
     Shell </target-shell>
+    Mount </target-mount>
     Acquire </acquire>
     RDump </rdump>
     
