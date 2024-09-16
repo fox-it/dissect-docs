@@ -33,8 +33,15 @@ again.
 Profiles
 ~~~~~~~~
 
-By default, Acquire runs the ``full`` profile, meaning it will collect as much as it can.
-You can select specific artefacts you are interested in or you can select a profile.
+
+By design, Acquire runs with the ``default`` profile,
+providing a curated selection of artifacts that aims to fulfill the
+requirements of most scenarios efficiently.
+This prefabricated suite encompasses a balanced assortment
+designed to deliver comprehensive results without extensive processing time.
+Alternatively, users have the flexibility to tailor their collection process by choosing
+individual artifacts of interest or by opting for a different predefined
+profile to suit their specific needs.
 
 Selecting a single artefact:
 .. code-block:: console
