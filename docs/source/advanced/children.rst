@@ -1,7 +1,9 @@
 Children
 ========
 
-Dissect supports working with nested targets, known as child targets. For instance, if you’re working with a VMware ESXI or Hyper-V target, ``dissect.target`` can load and analyse virtual machines stored within it.
+Dissect supports working with nested targets,
+known as child targets. For instance, if you’re working with a VMware ESXI or Hyper-V target,
+``dissect.target`` can load and analyse virtual machines stored within it.
 
 Say, for example, we opened a Hyper-V target locally from ``\\.\PhysicalDrive0``, we can parse the metadata
 in ``ProgramData/Microsoft/Windows/Hyper-V/data.vmcx`` which tells us where all of the virtual machines are stored.
