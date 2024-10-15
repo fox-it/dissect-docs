@@ -131,6 +131,14 @@ that may have had its superblock or ``$BOOT`` destroyed:
 Targets in targets
 ------------------
 
-Dissect also supports the concept of nested targets, also known as child targets.
-Child targets are especially useful for dealing with hypervisors.
-Learn more about :doc:`child targets </advanced/children>`
+
+Dissect also supports the concept of targets within targets, referred to as child targets.
+Child targets are especially useful for dealing with hypervisors. With the child target feature
+you can query virtual machines that are running on a host. Because of the way Dissect handles the
+underlying data streams you can query these virtual machines regardless of the locks the host
+operating system has on these files. It is even possible to explore the contents of the child targets
+using ``target-shell`` just like regular targets!
+
+.. hint::
+
+    Learn more about child targets :doc:`here </advanced/children>`.

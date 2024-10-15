@@ -19,6 +19,12 @@ These pages are organized as follows:
 - :doc:`Tooling </contributing/tooling>`: information regarding the available tooling for building and testing code and documentation.
 
 
+Each Dissect project now contains a list of tasks that we want to implement, which can be found under the ``issues`` tab.
+
+.. note::
+
+   If you want to contribute, yet you do not know where to start, looking at the ``good first issue`` label is a great start!
+
 Path resolution policy
 ----------------------
 
@@ -95,6 +101,16 @@ Submission and review process
 
 When you have finished work in your feature branch and the unit tests and linting tests pass, you can submit
 a pull request.
+
+When creating the pull request please do the following:
+
+* Make sure the commits are in the style of our :doc:`style guide </contributing/style-guide>`.
+* Include a description of the proposed changes and how to test them.
+* Associate the pull request with an issue either in the UI or using GitHub closing keywords::
+
+  * close(|s|d) #<nr>
+  * fix(|es|ed) #<nr>
+  * resolve(|s|d) #<nr>
 
 Each pull request will be reviewed before including it in the official code base. Before manual review takes place,
 we will run our CI pipeline which executes unit tests and formatting checks. If your pull request does not pass these tests, manual

@@ -35,7 +35,7 @@ The table below contains references to articles where Dissect is used to solve p
      - Yun Zheng Hu / Fox-IT
    * - 2022-12-26
      - `Dissecting fortigate images for fun and non-profit <https://www.divd.nl/2022/12/26/dissecting-fortigate-images-for-fun-and-no-profit/>`_
-     - Axel Boesnach / DIVD
+     - Axel Boesenach / DIVD
    * - 2022-11-17
      - `Parsing atop files with python dissect.cstruct <https://diablohorn.com/2022/11/17/parsing-atop-files-with-python-dissect-cstruct/>`_
      - Francisco Dominguez
