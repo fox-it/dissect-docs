@@ -131,7 +131,6 @@ that may have had its superblock or ``$BOOT`` destroyed:
 Targets in targets
 ------------------
 
-
 Dissect also supports the concept of targets within targets, referred to as child targets.
 Child targets are especially useful for dealing with hypervisors. With the child target feature
 you can query virtual machines that are running on a host. Because of the way Dissect handles the

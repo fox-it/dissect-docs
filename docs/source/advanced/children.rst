@@ -1,7 +1,6 @@
 Children
 ========
 
-
 Dissect also supports the concept of targets within targets, referred to as child targets. For example, when a
 target contains a ``.vmdk`` file within itself, we can tell ``dissect.target`` to load that target from within the
 context of the first target. This can be useful when dealing with hypervisors.
