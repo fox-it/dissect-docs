@@ -44,11 +44,13 @@ individual artifacts of interest or by opting for a different predefined
 profile to suit their specific needs.
 
 Selecting a single artefact:
+
 .. code-block:: console
 
     $ acquire --evtx 
 
 Selecting a acquisition profile:
+
 .. code-block:: console
 
     $ acquire --profile full 

@@ -69,7 +69,7 @@ The result will be something like this:
 
 To get the list of user accounts on this machine we use :doc:`target-query <target-query>`.
 Another tool at our disposal is :doc:`rdump <rdump>`. By default target-query gives us records,
-to process, filter and format results we can feed them to rdump, here we only select the name of the user:
+to process, filter and format results, we can feed them to rdump. Here we only select the name of the user:
 
 .. code-block:: console
 
@@ -115,7 +115,7 @@ plugin ``walkfs`` that yields all files in the image:
 This command returns a huge list of files. Our next step is to  narrow this
 list down to only files ending with ``.exe``. To accomplish this, we send
 the results to another Dissect tool called ``rdump`` and apply a
-Python expression:
+Python expression for filtering:
 
 .. code-block:: console
 
@@ -130,7 +130,7 @@ The expression ``r.path.suffix=='.exe'`` is a snippet of Python that examines
 the suffix of each path and only includes the ones ending with ``.exe``.
 You can use any Python expression you like!
 
-While this list is much better, it could use a better formatting.
+While this list is much better, we can still improve the formatting.
 We use the ``-F`` option from ``rdump`` to filter the columns:
 
 .. code-block:: console
@@ -138,8 +138,8 @@ We use the ``-F`` option from ``rdump`` to filter the columns:
     $ target-query SCHARDT.img -f walkfs | rdump -s "r.path.suffix=='.exe'" -F path,ctime,mtime,size
     
 This reduces the number characters per line significantly.
-However due to the formatting, it is still hard to read
-(hence no output example is shown, because it is basically the same)
+However due to the record representation, it is still hard to read
+(hence no output example is shown)
 To make it even more readable, we add the
 ``-C`` option to convert it to a comma separated format:
 
@@ -152,7 +152,7 @@ To make it even more readable, we add the
     \sysvol\...\LookAtLan.exe,2004-08-19 22:25:09.860123+00:00,2004-08-19 23:05:15.852375+00:00,41.6 KB
 
 
-This already looks much more compact and searchable. Finally we can use put the resulting table
+This already looks much more compact and searchable. Finally, we can put the resulting table
 in a spreadsheet for further investigation. We accomplish this by simply adding ``> db.csv``
 
 .. code-block:: console
@@ -189,7 +189,9 @@ So we can navigate to one of the suspicious files we found like this:
 This was just a quick introduction to the basic tools that are at your disposal.
 To get an understanding of the basics of Dissect see:
 
-* :doc:`target-query <target-query>`
-* :doc:`target-shell <target-shell>`
 * :doc:`acquire <acquire>`
 * :doc:`rdump <rdump>`
+* :doc:`target-mount <target-mount>`
+* :doc:`target-query <target-query>`
+* :doc:`target-shell <target-shell>`
+

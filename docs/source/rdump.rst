@@ -88,14 +88,14 @@ Formatting
 ~~~~~~~~~~
 
 A Python-style formatting rule can be specified using the ``-f`` option. The following example applies the format
-``{file} ({size})`` to the records:
+``{file} {size}`` to the records:
 
 .. code-block:: console
 
     $ target-query host.img -f walkfs | rdump -s "r.path.suffix=='.dll'" -F path,file,size -E "file=path.name" --skip=1 --count=3 -f "Filename: {file} Size: {size}"
     
     Filename: cygwinb19.dll Size: 0.38 MB
-    Filename: dnsscan.dll Size: 40.0 KB)
+    Filename: dnsscan.dll Size: 40.0 KB
     Filename: fingerscan.dll Size: 40.0 KB
 
 Instead of having to design your own format you can also choose one of these

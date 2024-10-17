@@ -9,7 +9,7 @@ to extract useful information from it. The basic usage format is:
 
     $ target-query <TARGET> -f <FUNCTION_NAME>
 
-Here, <TARGET> is the file you wish to query. In most cases, this will be a forensic image or a lightweight forensic package (such as Acquire).
+Here, <TARGET> is the file you wish to query. In most cases, this will be a forensic image.
 <FUNCTION_NAME> is the name of the function you wish to apply.
 
 .. note ::
@@ -21,8 +21,8 @@ Loading
 
 
 By default, Dissect attempts to determine the file format automatically and selects the appropriate loader.
-If the image is split into multiple files, just feed it the first. (For example with an EWF image, just target the 
-.E01 file) 
+If the image is split into multiple files, just feed it the first (For example with an EWF image, just target the 
+.E01 file).
 
 If you wish to override auto-detection, use the ``-L`` option to explicitly specify the loader that
 has to be used:
@@ -113,7 +113,10 @@ To limit the number of results, use the ``--limit`` option like this:
     
     $ target-query host.img -f walkfs --limit 10
 
-In addition to its regular output, target-query can use the -j option to produce JSON-formatted results. To work with records efficiently, consider using the Dissect utility rdump. This tool allows you to convert records into JSON, CSV, or even stream them directly to platforms like Splunk or Elastic. You can learn more about how to use rdump on the dedicated rdump page.
+In addition to its regular output, target-query can use the -j option to produce JSON-formatted results.
+To work with records efficiently, consider using the Dissect utility rdump.
+This tool allows you to convert records into JSON, CSV, or even stream them directly to platforms like Splunk or Elastic.
+You can learn more about how to use rdump on the dedicated rdump page.
 
 If you want to use a tool like ``grep`` to search the results of a query, you need to
 add the ``-s`` option to turn the records into searchable strings:

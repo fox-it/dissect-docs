@@ -12,9 +12,9 @@ Dissect may still work on older systems but we do not actively
 test on those.
 
 * Operating system versions: Linux 4+, macOS 11+, Windows 8+
-* Python 3.9 - 3.12
+* Python 3.9 - 3.12 (or PyPy)
 * Processor: 64-bit 1 gigahertz (GHz) or faster with two or more cores
-* At least 16 GB of RAM
+* At least 8 GB of RAM
 
 
 Install Procedure

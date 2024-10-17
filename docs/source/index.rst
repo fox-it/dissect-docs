@@ -46,13 +46,13 @@ Key features
 Dissect is a powerful artefact extractor and parser that saves you a lot of time.
 With Dissect you can:
 
-* Quickly **extract artefacts** from any source (for example IMG, EWF, Kape, DD, VDI, PVM)
-* Access artefacts from almost any OS (for example Windows, macOS, Linux/Unix, ESXi)
-* Access almost any filesystem (for example NTFS, EXT, XFS, QNX6)
-* **Parse logs**, registry entries, cookies, history and more, directly from the source
-* Export findings to text, JSON, CSV or stream to datastores like Splunk, Elastic, MySQL
-* Feed, filter and script to process found data in any way you like
-* **Investigate images** with powerful tools like target-shell, target-mount or using our friendly Python API
+* Quickly **extract artefacts** from any source (for example IMG, EWF, Kape, DD, VDI, PVM).
+* Access artefacts from almost any OS (for example Windows, macOS, Linux/Unix, ESXi).
+* Access almost any filesystem (for example NTFS, EXT, XFS, QNX6).
+* **Parse logs**, registry entries, cookies, history and more, directly from the source.
+* Export findings to text, JSON, CSV or stream to datastores like Splunk, Elastic, MySQL.
+* Feed, filter and script to process found data in any way you like.
+* **Investigate images** with powerful tools like target-shell, target-mount or using our friendly Python API.
 
 Using these features, you can for instance (among other things):
 
@@ -71,10 +71,11 @@ Learn more
 Excited? Great, so are we!
 The next step is to get to know Dissect a little better.
 
-* First, :doc:`/install` Dissect
-* Try the :doc:`/tutorial` to get started
-* Visit :doc:`/usage/introduction` for an in-depth introduction into Dissect
-* Visit :doc:`/tools/index` for an overview of each tool in the Dissect suite
+* First, :doc:`/install` Dissect.
+* Try the :doc:`/tutorial` to get started.
+* Learn the basics of :doc:`/target-query`, :doc:`/target-shell`, :doc:`/target-mount`, :doc:`/acquire` and :doc:`/rdump`.
+* Visit :doc:`/usage/introduction` for an in-depth introduction into Dissect.
+* Visit :doc:`/tools/index` for an overview of each tool in the Dissect suite.
 
 Or you can start by taking a look at some community articles and videos:
 :doc:`/resources/dissect-in-action` or
@@ -102,7 +103,7 @@ Get in touch, join us on `github <https://github.com/fox-it/dissect.target>`_!
     
     
 .. toctree::
-    :caption: Advanced
+    :caption: In-Depth
     :hidden:
     
     /tools/index
@@ -111,7 +112,7 @@ Get in touch, join us on `github <https://github.com/fox-it/dissect.target>`_!
     /plugins/index
     Architecture </overview/index>
     /projects/index
-    Under the hood </advanced/index>
+    /advanced/index
     /api/index
 
 .. toctree::
