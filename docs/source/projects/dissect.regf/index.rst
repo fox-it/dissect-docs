@@ -31,9 +31,9 @@ subkeys from the root of a hive:
 
     from dissect.regf import RegistryHive
 
-    with open("/path/to/SYSTEM", "rb") as fh
+    with open("/path/to/SYSTEM", "rb") as fh:
         hive = RegistryHive(fh)
-        for subkey in hive.root.subkeys():
+        for subkey in hive.root().subkeys():
             print(subkey)
 
 
