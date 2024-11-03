@@ -137,7 +137,7 @@ function is not compatible (which can be seen in the log files). So there is no 
 list for each target.
 
 To further speed up this process, you could use ``xargs`` to run multiple instances of ``target-query`` at the same time.
-Be aware that executing a namespace plugin like ``browser.cookies`` in conjunction with the plugin ``chrome.cookies``, that
+Be aware that when executing a namespace plugin like ``browser.cookies`` in conjunction with the plugin ``chrome.cookies``,
 the results will contain duplicated records. This is because the ``browser.cookies`` plugin will execute the ``cookies``
 function of all ``browser`` plugins, including ``chrome.cookies``.
 
