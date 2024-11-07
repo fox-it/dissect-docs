@@ -94,7 +94,7 @@ We add ``-q`` to suppress warnings from plugins telling us they are not compatib
 
 You now see a list of plugins that you can use with the ``-f`` option.
 Try a couple of them.
-
+Search specific files
 If we want to query for suspicious programs that might have been installed
 on this machine, one option could be to search for all the files with an ``.exe``
 extension and then try to identify a malicious one. To this end, our first step is to use the
