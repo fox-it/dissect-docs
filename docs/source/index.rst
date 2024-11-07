@@ -54,7 +54,7 @@ With Dissect you can:
 * Feed, filter and script to process found data in any way you like.
 * **Investigate images** with powerful tools like target-shell, target-mount or using our friendly Python API.
 
-Using these features, you can for instance (among other things):
+These features can enable you to:
 
 * Make a timeline of the event log from all your investigation data at once.
 * Identify anomalies in artefacts such as services, tasks and run keys over a large amount of investigation data.
