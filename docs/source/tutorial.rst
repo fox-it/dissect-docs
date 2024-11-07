@@ -31,7 +31,7 @@ On Linux:
 .. note ::
 
     You can also download them manually of course.
-    
+   ###  Basic operations
 Now, we are going to do some basic operations on this image. If you like, you can merge them together first,
 although this is not strictly necessary:
 
