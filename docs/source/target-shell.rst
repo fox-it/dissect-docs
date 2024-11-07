@@ -59,12 +59,10 @@ tree under /etc in a similar way).
     HKEY_USERS
 
 
+.. note::
 There are many more commands available, to see them all, simply enter ``help``.
 On top of that, every command has its own ``-h`` flag for a detailed description
 of all its available options.
-
-.. note::
-
     For a complete overview of all options see :doc:`here <tools/target-shell>`.
 
 
