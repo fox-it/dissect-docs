@@ -56,7 +56,7 @@ Selecting an acquisition profile:
 
     $ acquire --profile full 
 
-You can select a profiles with the ``--profile`` option.
+You can select a profile with the ``--profile`` option.
 There are 4 basic profiles ``full``, ``default``, ``minimal`` and ``none``.
     
 .. note::
