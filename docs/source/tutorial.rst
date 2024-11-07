@@ -100,8 +100,8 @@ Try a couple of them.
 
 If we want to query for suspicious programs that might have been installed
 on this machine, one option could be to search for all the files with an ``.exe``
-extension and then try to identify a malicious one. To this end, we select the
-plugin ``walkfs`` that yields all files in the image:
+extension and then try to identify a malicious one. To this end, our first step is to use the
+``walkfs`` plugin, that yields all files in the image:
 
 .. code-block:: console
 
