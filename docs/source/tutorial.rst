@@ -138,7 +138,7 @@ This reduces the number of characters per line significantly.
 However due to the record representation, it is still hard to read
 (hence no output example is shown)
 To make it even more readable, we add the
-``-C`` option to convert it to a comma separated format:
+``-C`` option which converts it to a comma separated format:
 
 .. code-block:: console
 
