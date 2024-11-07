@@ -159,7 +159,6 @@ in a spreadsheet for further investigation. We accomplish this by simply adding 
 You can now open the ``db.csv`` file in your favourite spreadsheet program and
 search for well known malicious executables.
 
-For more details see :doc:`rdump <rdump>`.
 
 In our database we find a program that can be
 used for hacking: LookAtLan.exe. We can open a shell to the image to further investigate the
