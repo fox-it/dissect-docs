@@ -2,7 +2,7 @@ target-mount
 ------------
 
 The target-mount tool allows you to **explore a forensic image** by mounting it as
-as a filesystem. To accomplish this, target-mount uses the ``FUSE`` library.
+a filesystem. To accomplish this, target-mount uses the ``FUSE`` library.
 
 .. code-block:: console
     
