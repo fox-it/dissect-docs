@@ -66,7 +66,7 @@ The result will be something like this:
     Timezone       : America/Chicago
     Install date   : 2004-08-19 22:48:27+00:00
     Last activity  : 2004-08-27 15:46:33.820240+00:00
-
+Find user accounts
 To get the list of user accounts on this machine we use two tools :doc:`target-query <target-query>` and :doc:`rdump <rdump>`. `target-query`, as the names suggests, allows to query the images and produces records by default. `rdump` is used to process, filter and format the query results. Here we only select the name of the user:
 
 .. code-block:: console
