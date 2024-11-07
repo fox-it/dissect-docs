@@ -39,7 +39,7 @@ although this is not strictly necessary:
 
     $ for i in `ls SCHARDT.00*`; do cat $i >> SCHARDT.img; done
 
-
+###Basic image info
 To get a brief summary of the forensic image, we use :doc:`target-info <tools/target-info>` like this:
 
 .. code-block:: console
