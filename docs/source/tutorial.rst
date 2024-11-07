@@ -110,7 +110,7 @@ extension and then try to identify a malicious one. To this end, our first step 
     <filesystem/entry path='\sysvol\...\Local Settings' size=0 ...>
     <filesystem/entry path='\sysvol\...\desktop.ini' size=62.0 ...>
     
-This command returns a huge list of files. Our next step is to  narrow this
+This command returns a huge list of files. Our next step is to narrow this
 list down to only files ending with ``.exe``. To accomplish this, we send
 the results to another Dissect tool called ``rdump`` and apply a
 Python expression for filtering:
