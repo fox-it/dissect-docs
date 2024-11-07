@@ -2,7 +2,8 @@ target-shell
 ------------
 
 The target-shell tool allows you to **explore a forensic image** as if you were navigating it through
-a shell. Opening a target shell is as simple as:
+a shell. 
+Opening a target shell is as simple as:
 
 .. code-block:: console
     
