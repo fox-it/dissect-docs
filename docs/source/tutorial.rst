@@ -83,17 +83,14 @@ The output is:
     NetworkService
     Mr. Evil
 
-
+Tip: Finding available queries
 To see what else we can query in this image, use the ``-l`` option:
 
 .. code-block:: console
 
     $ target-query SCHARDT.img -l -q
 
-.. note ::
-
-    We also add ``-q`` to suppress warnings from plugins telling us they
-    are not compatible with this forensic image.
+We add ``-q`` to suppress warnings from plugins telling us they are not compatible with this forensic image.
 
 You now see a list of plugins that you can use with the ``-f`` option.
 Try a couple of them.
