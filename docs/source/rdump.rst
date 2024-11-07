@@ -98,7 +98,7 @@ A Python-style formatting rule can be specified using the ``-f`` option. The fol
     Filename: dnsscan.dll Size: 40.0 KB
     Filename: fingerscan.dll Size: 40.0 KB
 
-Instead of having to design your own format you can also choose one of these
+Instead of having to design your own format you can also choose one of these per-defined formats:
 
 * JSON (``-j`` or ``--mode=json``)
 * CSV (``-C`` or ``--mode=csv``)
