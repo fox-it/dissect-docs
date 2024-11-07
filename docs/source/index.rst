@@ -74,7 +74,7 @@ The next step is to get to know Dissect a little better.
 * First, :doc:`/install` Dissect.
 * Try the :doc:`/tutorial` to get started.
 * Learn the basics of :doc:`/target-query`, :doc:`/target-shell`, :doc:`/target-mount`, :doc:`/acquire` and :doc:`/rdump`.
-* Visit :doc:`/usage/introduction` for an in-depth introduction into Dissect.
+* Visit :doc:`/usage/introduction` for an in-depth introduction to Dissect.
 * Visit :doc:`/tools/index` for an overview of each tool in the Dissect suite.
 
 Or you can start by taking a look at some community articles and videos:
