@@ -1,6 +1,6 @@
 Tutorial
 --------
-
+### Let's get started!
 For this tutorial we are going to use a well known case file from `NIST <https://cfreds.nist.gov/all/NIST/HackingCase>`_.
 In this tutorial we assume Linux is used, on other operating systems most steps are the same but details may differ.
 First of all, we install Python and create a venv:
