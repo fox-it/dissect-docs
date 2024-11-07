@@ -30,7 +30,7 @@ Imagine we're going to extract a list of users from a forensic image using:
 
     $ target-query host.img -f users 
 
-To select only the name and home fields we use the ``-F`` option:
+To select only the 'name' and 'home' fields we use the ``-F`` option:
 
 .. code-block:: console
 
