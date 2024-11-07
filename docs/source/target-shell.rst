@@ -41,7 +41,7 @@ If you see an interesting file or directory you can save it to your local disk w
 
     /> save <FILENAME>
 
-To search the file system one might employ the ``find`` command like this:
+To search the file system utilize the ``find`` command like this:
 
 .. code-block:: console
 
