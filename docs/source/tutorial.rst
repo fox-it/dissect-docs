@@ -122,7 +122,7 @@ Python expression for filtering:
 Here we use the ``-s`` option for rdump to filter on a particular file extension.
 The expression ``r.path.suffix=='.exe'`` is a snippet of Python that examines
 the suffix of each path and only includes the ones ending with ``.exe``.
-You can use any Python expression you like!
+Tip: You can use any Python expression you like!
 
 While this list is much better, we can still improve the formatting.
 We use the ``-F`` option from ``rdump`` to filter the columns:
