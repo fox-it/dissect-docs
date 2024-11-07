@@ -50,7 +50,7 @@ Selecting a single artefact:
 
     $ acquire --evtx 
 
-Selecting a acquisition profile:
+Selecting an acquisition profile:
 
 .. code-block:: console
 
