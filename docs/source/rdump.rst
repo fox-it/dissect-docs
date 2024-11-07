@@ -1,6 +1,6 @@
 rdump
 -----
-
+`rdump` is used to process, filter and format target-query results.
 By default, target-query generates records. Records in this sense are binary representations of parsed artefacts.
 They are transformed to text by the default mechanism. An example is given below:
 
