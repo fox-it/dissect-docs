@@ -178,7 +178,7 @@ So we can navigate to one of the suspicious files we found like this:
     LookAtLan.exe
     ...
 
-
+All done!
 This was just a quick introduction to the basic tools that are at your disposal.
 To get an understanding of the basics of Dissect see:
 
