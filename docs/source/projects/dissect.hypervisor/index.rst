@@ -11,8 +11,9 @@ A Dissect module implementing parsers for various hypervisor disk, backup and co
 
 * Backup formats
 
-  * VMA (:class:`~dissect.hypervisor.backup.vma.VMA`)
-  * XVA (:class:`~dissect.hypervisor.backup.xva.XVA`)
+  * VMA (:class:`~dissect.archive.vma.VMA`)
+  * XVA (:class:`~dissect.archive.xva.XVA`)
+  * VBK (:class:`~dissect.archive.vbk.VBK`)
 
 * Metadata descriptors
 
