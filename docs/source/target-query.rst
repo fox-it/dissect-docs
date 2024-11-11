@@ -9,8 +9,10 @@ to extract useful information from it. The basic usage format is:
 
     $ target-query <TARGET> -f <FUNCTION_NAME>
 
-Here, <TARGET> is the file you wish to query. In most cases, this will be a forensic image.
-<FUNCTION_NAME> is the name of the function you wish to apply.
+Here, ``<TARGET>`` is the file you wish to query. In most cases, this will be a forensic image.
+``<FUNCTION_NAME>`` is the name of the function you wish to apply. Note that Dissect uses
+a plugin architecture, so every ``function`` is implemented through a plugin. In this manual
+we use the terms function and plugin interchangeably.
 
 .. note ::
 
@@ -19,7 +21,8 @@ Here, <TARGET> is the file you wish to query. In most cases, this will be a fore
 Loading
 ~~~~~~~
 
-
+In order to query a target, the target data (usually an image) has to be loaded.
+Loading makes the raw target data accessible for Dissect.
 By default, Dissect attempts to determine the file format automatically and selects the appropriate loader.
 If the image is split into multiple files, just feed it the first (For example with an EWF image, just target the 
 .E01 file).
@@ -34,6 +37,8 @@ has to be used:
 .. note ::
 
     The full list of loaders is listed at the end of the output of the ``-l`` option.
+    It is recommended to also add the ``-q`` option to suppress plugin specific warnings
+    that may clutter the output.
 
 
 In case there is no complete image available but just a couple of separate (log/evt/evtx) files, you can use
@@ -85,7 +90,7 @@ Excluding functions is possible with the ``-xf`` flag.
 Plugins
 ~~~~~~~
 
-Each function available in **target-query** is actually a plugin.
+As stated before, each function available in **target-query** is actually a plugin.
 Using custom plugins is also possible. With the ``--plugin-path`` flag you can point
 Dissect to your own plugin folder:
 
@@ -116,10 +121,10 @@ To limit the number of results, use the ``--limit`` option like this:
 In addition to its regular output, target-query can use the -j option to produce JSON-formatted results.
 To work with records efficiently, consider using the Dissect utility rdump.
 This tool allows you to convert records into JSON, CSV, or even stream them directly to platforms like Splunk or Elastic.
-Learn more about how to use * :doc:`rdump <rdump>`.
+Learn more about how to use :doc:`rdump <rdump>`.
 
 If you want to use a tool like ``grep`` to search the results of a query, you need to
-add the ``-s`` option to turn the records into searchable strings:
+add the ``-s`` option to turn the records into searchable strings (records are binary data):
 
 .. code-block:: console
 

@@ -1,6 +1,9 @@
 Tutorial
 --------
-### Let's get started!
+
+Let's get started!
+^^^^^^^^^^^^^^^^^^
+
 For this tutorial we are going to use a well known case file from `NIST <https://cfreds.nist.gov/all/NIST/HackingCase>`_.
 In this tutorial we assume Linux is used, on other operating systems most steps are the same but details may differ.
 First of all, we install Python and create a venv:
@@ -28,18 +31,26 @@ On Linux:
 
     $ for i in {1..8}; do curl https://cfreds-archive.nist.gov/images/hacking-dd/SCHARDT.00$i -o SCHARDT.00$i; done
     
-.. note ::
+You can also download them manually of course.
 
-    You can also download them manually of course.
-   ###  Basic operations
+Basic operations
+^^^^^^^^^^^^^^^^
+
 Now, we are going to do some basic operations on this image. If you like, you can merge them together first,
 although this is not strictly necessary:
 
 .. code-block:: console
 
     $ for i in `ls SCHARDT.00*`; do cat $i >> SCHARDT.img; done
+    
+.. note ::
 
-###Basic image info
+    If you don't want to merge the files, simply feed the first file to Dissect, for instance the
+    one with the ``E01`` or the ``000`` extension.
+
+Basic image info
+^^^^^^^^^^^^^^^^
+
 To get a brief summary of the forensic image, we use :doc:`target-info <tools/target-info>` like this:
 
 .. code-block:: console
@@ -66,12 +77,24 @@ The result will be something like this:
     Timezone       : America/Chicago
     Install date   : 2004-08-19 22:48:27+00:00
     Last activity  : 2004-08-27 15:46:33.820240+00:00
+
 Find user accounts
-To get the list of user accounts on this machine we use two tools :doc:`target-query <target-query>` and :doc:`rdump <rdump>`. `target-query`, as the names suggests, allows to query the images and produces records by default. `rdump` is used to process, filter and format the query results. Here we only select the name of the user:
+^^^^^^^^^^^^^^^^^^
+
+To get the list of user accounts on this machine we use two tools :doc:`target-query <target-query>` and
+:doc:`rdump <rdump>`. `target-query`, as the names suggests, allows to query the images and produces records
+by default. `rdump` is used to process, filter and format the query results. Here we only select the name of the user:
 
 .. code-block:: console
 
     $ target-query SCHARDT.img -f users | rdump -F name -C
+
+With ``-f`` we select the function (technically a **plugin**)
+we like to use, in this case ``users``. Then we pipe
+the result to ``rdump``. With ``-F`` we can select specific fields, in this case
+we only select the field ``name``.
+With ``-C`` we tell the ``rdump`` tool to output the result in CSV format.
+
 
 The output is:
 
@@ -83,7 +106,10 @@ The output is:
     NetworkService
     Mr. Evil
 
-Tip: Finding available queries
+
+Finding available plugins
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
 To see what else we can query in this image, use the ``-l`` option:
 
 .. code-block:: console
@@ -94,7 +120,10 @@ We add ``-q`` to suppress warnings from plugins telling us they are not compatib
 
 You now see a list of plugins that you can use with the ``-f`` option.
 Try a couple of them.
+
 Search specific files
+^^^^^^^^^^^^^^^^^^^^^
+
 If we want to query for suspicious programs that might have been installed
 on this machine, one option could be to search for all the files with an ``.exe``
 extension and then try to identify a malicious one. To this end, our first step is to use the
@@ -122,7 +151,10 @@ Python expression for filtering:
 Here we use the ``-s`` option for rdump to filter on a particular file extension.
 The expression ``r.path.suffix=='.exe'`` is a snippet of Python that examines
 the suffix of each path and only includes the ones ending with ``.exe``.
-Tip: You can use any Python expression you like!
+
+.. hint ::
+
+    You can use any Python expression you like!
 
 While this list is much better, we can still improve the formatting.
 We use the ``-F`` option from ``rdump`` to filter the columns:
@@ -156,9 +188,11 @@ in a spreadsheet for further investigation. We accomplish this by simply adding 
 You can now open the ``db.csv`` file in your favourite spreadsheet program and
 search for well known malicious executables.
 
+Opening a shell
+^^^^^^^^^^^^^^^
 
 In our database we find a program that can be
-used for hacking: LookAtLan.exe. We can open a shell to the image to further investigate the
+used for hacking: ``LookAtLan.exe``. We can open a shell to the image to further investigate the
 compromised system and locate the hacking program:
 
 .. code-block:: console

@@ -53,6 +53,11 @@ So to eliminate all records that, for example, have no domain value:
     $ target-query host.img -f users | rdump -F name,home -s "r.domain is not None"
 
 
+.. note ::
+
+    You can filter on fields that are not selected.
+
+
 Derivations
 ~~~~~~~~~~~
 
