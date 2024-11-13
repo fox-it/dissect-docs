@@ -114,3 +114,7 @@
 	branch = main
 	path = submodules/dissect.archive
 	url = https://github.com/fox-it/dissect.archive.git
+[submodule "submodules/dissect.fve"]
+	branch = main
+	path = submodules/dissect.fve
+	url = https://github.com/fox-it/dissect.fve.git
