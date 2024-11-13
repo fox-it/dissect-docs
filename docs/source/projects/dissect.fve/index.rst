@@ -7,7 +7,8 @@ dissect.fve
 
     :octicon:`mark-github` View on GitHub
 
-A Dissect module implementing parsers for various full volume and disk encryption (FVE) schemes used by the operating systems.
+A Dissect module implementing parsers for full volume encryption implementations, 
+currently Microsoft's Bitlocker Disk Encryption (BDE) and Linux Unified Key Setup (LUKS1 and LUKS2).
 
 * Full volume and disk encryption schemes
 
@@ -40,9 +41,9 @@ to open and decrypt a BitLocker encrypted volume for reading:
 
     with open("path/to/bitlocker/file.dd", "rb") as fh:
         bde = BDE(fh)
-        decrypted_fh = bde.unlock_with_passphrase("kusjesvansrt<3")
+        bde.unlock_with_passphrase("kusjesvansrt<3")
         
-        fs = NTFS(decrypted_fh.open())
+        fs = NTFS(bde.open())
         print(fs.get("/").listdir())
 
         file_fh = fs.get("/file.txt").open()  # This is just another file-like object

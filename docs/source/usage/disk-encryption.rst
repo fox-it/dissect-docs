@@ -5,6 +5,9 @@ Dissect has support for transparent disk encryption. This means that, for suppor
 all Dissect tools will be able to work transparently on the source data, without having to wait on a "decrypted copy"
 of the source data.
 
+For more information about supported full disk encryption implementations and API usage see 
+the :ref:`Full disk encryption (dissect.fve) <projects/dissect.fve/index>` project.
+
 Keychains
 ---------
 
