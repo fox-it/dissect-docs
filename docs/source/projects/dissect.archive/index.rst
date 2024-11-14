@@ -8,7 +8,11 @@ dissect.archive
     :octicon:`mark-github` View on GitHub
 
 A Dissect module implementing parsers for various archive and backup formats. Currently has support for:
-- WIM (Windows Imaging Format)
+
+* WIM (Windows Imaging Format, :class:`~dissect.archive.wim.WIM`)
+* VMA (:class:`~dissect.archive.vma.VMA`)
+* XVA (:class:`~dissect.archive.xva.XVA`)
+* VBK (:class:`~dissect.archive.vbk.VBK`)
 
 
 Installation
@@ -40,6 +44,28 @@ listing of the root directory and read a file from a WIM archive:
 
         file_fh = image.get("/file.txt").open()  # This is just another file-like object
         print(file_fh.read())
+
+Tools
+-----
+
+.. sphinx_argparse_cli::
+    :module: dissect.archive.tools.backup
+    :func: main
+    :prog: vma-extract
+    :description: Utility to extract all files contained in a VMA backup.
+    :hook:
+.. sphinx_argparse_cli::
+    :module: dissect.archive.tools.backup
+    :func: main
+    :prog: vbk-extract
+    :description: Utility to extract all files contained in a VBK backup.
+    :hook:
+.. sphinx_argparse_cli::
+    :module: dissect.archive.tools.backup
+    :func: main
+    :prog: backup-extract
+    :description: Utility to extract all files from supported backup formats.
+    :hook:
 
 Reference
 ---------
