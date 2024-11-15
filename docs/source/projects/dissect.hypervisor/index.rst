@@ -7,12 +7,7 @@ dissect.hypervisor
 
     :octicon:`mark-github` View on GitHub
 
-A Dissect module implementing parsers for various hypervisor disk, backup and configuration files.
-
-* Backup formats
-
-  * VMA (:class:`~dissect.hypervisor.backup.vma.VMA`)
-  * XVA (:class:`~dissect.hypervisor.backup.xva.XVA`)
+A Dissect module implementing parsers for various hypervisor disk and configuration files.
 
 * Metadata descriptors
 
@@ -64,13 +59,6 @@ parser you need.
 
 Tools
 -----
-
-.. sphinx_argparse_cli::
-    :module: dissect.hypervisor.tools.vma
-    :func: main
-    :prog: vma-extract
-    :description: Utility to extract all files contained in a VMA backup.
-    :hook:
 
 .. sphinx_argparse_cli::
     :module: dissect.hypervisor.tools.envelope
