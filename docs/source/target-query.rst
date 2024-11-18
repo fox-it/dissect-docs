@@ -42,7 +42,7 @@ has to be used:
 
 
 In case there is no complete image available but just a couple of separate (log/evt/evtx) files, you can use
-the LogLoader for example:
+the LogLoader. For example:
 
 .. code-block:: console
 
