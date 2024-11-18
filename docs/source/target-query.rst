@@ -3,7 +3,7 @@ target-query
 
 The **target-query** tool is one of the most prominent tools of Dissect. It allows you to
 **query a forensic image**
-to extract useful information from it. The basic usage format is:
+for extracting useful information from it. The basic usage format is:
 
 .. code-block:: console
 
