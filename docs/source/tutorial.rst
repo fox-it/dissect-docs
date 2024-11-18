@@ -137,7 +137,7 @@ extension and then try to identify a malicious one. To this end, our first step 
     <filesystem/entry path='\sysvol\...\desktop.ini' size=62.0 ...>
     
 This command returns a huge list of files. Our next step is to narrow this
-list down to only files ending with ``.exe``. To accomplish this, we will again use ``rdump``, the same filtering tool mentioned in the previous command, and apply a
+list down to only files ending with ``.exe``. To accomplish this, we will again use ``rdump``, the same filtering tool mentioned two examples above, and apply a
 Python expression for filtering:
 
 .. code-block:: console
