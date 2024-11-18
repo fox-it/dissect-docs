@@ -22,8 +22,7 @@ By default, an acquire operation will result in 3 files:
     - a report file in JSON
     - a tar file that contains the requested artefacts
 
-You can feed the resulting tar to tools like :doc:`target-query <tools/target-query>`.
-again.
+You can feed the resulting tar to tools like :doc:`target-query <tools/target-query>`, as shown below:
 
 .. code-block:: console
 
