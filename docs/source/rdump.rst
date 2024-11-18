@@ -110,7 +110,7 @@ Instead of having to design your own format you can also choose one of these per
 * Line (``-L`` or ``--mode=line``)
 Adapter Formatting
 ~~~~~~~~~~~~
-It is also possible let an adapter take care of the formatting. For instance, if you wish to have your
+It is also possible to let an adapter take care of the formatting. For instance, if you wish to have your
 records in an archive format with a year-month-day folder structure, you can employ the ``-w`` option and
 choose the archive adapter: ``archive://outputdir``. For complete list of adapters use ``-a``.
 
