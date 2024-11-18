@@ -81,8 +81,8 @@ The result will be something like this:
 Find user accounts
 ^^^^^^^^^^^^^^^^^^
 
-To get the list of user accounts on this machine we use two tools :doc:`target-query <target-query>` and
-:doc:`rdump <rdump>`. `target-query`, as the names suggests, allows to query the images and produces records
+To get the list of user accounts on this machine we use two tools: :doc:`target-query <target-query>` and
+:doc:`rdump <rdump>`. `target-query`, as the name suggests, allows to query the images and outputs :ref:`_records_ <overview/index:records>`
 by default. `rdump` is used to process, filter and format the query results. Here we only select the name of the user:
 
 .. code-block:: console
