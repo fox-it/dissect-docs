@@ -165,7 +165,7 @@ We use the ``-F`` option from ``rdump`` to filter the columns:
     
 This reduces the number of characters per line significantly.
 However due to the record representation, it is still hard to read
-(hence no output example is shown)
+(hence no output example is shown).
 To make it even more readable, we add the
 ``-C`` option which converts it to a comma separated format:
 
