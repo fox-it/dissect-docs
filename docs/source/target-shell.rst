@@ -66,13 +66,3 @@ tree under /etc in a similar way).
     of all its available options.
 
 For a complete overview of all options see :doc:`here <tools/target-shell>`.
-
-
-
-
-
-
-
-
-
-

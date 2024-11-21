@@ -38,4 +38,3 @@ If you don't feel like doing the above, then there is an interactive browser dem
 .. caution::
 
     The browser demo was developed as a quick demo and is bound to be unstable. Not everything might work as expected.
-

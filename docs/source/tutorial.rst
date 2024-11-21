@@ -221,4 +221,3 @@ To get an understanding of the basics of Dissect see:
 * :doc:`target-mount <target-mount>`
 * :doc:`target-query <target-query>`
 * :doc:`target-shell <target-shell>`
-

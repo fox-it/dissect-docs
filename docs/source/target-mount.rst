@@ -14,13 +14,3 @@ regular file managers.
 .. note::
 
     For a complete overview of all options see :doc:`here <tools/target-mount>`.
-
-
-
-
-
-
-
-
-
-

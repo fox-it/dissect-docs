@@ -117,5 +117,3 @@ choose the archive adapter: ``archive://outputdir``. For complete list of adapte
 .. note::
 
     For a complete overview of all options see :doc:`here <tools/rdump>`.
-
-

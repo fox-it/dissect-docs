@@ -61,6 +61,3 @@ There are 4 basic profiles ``full``, ``default``, ``minimal`` and ``none``.
 .. note::
 
     For a complete overview of the basic profiles see :doc:`here <tools/acquire>`.
-    
-    
-    
