@@ -11,3 +11,8 @@ furo
 defusedxml
 msgpack
 structlog
+
+# These dependencies are needed to generate docs for dissect.target and
+# dissect.fve.
+pycryptodome
+argon2-cffi
