@@ -55,15 +55,17 @@ def builder_inited(app: Sphinx) -> None:
         dst.mkdir()
 
     plugin_map = {}
+
     for plugin in plugins():
+
         # Ignore all modules in general as those are all internal or utility
-        if plugin["module"].startswith("general."):
+        if plugin.module.startswith("general."):
             continue
 
-        if ns := plugin["namespace"]:
+        if ns := plugin.namespace:
             plugin_map.setdefault(ns, []).append(plugin)
 
-        for export in plugin["exports"]:
+        for export in plugin.exports:
             if export == "get_all_records":  # TODO we need to remove this
                 continue
 
@@ -103,6 +105,7 @@ def build_finished(app: Sphinx, exception: Exception) -> None:
 def _format_template(name: str, plugins: list[dict]) -> str:
     func_name = name.split(".")[-1] if "." in name else name
     variants = []
+
     for plugin in plugins:
         try:
             plugin_class = load(plugin)
@@ -115,22 +118,22 @@ def _format_template(name: str, plugins: list[dict]) -> str:
 
         class_doc = docs.get_docstring(plugin_class)
 
-        if (ns := plugin["namespace"]) and name == ns:
+        if (ns := plugin.namespace) and name == ns:
             func_output = "records"
             func_doc = NAMESPACE_TEMPLATE.format(
                 exports="\n".join(
                     f"- :doc:`/plugins/{ns}.{export}`"
-                    for export in plugin["exports"]
+                    for export in plugin.exports
                     if export != "get_all_records"
                 )
             )
         else:
             func = getattr(plugin_class, func_name)
-            func_output, func_doc = docs.get_func_details(func)
+            func_output, func_doc = docs._get_func_details(func)
 
         info = {
-            "module": plugin["module"],
-            "class": plugin["class"],
+            "module": plugin.module,
+            "class": plugin.qualname,
             "output": func_output,
             "class_doc": class_doc,
             "func_doc": func_doc,
