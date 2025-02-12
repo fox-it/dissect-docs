@@ -66,7 +66,7 @@ def builder_inited(app: Sphinx) -> None:
             plugin_map.setdefault(ns, []).append(plugin)
 
         for export in plugin.exports:
-            if export == "get_all_records":  # TODO we need to remove this
+            if export in ["get_all_records", "__call__"]:  # TODO we need to remove this
                 continue
 
             if ns:
