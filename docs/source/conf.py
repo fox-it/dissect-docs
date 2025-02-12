@@ -168,4 +168,6 @@ copybutton_exclude = ".linenos"
 suppress_warnings = [
     # https://github.com/readthedocs/sphinx-autoapi/issues/285
     "autoapi.python_import_resolution",
+    # https://github.com/sphinx-doc/sphinx/issues/4961
+    "ref.python",
 ]
