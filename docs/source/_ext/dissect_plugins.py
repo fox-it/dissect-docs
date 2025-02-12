@@ -112,7 +112,7 @@ def _format_template(name: str, plugins: list[dict]) -> str:
         except PluginError as e:
             LOGGER.warning(
                 colorize("bold", "[Dissect] ")
-                + colorize("darkred", f"Error loading plugin {plugin['module']}: {e}")
+                + colorize("darkred", f"Error loading plugin {plugin.module}: {e}")
             )
             continue
 
