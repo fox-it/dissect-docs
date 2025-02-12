@@ -1,7 +1,7 @@
 Introduction
 ============
 
-After installing Dissect by following the :ref:`installation steps <index:Getting Started>`, the Dissect
+After installing Dissect by following the :ref:`installation steps <install/index>`, the Dissect
 tools should be available to you.
 
 To verify if the tooling is available, start by typing ``target-`` in your command line interface and press your
