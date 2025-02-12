@@ -164,3 +164,8 @@ copybutton_line_continuation_character = "\\"
 copybutton_here_doc_delimiter = "EOT"
 copybutton_selector = "div:not(.no-copybutton) > div.highlight > pre"
 copybutton_exclude = ".linenos"
+
+suppress_warnings = [
+    # https://github.com/readthedocs/sphinx-autoapi/issues/285
+    "autoapi.python_import_resolution",
+]
