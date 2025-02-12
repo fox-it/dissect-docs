@@ -124,7 +124,7 @@ def _format_template(name: str, plugins: list[dict]) -> str:
                 exports="\n".join(
                     f"- :doc:`/plugins/{ns}.{export}`"
                     for export in plugin.exports
-                    if export != "get_all_records"
+                    if export not in ["get_all_records", "__call__"]
                 )
             )
         else:
