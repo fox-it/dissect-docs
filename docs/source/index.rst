@@ -110,7 +110,6 @@ Get in touch, join us on `github <https://github.com/fox-it/dissect.target>`_!
     /usage/index
     /plugins/index
     Architecture </overview/index>
-    /projects/index
     /advanced/index
     /api/index
 

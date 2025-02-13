@@ -126,7 +126,7 @@ such as `PyOxidizer <https://pyoxidizer.readthedocs.io/en/stable/>`_ and `PyInst
 Unfortunately, however, neither support cross platform executable creation.
 
 PyOxidizer
-~~~~~~~~~~
+^^^^^^^^^^
 
 PyOxidizer is a relatively new Python application packer that integrates heavily with Rust. It has a lot of exciting options
 and functionality, at the cost of a fairly large executable size and complex configuration options.
@@ -160,7 +160,7 @@ This is just a very basic example. There are a lot more settings to tweak and op
 as an exercise to the reader.
 
 PyInstaller
-~~~~~~~~~~~
+^^^^^^^^^^^
 
 PyInstaller has been around for a long time and can be considered the de facto utility for packaging Python into
 executables, for both legitimate and malicious purposes. It has a lot less options to play with than PyOxidizer, but

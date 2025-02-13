@@ -29,6 +29,7 @@ the faster, native (C-based) lz4 and lzo implementations in other dissect projec
 lzo extras:
 
 .. code-block:: console
+
     $ pip install "dissect.util[lz4,lzo]"
 
 Unfortunately there is no binary ``python-lzo`` wheel for PyPy installations on Windows, so it won't install there.
