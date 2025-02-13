@@ -66,7 +66,7 @@ def builder_inited(app: Sphinx) -> None:
             plugin_map.setdefault(ns, []).append(plugin)
 
         for export in plugin.exports:
-            if export in ["get_all_records", "__call__"]:  # TODO we need to remove this
+            if export == "__call__":
                 continue
 
             if ns:
@@ -124,7 +124,7 @@ def _format_template(name: str, plugins: list[dict]) -> str:
                 exports="\n".join(
                     f"- :doc:`/plugins/{ns}.{export}`"
                     for export in plugin.exports
-                    if export not in ["get_all_records", "__call__"]
+                    if export != "__call__"
                 )
             )
         else:
