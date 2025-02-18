@@ -14,8 +14,10 @@ To run **acquire** on a live system:
 
     To be able to access the full system to collect all its artefacts one must
     run acquire with administrator privileges.
+
 Output
-~~~~~~~~
+~~~~~~
+
 By default, an acquire operation will result in 3 files:
 
     - a log file (the contents of this file will also appear on the screen)
@@ -32,7 +34,6 @@ You can feed the resulting tar to tools like :doc:`target-query <tools/target-qu
 
 Profiles
 ~~~~~~~~
-
 
 By design, Acquire runs with the ``default`` profile,
 providing a curated selection of artifacts that aims to fulfill the
