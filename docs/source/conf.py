@@ -60,8 +60,17 @@ if os.environ.get("READTHEDOCS", "") == "True":
         html_context = {}
     html_context["READTHEDOCS"] = True
 
+exclude_patterns = []
 # Allow disabling of time consuming autoapi generation
-if not os.getenv("NO_AUTOAPI"):
+if os.getenv("NO_AUTOAPI"):
+    exclude_patterns.append("api/acquire/index")
+    api_dir = Path(__file__).parent / "api"
+
+    for dir_name in ["acquire/nop", "dissect/nop", "flow/nop"]:
+        api_dir.joinpath(dir_name).mkdir(parents=True)
+        api_dir.joinpath(dir_name, "index.rst").write_text(":orphan:\n\nTITLE\n#####\n")
+
+else:
     extensions.append("autoapi.extension")
 
 # Add any paths that contain templates here, relative to this directory.
@@ -70,7 +79,6 @@ templates_path = ["_templates"]
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = []
 
 
 # -- Options for HTML output -------------------------------------------------
@@ -101,7 +109,7 @@ html_theme_options = {
     "light_logo": "css/icons/logo-dark.svg",
     "dark_logo": "css/icons/logo-dark.svg",
     "light_css_variables": {
-        "icon-search": "url('data:image/svg+xml;charset=utf-8,<svg width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" stroke=\"currentColor\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M15.9778 15.0469L12.2091 11.2781C13.0247 10.2797 13.4747 9.02249 13.4747 7.64999C13.4747 4.41843 10.8554 1.79999 7.62469 1.79999C4.39396 1.79999 1.79999 4.41927 1.79999 7.64999C1.79999 10.8807 4.419 13.5 7.62469 13.5C8.99691 13.5 10.2558 13.0244 11.2528 12.2332L15.0216 16.002C15.1791 16.1353 15.3534 16.2 15.525 16.2C15.6966 16.2 15.8704 16.1341 16.0023 16.0022C16.2647 15.7387 16.2647 15.3112 15.9778 15.0469ZM3.14999 7.64999C3.14999 5.1688 5.16881 3.14999 7.65 3.14999C10.1312 3.14999 12.15 5.1688 12.15 7.64999C12.15 10.1312 10.1312 12.15 7.65 12.15C5.16881 12.15 3.14999 10.1306 3.14999 7.64999Z\"/></svg>')",
+        "icon-search": 'url(\'data:image/svg+xml;charset=utf-8,<svg width="18" height="18" viewBox="0 0 18 18" stroke="currentColor" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.9778 15.0469L12.2091 11.2781C13.0247 10.2797 13.4747 9.02249 13.4747 7.64999C13.4747 4.41843 10.8554 1.79999 7.62469 1.79999C4.39396 1.79999 1.79999 4.41927 1.79999 7.64999C1.79999 10.8807 4.419 13.5 7.62469 13.5C8.99691 13.5 10.2558 13.0244 11.2528 12.2332L15.0216 16.002C15.1791 16.1353 15.3534 16.2 15.525 16.2C15.6966 16.2 15.8704 16.1341 16.0023 16.0022C16.2647 15.7387 16.2647 15.3112 15.9778 15.0469ZM3.14999 7.64999C3.14999 5.1688 5.16881 3.14999 7.65 3.14999C10.1312 3.14999 12.15 5.1688 12.15 7.64999C12.15 10.1312 10.1312 12.15 7.65 12.15C5.16881 12.15 3.14999 10.1306 3.14999 7.64999Z"/></svg>\')',
         "color-brand-primary": "#1F65AB",
         "color-brand-content": "var(--color-brand-primary)",
         "color-background-hover": "#3574B3",
@@ -119,7 +127,7 @@ html_theme_options = {
         "color-sidebar-search-icon": "#81868D",
     },
     "dark_css_variables": {
-        "icon-search": "url('data:image/svg+xml;charset=utf-8,<svg width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" stroke=\"currentColor\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M15.9778 15.0469L12.2091 11.2781C13.0247 10.2797 13.4747 9.02249 13.4747 7.64999C13.4747 4.41843 10.8554 1.79999 7.62469 1.79999C4.39396 1.79999 1.79999 4.41927 1.79999 7.64999C1.79999 10.8807 4.419 13.5 7.62469 13.5C8.99691 13.5 10.2558 13.0244 11.2528 12.2332L15.0216 16.002C15.1791 16.1353 15.3534 16.2 15.525 16.2C15.6966 16.2 15.8704 16.1341 16.0023 16.0022C16.2647 15.7387 16.2647 15.3112 15.9778 15.0469ZM3.14999 7.64999C3.14999 5.1688 5.16881 3.14999 7.65 3.14999C10.1312 3.14999 12.15 5.1688 12.15 7.64999C12.15 10.1312 10.1312 12.15 7.65 12.15C5.16881 12.15 3.14999 10.1306 3.14999 7.64999Z\"/></svg>')",
+        "icon-search": 'url(\'data:image/svg+xml;charset=utf-8,<svg width="18" height="18" viewBox="0 0 18 18" stroke="currentColor" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.9778 15.0469L12.2091 11.2781C13.0247 10.2797 13.4747 9.02249 13.4747 7.64999C13.4747 4.41843 10.8554 1.79999 7.62469 1.79999C4.39396 1.79999 1.79999 4.41927 1.79999 7.64999C1.79999 10.8807 4.419 13.5 7.62469 13.5C8.99691 13.5 10.2558 13.0244 11.2528 12.2332L15.0216 16.002C15.1791 16.1353 15.3534 16.2 15.525 16.2C15.6966 16.2 15.8704 16.1341 16.0023 16.0022C16.2647 15.7387 16.2647 15.3112 15.9778 15.0469ZM3.14999 7.64999C3.14999 5.1688 5.16881 3.14999 7.65 3.14999C10.1312 3.14999 12.15 5.1688 12.15 7.64999C12.15 10.1312 10.1312 12.15 7.65 12.15C5.16881 12.15 3.14999 10.1306 3.14999 7.64999Z"/></svg>\')',
         "color-sidebar-background": "var(--color-background-secondary)",
         "color-sidebar-caption-text": "var(--color-foreground-muted)",
         "color-sidebar-link-text": "var(--color-foreground-secondary)",
@@ -129,7 +137,7 @@ html_theme_options = {
         "color-sidebar-search-background--focus": "var(--color-background-primary)",
         "color-sidebar-search-border": "var(--color-background-border)",
         "color-sidebar-search-icon": "var(--color-foreground-muted)",
-    }
+    },
 }
 
 dissect_paths = [path / "dissect" for path in Path("../../submodules/").glob("dissect.*")]

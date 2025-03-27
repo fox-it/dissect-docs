@@ -57,15 +57,14 @@ def builder_inited(app: Sphinx) -> None:
     plugin_map = {}
 
     for plugin in plugins():
-
         # Ignore all modules in general as those are all internal or utility
-        if plugin.module.startswith("general."):
+        if plugin.get("module", "").startswith("general."):
             continue
 
-        if ns := plugin.namespace:
+        if ns := plugin.get("namespace"):
             plugin_map.setdefault(ns, []).append(plugin)
 
-        for export in plugin.exports:
+        for export in plugin.get("exports", []):
             if export == "__call__":
                 continue
 
@@ -90,10 +89,7 @@ def build_finished(app: Sphinx, exception: Exception) -> None:
     if not app.config.dissect_plugins_keep_files:
         dst = Path(app.srcdir).joinpath("plugins")
         if app.verbosity > 1:
-            LOGGER.info(
-                colorize("bold", "[Dissect] ")
-                + colorize("darkgreen", "Cleaning generated .rst files")
-            )
+            LOGGER.info(colorize("bold", "[Dissect] ") + colorize("darkgreen", "Cleaning generated .rst files"))
 
         for rst in dst.glob("*.rst"):
             with open(rst, "rb") as fh:
@@ -112,28 +108,26 @@ def _format_template(name: str, plugins: list[dict]) -> str:
         except PluginError as e:
             LOGGER.warning(
                 colorize("bold", "[Dissect] ")
-                + colorize("darkred", f"Error loading plugin {plugin.module}: {e}")
+                + colorize("darkred", f"Error loading plugin {plugin.get('module')}: {e}")
             )
             continue
 
         class_doc = docs.get_docstring(plugin_class)
 
-        if (ns := plugin.namespace) and name == ns:
+        if (ns := plugin.get("namespace")) and name == ns:
             func_output = "records"
             func_doc = NAMESPACE_TEMPLATE.format(
                 exports="\n".join(
-                    f"- :doc:`/plugins/{ns}.{export}`"
-                    for export in plugin.exports
-                    if export != "__call__"
+                    f"- :doc:`/plugins/{ns}.{export}`" for export in plugin.get("exports", []) if export != "__call__"
                 )
             )
         else:
             func = getattr(plugin_class, func_name)
-            func_output, func_doc = docs._get_func_details(func)
+            func_output, func_doc = docs.get_func_details(func)
 
         info = {
-            "module": plugin.module,
-            "class": plugin.qualname,
+            "module": plugin.get("module"),
+            "class": plugin.get("qualname"),
             "output": func_output,
             "class_doc": class_doc,
             "func_doc": func_doc,
