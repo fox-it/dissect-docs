@@ -58,13 +58,13 @@ def builder_inited(app: Sphinx) -> None:
 
     for plugin in plugins():
         # Ignore all modules in general as those are all internal or utility
-        if plugin.get("module", "").startswith("general."):
+        if plugin.module.startswith("general."):
             continue
 
-        if ns := plugin.get("namespace"):
+        if ns := plugin.namespace:
             plugin_map.setdefault(ns, []).append(plugin)
 
-        for export in plugin.get("exports", []):
+        for export in plugin.exports:
             if export == "__call__":
                 continue
 
@@ -107,27 +107,26 @@ def _format_template(name: str, plugins: list[dict]) -> str:
             plugin_class = load(plugin)
         except PluginError as e:
             LOGGER.warning(
-                colorize("bold", "[Dissect] ")
-                + colorize("darkred", f"Error loading plugin {plugin.get('module')}: {e}")
+                colorize("bold", "[Dissect] ") + colorize("darkred", f"Error loading plugin {plugin.module}: {e}")
             )
             continue
 
         class_doc = docs.get_docstring(plugin_class)
 
-        if (ns := plugin.get("namespace")) and name == ns:
+        if (ns := plugin.namespace) and name == ns:
             func_output = "records"
             func_doc = NAMESPACE_TEMPLATE.format(
                 exports="\n".join(
-                    f"- :doc:`/plugins/{ns}.{export}`" for export in plugin.get("exports", []) if export != "__call__"
+                    f"- :doc:`/plugins/{ns}.{export}`" for export in plugin.exports if export != "__call__"
                 )
             )
         else:
             func = getattr(plugin_class, func_name)
-            func_output, func_doc = docs.get_func_details(func)
+            func_output, func_doc = docs._get_func_details(func)
 
         info = {
-            "module": plugin.get("module"),
-            "class": plugin.get("qualname"),
+            "module": plugin.module,
+            "class": plugin.qualname,
             "output": func_output,
             "class_doc": class_doc,
             "func_doc": func_doc,
