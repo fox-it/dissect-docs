@@ -60,7 +60,11 @@ if os.environ.get("READTHEDOCS", "") == "True":
         html_context = {}
     html_context["READTHEDOCS"] = True
 
+# List of patterns, relative to source directory, that match files and
+# directories to ignore when looking for source files.
+# This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = []
+
 # Allow disabling of time consuming autoapi generation
 if os.getenv("NO_AUTOAPI"):
     exclude_patterns.append("api/acquire/index")
@@ -75,11 +79,6 @@ else:
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
-
-# List of patterns, relative to source directory, that match files and
-# directories to ignore when looking for source files.
-# This pattern also affects html_static_path and html_extra_path.
-
 
 # -- Options for HTML output -------------------------------------------------
 
