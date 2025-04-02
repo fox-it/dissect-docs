@@ -57,7 +57,6 @@ def builder_inited(app: Sphinx) -> None:
     plugin_map = {}
 
     for plugin in plugins():
-
         # Ignore all modules in general as those are all internal or utility
         if plugin.module.startswith("general."):
             continue
@@ -90,10 +89,7 @@ def build_finished(app: Sphinx, exception: Exception) -> None:
     if not app.config.dissect_plugins_keep_files:
         dst = Path(app.srcdir).joinpath("plugins")
         if app.verbosity > 1:
-            LOGGER.info(
-                colorize("bold", "[Dissect] ")
-                + colorize("darkgreen", "Cleaning generated .rst files")
-            )
+            LOGGER.info(colorize("bold", "[Dissect] ") + colorize("darkgreen", "Cleaning generated .rst files"))
 
         for rst in dst.glob("*.rst"):
             with open(rst, "rb") as fh:
@@ -111,8 +107,7 @@ def _format_template(name: str, plugins: list[dict]) -> str:
             plugin_class = load(plugin)
         except PluginError as e:
             LOGGER.warning(
-                colorize("bold", "[Dissect] ")
-                + colorize("darkred", f"Error loading plugin {plugin.module}: {e}")
+                colorize("bold", "[Dissect] ") + colorize("darkred", f"Error loading plugin {plugin.module}: {e}")
             )
             continue
 
@@ -122,9 +117,7 @@ def _format_template(name: str, plugins: list[dict]) -> str:
             func_output = "records"
             func_doc = NAMESPACE_TEMPLATE.format(
                 exports="\n".join(
-                    f"- :doc:`/plugins/{ns}.{export}`"
-                    for export in plugin.exports
-                    if export != "__call__"
+                    f"- :doc:`/plugins/{ns}.{export}`" for export in plugin.exports if export != "__call__"
                 )
             )
         else:
