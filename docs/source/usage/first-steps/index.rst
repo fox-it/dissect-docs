@@ -120,7 +120,7 @@ As explained in :doc:`/tools/target-query`, you can create a CMDB using ``target
 
 .. code-block:: console
 
-    $ target-query targets/ -f hostname,domain,OS,version,ips --cmdb -d ";" > export/CMDB.csv
+    $ target-query targets/ -f hostname,domain,os,version,ips --cmdb -d ";" > export/CMDB.csv
 
 The created csv file now contains the basic information about all the targets stored in the ``targets/`` directory. When
 new targets are added to the directory, you can simply rerun the command to update your csv file.
