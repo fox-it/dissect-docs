@@ -118,3 +118,7 @@
 	branch = main
 	path = submodules/dissect.fve
 	url = https://github.com/fox-it/dissect.fve.git
+[submodule "submodules/dissect.qnxfs"]
+	path = submodules/dissect.qnxfs
+	url = https://github.com/fox-it/dissect.qnxfs.git
+	branch = main
