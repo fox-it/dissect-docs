@@ -14,5 +14,5 @@ structlog
 
 # These dependencies are needed to generate docs for dissect.target and
 # dissect.fve.
-pycryptodome
+pycryptodome==3.22.0
 argon2-cffi
