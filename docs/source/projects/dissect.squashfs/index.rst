@@ -18,18 +18,10 @@ Installation
 
     $ pip install dissect.squashfs
 
-This project decompresses lzo and lz4 compressed file systems and can use the faster, native (C-based) lzo and lz4
-implementations when installed, instead of the slower pure Python implementation provided by
-:doc:`/projects/dissect.util/index`. To use these faster implementations, install the package with the lzo and lz4
-extras:
-
-   .. code-block:: console
-
-    $ pip install "dissect.squashfs[lz4,lzo]"
-
-Unfortunately there is no binary ``python-lzo`` wheel for PyPy installations on Windows, so it won't be installed there.
-
-This module including the lz4 and lzo extras is also automatically installed if you install the ``dissect`` package.
+This project decompresses LZO and LZ4 compressed file systems and can use a faster, native (Rust-based) LZO or LZ4 implementation,
+instead of a slower pure Python implementation. Both implementations are provided by :doc:`/projects/dissect.util/index`.
+Pre-build wheels are available for most common platforms and the native implementation will automatically be used if available.
+In the rare case that a pre-build wheel is not available, please refer to :doc:`/projects/dissect.util/index` for build instructions.
 
 Usage
 -----
