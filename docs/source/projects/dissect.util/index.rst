@@ -32,6 +32,8 @@ In the rare case that a pre-build wheel is not available, you can build a wheel 
 
     $ tox -e build-native
 
+Note that you'll need to bring your own Rust toolchain for the target platform you wish to build a wheel for. For example, using [rustup](https://rustup.rs).
+
 Usage
 -----
 
