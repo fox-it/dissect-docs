@@ -20,8 +20,6 @@ Installation
 
 This project supports file systems with LZO and LZ4 compression. It can use either a fast Rust implementation, or a slow pure Python implementation. Both implementations are provided by :doc:`/projects/dissect.util/index`, and the faster implementation will automatically be used if available.
 Pre-build wheels are available for most common platforms. In the rare case that a pre-build wheel is not available, please refer to :doc:`/projects/dissect.util/index` for build instructions.
-Pre-build wheels are available for most common platforms and the native implementation will automatically be used if available.
-In the rare case that a pre-build wheel is not available, please refer to :doc:`/projects/dissect.util/index` for build instructions.
 
 Usage
 -----
