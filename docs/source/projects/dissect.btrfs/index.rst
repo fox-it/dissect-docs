@@ -18,17 +18,8 @@ Installation
 
     $ pip install dissect.btrfs
 
-This project decompresses lzo compressed file systems and can use the faster, native (C-based) lzo implementation when
-installed, instead of the slower pure Python implementation provided by :doc:`/projects/dissect.util/index`. To use
-these faster implementations, install the package with the lzo extra:
-
-   .. code-block:: console
-
-    $ pip install "dissect.btrfs[lzo]"
-
-Unfortunately there is no binary ``python-lzo`` wheel for PyPy installations on Windows, so it won't be installed there.
-
-This module including the lzo extra is also automatically installed if you install the ``dissect`` package.
+This project supports file systems with LZO compression. It can use either a fast Rust implementation, or a slow pure Python implementation. Both implementations are provided by :doc:`/projects/dissect.util/index`, and the faster implementation will automatically be used if available.
+Pre-build wheels are available for most common platforms. In the rare case that a pre-build wheel is not available, please refer to :doc:`/projects/dissect.util/index` for build instructions.
 
 Usage
 -----
