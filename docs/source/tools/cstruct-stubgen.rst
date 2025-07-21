@@ -58,6 +58,10 @@ The generated ``.pyi`` file will look like:
    # Technically `c_systemtime` is an instance of `_c_systemtime`, but then we can't use it in type hints
    c_systemtime: TypeAlias = _c_systemtime
 
+And the autocompletion, with an IDE such as vscode, will look like:
+
+.. image:: /images/autocompletion.png
+
 
 Usage
 -----
