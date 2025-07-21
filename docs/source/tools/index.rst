@@ -13,4 +13,3 @@ Tools
     /tools/target-mount
     /tools/target-info
     /tools/rdump
-    /tools/cstruct-stubgen
