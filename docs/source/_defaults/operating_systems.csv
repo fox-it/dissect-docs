@@ -1,0 +1,22 @@
+name,description
+android,No documentation
+bsd,No documentation
+citrix,No documentation
+darwin,Darwin plugin.
+debian,No documentation
+defaultos,No documentation
+esxi,ESXi OS plugin
+fortios,FortiOS plugin for various Fortinet appliances.
+freebsd,No documentation
+ios,Apple iOS plugin.
+linux,Linux plugin.
+macos,No documentation
+openbsd,No documentation
+profileos,No documentation
+proxmox,No documentation
+redhat,"RedHat, CentOS and Fedora Plugin."
+resos,No documentation
+suse,No documentation
+unix,UNIX plugin.
+vyos,No documentation
+windows,No documentation

@@ -1,0 +1,12 @@
+name,description
+colima,Child target plugin that yields Colima containers.
+docker,Child target plugin that yields from Docker overlay2fs containers.
+esxi,Child target plugin that yields from ESXi VM inventory.
+hyper-v,Child target plugin that yields from Hyper-V VM inventory.
+parallels,Child target plugin that yields Parallels Desktop VM files.
+proxmox,Child target plugin that yields from the VM listing.
+qemu,Child target plugin that yields all QEMU domains from a KVM libvirt deamon.
+virtualbox,Child target plugin that yields from Oracle VirtualBox VMs.
+virtuozzo,Child target plugin that yields from Virtuozzo container's root.
+vmware_workstation,Child target plugin that yields from VMware Workstation VM inventory.
+wsl,Child target plugin that yields WSL VHDX file locations.

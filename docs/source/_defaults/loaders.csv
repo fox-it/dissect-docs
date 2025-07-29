@@ -1,0 +1,40 @@
+name,description
+androidbackup,Load Android backup files.
+asdf,Load an ASDF target.
+cb,Use Carbon Black endpoints as targets using Live Response.
+cellebrite,Load Cellebrite UFED exports (``.ufdx`` and ``.ufd``).
+cyber,No documentation
+dir,Load a directory as a filesystem.
+direct,No documentation
+hyperv,Load Microsoft Hyper-V hypervisor files.
+itunes,Load iTunes backup files.
+kape,Load KAPE forensic image format files.
+libvirt,Load libvirt xml configuration files.
+local,Load local filesystem.
+log,Load separate log files without a target.
+mqtt,Load remote targets through a broker.
+multiraw,Load multiple raw containers as a single target (i.e. a multi-disk system).
+ova,Load Open Virtual Appliance (OVA) files.
+overlay2,Load overlay2 filesystems.
+ovf,Load Open Virtualization Format (OVF) files.
+phobos,Load Phobos Ransomware files.
+profile,Load NTUSER.DAT files.
+proxmox,Loader for Proxmox VM configuration files.
+pvm,Parallels VM directory (.pvm).
+pvs,Parallels VM configuration file (config.pvs).
+raw,Load raw container files such as disk images.
+remote,Load a remote target that runs a compatible Dissect agent.
+res,No documentation
+smb,Use remote SMB servers as targets.
+tanium,Load Tanium forensic image format files.
+tar,Load tar files.
+target,Load target files.
+utm,Load UTM virtual machine files.
+vb,No documentation
+vbox,Load Oracle VirtualBox files.
+vbk,Load Veaam Backup (VBK) files.
+velociraptor,Load Rapid7 Velociraptor forensic image files.
+vma,Load Proxmox Virtual Machine Archive (VMA) files.
+vmwarevm,Load ``*.vmwarevm`` folders from VMware Fusion.
+vmx,Load VMware virtual machine configuration (VMX) files.
+xva,Load Citrix Hypervisor XVA format files.
