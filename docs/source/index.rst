@@ -98,6 +98,7 @@ Get in touch, join us on `github <https://github.com/fox-it/dissect.target>`_!
     Shell </target-shell>
     Mount </target-mount>
     Acquire </acquire>
+    Supported Targets </supported-targets>
     RDump </rdump>
     
     

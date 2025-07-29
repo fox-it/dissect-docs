@@ -3,3 +3,5 @@ _build/
 __pycache__
 
 docs/source/api/*/
+# The csv files inside this folder get automatically generated
+docs/source/supported_targets/
