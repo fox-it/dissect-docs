@@ -15,6 +15,8 @@ import subprocess
 import sys
 from pathlib import Path
 
+from sphinx.application import Sphinx
+
 sys.path.insert(0, os.path.abspath("./contributing"))
 
 for path in map(str, Path("../../submodules/").resolve().iterdir()):
@@ -71,7 +73,7 @@ if os.getenv("NO_AUTOAPI"):
     api_dir = Path(__file__).parent / "api"
 
     for dir_name in ["acquire/nop", "dissect/nop", "flow/nop"]:
-        api_dir.joinpath(dir_name).mkdir(parents=True)
+        api_dir.joinpath(dir_name).mkdir(parents=True, exist_ok=True)
         api_dir.joinpath(dir_name, "index.rst").write_text(":orphan:\n\nTITLE\n#####\n")
 
 else:
@@ -144,7 +146,7 @@ flow_paths = [path / "flow" for path in Path("../../submodules/").glob("flow.*")
 acquire_path = Path("../../submodules/acquire")
 
 autoapi_type = "python"
-autoapi_dirs = [acquire_path] + dissect_paths + flow_paths
+autoapi_dirs = [acquire_path, *dissect_paths, *flow_paths]
 autoapi_ignore = ["*tests*", "*.tox*", "*venv*", "*examples*", "*setup.py"]
 autoapi_python_use_implicit_namespaces = True
 autoapi_add_toctree_entry = False
@@ -178,3 +180,14 @@ suppress_warnings = [
     # https://github.com/sphinx-doc/sphinx/issues/4961
     "ref.python",
 ]
+
+
+def do_not_skip_os_modules(app: Sphinx, what: str, name: str, obj, skip: bool, options: list[str]) -> bool:
+    if name.endswith("._os") and what == "module":
+        skip = False
+    return skip
+
+
+def setup(sphinx: Sphinx) -> None:
+    if "autoapi.extension" in extensions:
+        sphinx.connect("autoapi-skip-member", do_not_skip_os_modules)
