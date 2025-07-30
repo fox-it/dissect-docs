@@ -182,7 +182,8 @@ suppress_warnings = [
 ]
 
 
-def do_not_skip_os_modules(app: Sphinx, what: str, name: str, obj, skip: bool, options: list[str]) -> bool:
+def autoapi_skip_hook(app: Sphinx, what: str, name: str, obj, skip: bool, options: list[str]) -> bool:
+    # Do not skip OS modules in dissect.target (caught by `private-members`)
     if name.endswith("._os") and what == "module":
         skip = False
     return skip
@@ -190,4 +191,4 @@ def do_not_skip_os_modules(app: Sphinx, what: str, name: str, obj, skip: bool, o
 
 def setup(sphinx: Sphinx) -> None:
     if "autoapi.extension" in extensions:
-        sphinx.connect("autoapi-skip-member", do_not_skip_os_modules)
+        sphinx.connect("autoapi-skip-member", autoapi_skip_hook)
