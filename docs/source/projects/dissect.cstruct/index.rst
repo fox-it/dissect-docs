@@ -205,7 +205,7 @@ cstruct-stubgen
 ---------------
 
 ``cstruct-stubgen`` is a tool that generates Python stub files (``.pyi``) from ``dissect.cstruct`` definitions.
-These stubs are useful for improving IDE support, enabling type checking, and enhancing developer experience when working with cstructs with code completion.
+These stubs provide an enhanced developer experience in your IDE, enabling type checking and code completion.
 
 The most basic usage of ``cstruct-stubgen`` is as simple as:
 
@@ -264,6 +264,8 @@ The generated ``.pyi`` file will look like:
 And the autocompletion, with an IDE such as vscode, will look like:
 
 .. image:: /images/autocompletion.png
+
+Structure fields also have correct typing, enabling further type checking and code completion on compatible Python types:
 
 .. sphinx_argparse_cli::
    :module: dissect.cstruct.tools.stubgen
