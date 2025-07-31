@@ -267,6 +267,8 @@ And the autocompletion, with an IDE such as vscode, will look like:
 
 Structure fields also have correct typing, enabling further type checking and code completion on compatible Python types:
 
+.. image:: /images/autocompletion_attribute.png
+
 .. sphinx_argparse_cli::
    :module: dissect.cstruct.tools.stubgen
    :func: main
