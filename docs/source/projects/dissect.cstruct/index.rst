@@ -271,6 +271,12 @@ Structure fields also have correct typing, enabling further type checking and co
 
 .. image:: /images/typings_stubgen.png
 
+.. note::
+
+    ``cstruct-stubgen`` generates type hints for cstruct definitions only.
+    Other definitions or functions in the ``.py`` file are not included.
+    To make them visible in your IDE, manually add the missing functions and variables to the ``.pyi`` file.
+
 .. sphinx_argparse_cli::
    :module: dissect.cstruct.tools.stubgen
    :func: main
