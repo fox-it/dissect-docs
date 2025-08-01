@@ -269,7 +269,9 @@ And the autocompletion, with an IDE such as VS Code, will look like:
 
 Structure fields also have correct typing, enabling further type checking and code completion on compatible Python types:
 
-.. image:: /images/typings_stubgen.png
+.. image:: /images/field_typing_struct.png
+
+.. image:: /images/field_typing_char.png
 
 .. note::
 
