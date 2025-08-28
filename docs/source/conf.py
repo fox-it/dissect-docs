@@ -28,6 +28,7 @@ sys.path.append(os.path.abspath("./_ext"))
 
 project = "Dissect"
 copyright = "2023, Fox-IT part of NCC Group"
+copyright = "2025, Fox-IT part of NCC Group"
 author = "Fox-IT part of NCC Group"
 
 # The full version, including alpha/beta/rc tags
