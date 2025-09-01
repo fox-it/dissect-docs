@@ -1,5 +1,5 @@
 dissect.fve
-============
+===========
 
 .. button-link:: https://github.com/fox-it/dissect.fve
     :color: primary
