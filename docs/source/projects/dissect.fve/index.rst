@@ -51,12 +51,73 @@ to open and decrypt a BitLocker encrypted volume for reading:
 
 Tools
 -----
+
+fve-dd
+~~~~~~
+
 .. sphinx_argparse_cli::
     :module: dissect.fve.tools.dd
     :func: main
     :prog: fve-dd
     :description: Utility to decrypt BitLocker or LUKS volumes and write them to a file.
     :hook:
+
+The ``fve-dd`` tool is used to decrypt full volume encryption implementations and write the decrypted content to a file.
+It supports both Microsoft's BitLocker Disk Encryption (BDE) and Linux Unified Key Setup (LUKS1 and LUKS2).
+
+Examples
+^^^^^^^^
+
+**BitLocker volumes with passphrase:**
+
+.. code-block:: console
+
+    $ fve-dd encrypted_volume.dd -p "mypassphrase" -o decrypted_volume.dd
+
+**BitLocker volumes with recovery password:**
+
+.. code-block:: console
+
+    $ fve-dd encrypted_volume.dd -r "123456-789012-345678-901234-567890-123456-789012-345678" -o decrypted_volume.dd
+
+**BitLocker volumes with .BEK file:**
+
+BitLocker External Key (BEK) files can be used to unlock BitLocker encrypted volumes.
+These files are typically stored on removable media like USB drives.
+
+.. code-block:: console
+
+    $ fve-dd encrypted_volume.dd -f /path/to/recovery_key.BEK -o decrypted_volume.dd
+
+**LUKS volumes with passphrase:**
+
+.. code-block:: console
+
+    $ fve-dd encrypted_volume.dd -p "mypassphrase" -o decrypted_volume.dd
+
+**LUKS volumes with key file:**
+
+LUKS key files contain the encryption key and can be used instead of a passphrase.
+
+.. code-block:: console
+
+    $ fve-dd encrypted_volume.dd -f /path/to/keyfile -o decrypted_volume.dd
+
+**LUKS volumes with specific key slot:**
+
+You can specify which key slot to use when unlocking a LUKS volume:
+
+.. code-block:: console
+
+    $ fve-dd encrypted_volume.dd -f /path/to/keyfile --key-slot 0 -o decrypted_volume.dd
+
+**LUKS volumes with key file offset and size:**
+
+For advanced use cases, you can specify the offset and size within a key file:
+
+.. code-block:: console
+
+    $ fve-dd encrypted_volume.dd -f /path/to/keyfile --keyfile-offset 512 --keyfile-size 32 -o decrypted_volume.dd
 
 
 Reference
