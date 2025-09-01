@@ -12,8 +12,8 @@ currently Microsoft's Bitlocker Disk Encryption (BDE) and Linux Unified Key Setu
 
 * Full volume and disk encryption schemes
 
-   * BDE (BitLocker disk encryption) (:class:`~dissect.fve.bde.BDE`)
-   * LUKS (Linux Unified Key Setup) (:class:`~dissect.fve.luks.LUKS`)
+  * BDE (BitLocker disk encryption) (:class:`~dissect.fve.bde.BDE`)
+  * LUKS (Linux Unified Key Setup) (:class:`~dissect.fve.luks.LUKS`)
 
 
 Installation
