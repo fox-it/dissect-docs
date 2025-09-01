@@ -12,8 +12,8 @@ currently Microsoft's Bitlocker Disk Encryption (BDE) and Linux Unified Key Setu
 
 * Full volume and disk encryption schemes
 
-  * BDE (BitLocker disk encryption) (:class:`~dissect.fve.bde.BDE`)
-  * LUKS (Linux Unified Key Setup) (:class:`~dissect.fve.luks.LUKS`)
+  * Microsoft BitLocker Disk Encryption (all configurations and versions, including EOW): :class:`~dissect.fve.bde.BDE`
+  * Linux Unified Key Setup (LUKS1 and LUKS2): :class:`~dissect.fve.luks.LUKS`
 
 
 Installation
@@ -26,7 +26,6 @@ Installation
     $ pip install dissect.fve
 
 This module is also automatically installed if you install the ``dissect`` package.
-
 
 Usage
 -----
@@ -55,8 +54,9 @@ Tools
 fve-dd
 ~~~~~~
 
-The ``fve-dd`` tool is used to decrypt full volume encryption implementations and write the decrypted content to a file.
-It supports both Microsoft's BitLocker Disk Encryption (BDE) and Linux Unified Key Setup (LUKS1 and LUKS2).
+The ``fve-dd`` tool is used to decrypt Microsoft BitLocker (BDE) or Linux Unified Key Setup (LUKS1 and LUKS2) volumes
+and write the decrypted content to a file.
+
 If the input file is a disk with multiple volumes/partitions, the output file will be a disk image with the same partition layout,
 but with the encrypted volumes replaced by their decrypted content.
 If the input file is a single encrypted volume, the output file will be a raw image of the decrypted volume.
