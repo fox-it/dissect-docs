@@ -58,7 +58,7 @@ The ``fve-dd`` tool is used to decrypt Microsoft BitLocker (BDE) or Linux Unifie
 and write the decrypted content to a file.
 
 If the input file is a disk with multiple volumes/partitions, the output file will be a disk image with the same partition layout,
-but with the encrypted volumes replaced by their decrypted content.
+with the encrypted volumes replaced by their decrypted content.
 If the input file is a single encrypted volume, the output file will be a raw image of the decrypted volume.
 
 .. sphinx_argparse_cli::
