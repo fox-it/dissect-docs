@@ -8,7 +8,7 @@ dissect.fve
     :octicon:`mark-github` View on GitHub
 
 A Dissect module implementing parsers for full volume encryption implementations,
-currently Microsoft's Bitlocker Disk Encryption (BDE) and Linux Unified Key Setup (LUKS1 and LUKS2).
+currently Microsoft's BitLocker Disk Encryption (BDE) and Linux Unified Key Setup (LUKS1 and LUKS2).
 
 * Full volume and disk encryption schemes
 
