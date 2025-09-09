@@ -72,7 +72,6 @@ Tools
     :description: Utility to dump NSKeyedArchiver plist files.
     :hook:
 
-
 Reference
 ---------
 

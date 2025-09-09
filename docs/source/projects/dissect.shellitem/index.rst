@@ -46,7 +46,6 @@ Tools
     :description: Utility to parse LNK files.
     :hook:
 
-
 Reference
 ---------
 
