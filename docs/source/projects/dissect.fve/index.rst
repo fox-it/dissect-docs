@@ -110,7 +110,7 @@ You can specify which key slot to use when unlocking a LUKS volume:
 
 **LUKS volumes with key file offset and size:**
 
-Similar to ``cryptsetup`` utility, you can specify the offset and size within a key file:
+Similar to the ``cryptsetup`` utility, you can specify the offset and size within a key file:
 
 .. code-block:: console
 
