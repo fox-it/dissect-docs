@@ -122,3 +122,6 @@
 	path = submodules/dissect.qnxfs
 	url = https://github.com/fox-it/dissect.qnxfs.git
 	branch = main
+[submodule "submodules/dissect.cramfs"]
+	path = submodules/dissect.cramfs
+	url = https://github.com/fox-it/dissect.cramfs
