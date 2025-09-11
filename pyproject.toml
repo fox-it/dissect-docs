@@ -1,0 +1,88 @@
+[build-system]
+requires = ["setuptools>=80.9.0", "setuptools_scm[toml]>=6.4.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dissect-docs"
+description = ""
+readme = "README.md"
+requires-python = ">=3.10.0"
+license = "AGPL-3.0-or-later"
+license-files = ["LICENSE", "COPYRIGHT"]
+dynamic = ["version"]
+
+dependencies = [
+    "dissect",
+    "sphinx",
+    "sphinx-autoapi",
+    "sphinx_argparse_cli",
+    "sphinx-copybutton",
+    "sphinx-design",
+    "sphinx-autobuild",
+    "furo",
+    # Linting
+    "ruff==0.12.9",
+    # Needed to generate docs for dissect.target and flow.record.
+    "defusedxml",
+    "msgpack",
+    "structlog",
+    # Needed to generate docs for dissect.target and dissect.fve.
+    "pycryptodome",
+    "argon2-cffi",
+]
+
+[tool.ruff]
+line-length = 120
+required-version = ">=0.12.0"
+
+[tool.ruff.format]
+docstring-code-format = true
+
+[tool.ruff.lint]
+select = [
+  "F",
+  "E",
+  "W",
+  "I",
+  "UP",
+  "YTT",
+  "ANN",
+  "B",
+  "C4",
+  "DTZ",
+  "T10",
+  "FA",
+  "ISC",
+  "G",
+  "INP",
+  "PIE",
+  "PYI",
+  "PT",
+  "Q",
+  "RSE",
+  "RET",
+  "SLOT",
+  "SIM",
+  "TID",
+  "TCH",
+  "PTH",
+  "PLC",
+  "TRY",
+  "FLY",
+  "PERF",
+  "FURB",
+  "RUF",
+]
+ignore = ["E203", "B904", "UP024", "ANN002", "ANN003", "ANN204", "ANN401", "SIM105", "TRY003", "PLC0415"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/_docs/**" = ["INP001"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["dissect-docs"]
+known-third-party = ["dissect"]
+
+[tool.setuptools.packages.find]
+include = ["dissect.*"]
+
+[tool.setuptools_scm]

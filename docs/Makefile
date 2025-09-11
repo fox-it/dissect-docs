@@ -17,6 +17,7 @@ help:
 
 clean: Makefile
 	rm -rf source/api/*/
+	rm -rf source/plugins/*
 	@$(SPHINXBUILD) -M clean "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
 watch: Makefile
