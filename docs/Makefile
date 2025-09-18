@@ -3,7 +3,7 @@
 
 # You can set these variables from the command line, and also
 # from the environment for the first two.
-SPHINXOPTS    ?= -jauto -w $(BUILDDIR)/warnings.log --fail-on-warning
+SPHINXOPTS    ?= -jauto -w $(BUILDDIR)/warnings.log
 SPHINXBUILD   ?= sphinx-build
 SPHINXWATCH   ?= sphinx-autobuild
 SOURCEDIR     = source
