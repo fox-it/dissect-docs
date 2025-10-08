@@ -1,5 +1,0 @@
-name,description
-apm,Apple Partition Map.
-bsd,BSD disklabel.
-gpt,GUID Partition Table.
-mbr,Master Boot Record.
