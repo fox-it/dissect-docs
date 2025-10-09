@@ -1,21 +1,20 @@
 Supported targets
 -----------------
 
-This page contains a list of the systems that ``dissect`` supports.
+Dissect supports a large range of formats. From various disk images, volume systems, file systems and operating systems, to tarballs and proprietary backup formats, and everything combined! This page aims to provide you with an overview of what you can expect Dissect to be able to handle!
 
 Loaders
 ~~~~~~~
 
-Loaders provide a way to interact with a "target" by translating source data into a format understood by ``dissect.target``.
-They achieve this by combining multiple files to build a virtual representation of the system.
+Loaders provide a way to interact with a "target" by combining and accessing source data into usable components for ``dissect.target``.
+The goal is to build a virtual representation of the original system.
 
 .. seealso::
 
    For a deeper dive into how loaders work, see :doc:`loaders </advanced/loaders>`.
 
-The table below lists the available loader types.
 In most cases, the appropriate loader is selected automatically based on the target.
-However, you can also specify a loader manually using the ``-L <loader type>`` flag or URI-style notation ``<loader type>://`` with the exception for ``Direct``.
+However, you can also specify a loader manually using the ``-L <loader type>`` flag or URI-style notation ``<loader type>://``.
 
 .. code-block:: bash
 
@@ -34,22 +33,13 @@ However, you can also specify a loader manually using the ``-L <loader type>`` f
      - Load Android backup files.
    * - :class:`Carbon Black <dissect.target.loaders.cb.CbLoader>`
      - ``cb``
-     - Use Carbon Black endpoints as targets using Live Response.
+     - Carbon Black Live Response endpoints. Can only be used directly with ``cb://`` or ``-L cb``.
    * - :class:`Cellebrite <dissect.target.loaders.cellebrite.CellebriteLoader>`
      - ``cellebrite``
      - Load Cellebrite UFED exports (``.ufdx`` and ``.ufd``).
    * - :class:`Directory <dissect.target.loaders.dir.DirLoader>`
      - ``dir``
      - Load a local directory as a filesystem.
-   * - :class:`Direct <dissect.target.loaders.direct.DirectLoader>`
-     - ``--direct``
-     - Load an evidence file directly instead of an image format.
-       The plugins that can be used with this loader are:
-       - apache
-       - evt
-       - evtx
-       - iis
-       - syslog
    * - :class:`Hyper-V <dissect.target.loaders.hyperv.HyperVLoader>`
      - ``hyperv``
      - Load Microsoft Hyper-V hypervisor files.
@@ -207,7 +197,7 @@ Within `dissect.target` :class:`~dissect.target.volumes.disk.DissectVolumeSystem
    * - :class:`Master Boot Record <dissect.volume.disk.schemes.mbr.MBR>`
 
 In addition to standard partition tables, Dissect supports various volume systems.
-These are used for RAID configurations or encrypted volumes such as ``LUKS`` and ``Bitlocker``.
+These are used for RAID configurations or encrypted volumes such as ``LUKS`` and ``BitLocker``.
 
 .. seealso::
 
@@ -289,7 +279,6 @@ Dissect provides implementations for common filesystems such as :doc:`NTFS </pro
 
 Operating Systems
 ~~~~~~~~~~~~~~~~~
-
 
 Dissect includes a range of ``OSPlugins`` that help identify the operating system present on a target.
 These plugins analyze disk data to determine the system type, enabling more accurate queries such as retrieving user or network information.

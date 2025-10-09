@@ -3,4 +3,3 @@ _build/
 __pycache__
 
 docs/source/api/*/
-docs/source/plugins/
