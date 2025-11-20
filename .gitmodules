@@ -120,3 +120,6 @@
 [submodule "submodules/dissect.database"]
 	path = submodules/dissect.database
 	url = https://github.com/fox-it/dissect.database.git
+[submodule "submodules/dissect.apfs"]
+	path = submodules/dissect.apfs
+	url = https://github.com/fox-it/dissect.apfs.git
