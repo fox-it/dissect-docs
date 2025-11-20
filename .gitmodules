@@ -6,10 +6,6 @@
 	branch = main
 	path = submodules/dissect.cstruct
 	url = https://github.com/fox-it/dissect.cstruct.git
-[submodule "submodules/dissect.esedb"]
-	branch = main
-	path = submodules/dissect.esedb
-	url = https://github.com/fox-it/dissect.esedb.git
 [submodule "submodules/dissect.etl"]
 	branch = main
 	path = submodules/dissect.etl
@@ -46,10 +42,6 @@
 	branch = main
 	path = submodules/dissect.regf
 	url = https://github.com/fox-it/dissect.regf.git
-[submodule "submodules/dissect.sql"]
-	branch = main
-	path = submodules/dissect.sql
-	url = https://github.com/fox-it/dissect.sql.git
 [submodule "submodules/dissect.target"]
 	branch = main
 	path = submodules/dissect.target
@@ -125,3 +117,6 @@
 [submodule "submodules/dissect.cramfs"]
 	path = submodules/dissect.cramfs
 	url = https://github.com/fox-it/dissect.cramfs.git
+[submodule "submodules/dissect.database"]
+	path = submodules/dissect.database
+	url = https://github.com/fox-it/dissect.database.git
