@@ -15,7 +15,7 @@ Usage
 -----
 
 .. sphinx_argparse_cli::
-    :module: dissect.target.tools.dump.run
+    :module: dissect.target.tools.dump
     :func: main
     :prog: target-dump
     :hook:
