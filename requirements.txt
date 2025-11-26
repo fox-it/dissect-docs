@@ -11,8 +11,9 @@ furo
 defusedxml
 msgpack
 structlog
+zstandard
+backports.zstd
 
 # These dependencies are needed to generate docs for dissect.target and
 # dissect.fve.
 pycryptodome==3.22.0
-argon2-cffi
