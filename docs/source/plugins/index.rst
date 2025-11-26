@@ -5,4 +5,5 @@ Plugin Reference
     :maxdepth: 1
     :glob:
 
+    /plugins/*/index
     /plugins/*
