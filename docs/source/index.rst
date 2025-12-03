@@ -85,7 +85,7 @@ Get in touch, join us on `Github <https://github.com/fox-it/dissect>`_!
 
 .. toctree::
     :hidden:
-    
+
     Home <self>
 
 .. toctree::
@@ -93,19 +93,18 @@ Get in touch, join us on `Github <https://github.com/fox-it/dissect>`_!
     :hidden:
 
     Install </install>
+    Supported Targets </supported-targets>
     Tutorial </tutorial>
     Querying </target-query>
     Shell </target-shell>
     Mount </target-mount>
     Acquire </acquire>
-    Supported Targets </supported-targets>
     RDump </rdump>
-    
-    
+
 .. toctree::
     :caption: In-Depth
     :hidden:
-    
+
     /tools/index
     /projects/index
     /usage/index
