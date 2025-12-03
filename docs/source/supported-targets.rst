@@ -242,56 +242,70 @@ The table below lists the supported container formats.
 Partition Schemes and Volume Systems
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Partitions organize a disk into multiple logical volumes.
-Within `dissect.target` :class:`~dissect.target.volumes.disk.DissectVolumeSystem` handles the partition schemes that are listed below.
+Dissect supports the following partition schemes to divide a disk into multiple logical volumes.
 
 .. list-table:: Supported Partition Schemes
    :header-rows: 1
-   :widths: 20
+   :widths: 45 5
 
    * - Partition Scheme
+     - API
    * - Apple Partition Map
-     - :class:`<dissect.volume.disk.schemes.apm.APM>`
+     - :class:`here <dissect.volume.disk.schemes.apm.APM>`
    * - BSD Disklabel
-     - :class:`<dissect.volume.disk.schemes.bsd.BSD>`
+     - :class:`here <dissect.volume.disk.schemes.bsd.BSD>`
    * - GUID Partition Table
-     - :class:`<dissect.volume.disk.schemes.gpt.GPT>`
+     - :class:`here <dissect.volume.disk.schemes.gpt.GPT>`
    * - Master Boot Record
-     - :class:`<dissect.volume.disk.schemes.mbr.MBR>`
+     - :class:`here <dissect.volume.disk.schemes.mbr.MBR>`
 
-In addition to standard partition tables, Dissect supports various volume systems.
-These are used for RAID configurations or encrypted volumes such as ``LUKS`` and ``BitLocker``.
+Besides the standard partition tables used in most computer systems.
+Dissect supports various other systems that do something similar.
+These are volume systems used fo RAID configurations or logical volumes that span multiple disks.
 
 .. seealso::
 
     For more details, see :doc:`volumes <advanced/volumes>`.
 
-The table below lists the different supported volume systems.
+The table below showcases the different supported volume systems.
 
 .. list-table:: Supported Volume Systems
    :header-rows: 1
-   :widths: 20 30
+   :widths: 20 30 5
 
    * - Volume System
      - Description
-   * - Bitlocker
-     - :class:`<dissect.target.volumes.bde.BitlockerVolumeSystem>`
-     - Bitlocker encrypted volume system. Used by windows systems
+     - API
    * - Disk Data Format
-     - :class:`<dissect.target.volumes.ddf.DdfVolumeSystem>`
      - DDF is a RAID data format that describes how data is formatted across raid groups.
-   * - Linux Unified Key Setup
-     - :class:`<dissect.target.volumes.luks.LUKSVolumeSystem>`
-     - LUKS encrypted volume system. These are a standard specification for disk encryption on linux systems.
+     - :class:`here <dissect.target.volumes.ddf.DdfVolumeSystem>`
    * - Logical Volume Manager
-     - :class:`<dissect.target.volumes.lvm.LvmVolumeSystem>`
-     - LVM is a device mapper framework that can make multiple volumes on a single disk. 
+     - LVM is a device mapper framework that can make multiple volumes on a single disk.
+     - :class:`here <dissect.target.volumes.lvm.LvmVolumeSystem>`
    * - Multiple Device driver
-     - :class:`<dissect.target.volumes.md.MdVolumeSystem>`
      - Linux MD RAID volume system. A software based RAID system.
+     - :class:`here <dissect.target.volumes.md.MdVolumeSystem>`
    * - Virtual Machine Filesystem
-     - :class:`<dissect.target.volumes.vmfs.VmfsVolumeSystem>`
      - VMFS is a clustered filesystem developed by VMWare on an ESXi type hosts.
+     - :class:`here <dissect.target.volumes.vmfs.VmfsVolumeSystem>`
+
+Dissect also supports decryption for some well known formats.
+The decryption functionality can be accessed with the (``-K``) or a keychain value (``-Kv``) inside the Dissect tooling.
+Dissect supports the following encrypted volume systems
+
+.. list-table:: Supported Encrypted Volume Systems
+   :header-rows: 1
+   :widths: 20 30 5
+
+   * - Encrypted volume system
+     - Description
+     - API
+   * - Linux Unified Key Setup
+     - LUKS encrypted volume system. These are the standard specification for disk encryption on linux systems.
+     - :class:`here <dissect.target.volumes.luks.LUKSVolumeSystem>`
+   * - Bitlocker
+     - BitLocker encrypted volume system. Used by Windows systems
+     - :class:`here <dissect.target.volumes.bde.BitlockerVolumeSystem>`
 
 Filesystems
 ~~~~~~~~~~~
