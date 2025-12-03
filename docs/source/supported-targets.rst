@@ -13,13 +13,15 @@ The goal is to build a virtual representation of the original system.
 
    For a deeper dive into how loaders work, see :doc:`loaders </advanced/loaders>`.
 
-In most cases, the appropriate loader is selected automatically based on the target.
-However, you can also specify a loader manually using the ``-L <loader type>`` flag or URI-style notation ``<loader type>://``.
+In most cases, the appropriate loader is selected automatically based on the the file it encounters.
+This can be based on the file extension, a directory structure inside the file or a specific configuration inside the file.
+However, a loader can be selected manually using ``-L <loader type>`` flag or with URI-style notation ``<loader type>://``.
 
 .. code-block:: bash
 
    target-query -f func -L ab /path/to/target
    target-query -f func ab:///path/to/target
+   target-query -f func /path/to/target.ab
 
 .. list-table:: Supported Loaders
    :header-rows: 1
@@ -140,8 +142,8 @@ However, you can also specify a loader manually using the ``-L <loader type>`` f
      - UTM virtual machine files.
    * - VB
      - :class:`vb <dissect.target.loaders.vb.VBLoader>`
-     -
-     - ..todo:
+     - .. TODO:
+     - .. TODO: looks like it supports rawcopy or something.
    * - Virtual Box
      - :class:`vbox <dissect.target.loaders.vbox.VBoxLoader>`
      - ``.vbox``
