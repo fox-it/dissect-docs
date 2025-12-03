@@ -181,8 +181,8 @@ However, there is an option to select a loader manually using ``-L <loader type>
 Containers
 ~~~~~~~~~~
 
-Containers are the abstraction layer for anything that looks (or should look) like a raw disk.
-They allow Dissect to interpret and interact with disk-like data structures in a consistent way.
+Containers provide an interface for Dissect to interact with a disk-like structure in a consistent way.
+These can be files or a harddisk.
 
 .. seealso::
 
@@ -192,52 +192,51 @@ The table below lists the supported container formats.
 
 .. list-table:: Supported Containers
    :header-rows: 1
-   :widths: 20 5 20 5
+   :widths: 20 20 5 5
 
    * - Container
-     - Extension
      - Description
+     - Extension
      - API
    * - Apple Sparse Image Format
+     - A sparse disk format introduced by Apple with near native SSD speeds.
      - ``.asif``
-     - No Documentation
      - :class:`here <dissect.target.containers.asif.AsifContainer>`
    * - Expert Witness Disk Image Format
-     - ``.E01``, ``.L01``, ``.Ex01``, ``.Lx01`` 
      - FTK Expert witness data format.
+     - ``.E01``, ``.L01``, ``.Ex01``, ``.Lx01`` 
      - :class:`here <dissect.target.containers.ewf.EwfContainer>`
    * - Fortinet Firmware
+     - Interprets and decompresses a Fortinet firmware file.
      - ``*-fortinet.out``
-     - No documentation
      - :class:`here <dissect.target.containers.fortifw.FortiFirmwareContainer>`
    * - HDD
+     - Parallels HDD virtual disk implementation.
      - ``.hdd``
-     - ...
      - :class:`here <dissect.target.containers.hdd.HddContainer>`
    * - HDS
+     - Parallels sparse hard disk format
      - ``.hds``
-     - Parallels Desktop hard disk format
      - :class:`here <dissect.target.containers.hds.HdsContainer>`
    * - Qcow2
+     - QEMU Copy On Write virtual disk format.
      - ``.qcow2``
-     - Hard disk used for QEMU.
      - :class:`here <dissect.target.containers.qcow2.QCow2Container>`
    * - VDI
-     - ``.vdi``
      - The virtualbox harddisk format.
+     - ``.vdi``
      - :class:`here <dissect.target.containers.vdi.VdiContainer>`
    * - Virtual Hard Disk
+     - The original virtual hard disk format developed by Microsoft. Mainly used by the Hyper-V hypervisor.
      - ``.vhd``
-     - ...
      - :class:`here <dissect.target.containers.vhd.VhdContainer>`
    * - Virtual Hard Disk X
+     - Virtual Hard Disk v2, the successor of VHD, and the new default on Hyper-V.
      - ``.vhdx``
-     - The virtual hard disk formats used for the Hyper-V hypervisor.
-       VHD is a precursor to VHDX
      - :class:`here <dissect.target.containers.vhdx.VhdxContainer>`
    * - VMware disk format
-     - ``.vmdk``
      - VMware virtual hard disks.
+     - ``.vmdk``
      - :class:`here <dissect.target.containers.vmdk.VmdkContainer>`
 
 Partition Schemes and Volume Systems
