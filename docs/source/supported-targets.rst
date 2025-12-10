@@ -260,8 +260,7 @@ Dissect supports the following partition schemes to divide a disk into multiple 
      - :class:`here <dissect.volume.disk.schemes.mbr.MBR>`
 
 Besides the standard partition tables used in most computer systems.
-Dissect supports various other systems that do something similar.
-These are volume systems used fo RAID configurations or logical volumes that span multiple disks.
+Dissect supports volume systems used for RAID configurations or logical volumes that span multiple disks.
 
 .. seealso::
 
@@ -314,67 +313,71 @@ In Dissect, filesystems go beyond traditional disk-based structures.
 If it behaves like a filesystem, Dissect can likely treat it as one.
 This includes both standard filesystems and formats that resemble filesystem behavior.
 
-Dissect provides implementations for common filesystems such as :doc:`NTFS </projects/dissect.ntfs/index>` and :doc:`VMFS </projects/dissect.vmfs/index>`, as well as support for forensic formats, network shares, and virtual overlays.
-
 .. seealso::
 
    For more details, see :doc:`Filesystems </advanced/filesystems>`.
 
 .. list-table:: Supported Filesystems
    :header-rows: 1
-   :widths: 20 30
+   :widths: 20 30 5
 
    * - Filesystem
      - Description
-
+     - API
    * - AD1
-     - :class:`<dissect.target.filesystems.ad1.AD1Filesystem>`
      - Forensic container format (AccessData AD1).
+     - :class:`here <dissect.target.filesystems.ad1.AD1Filesystem>`
+   * - APFS
+     - Apple Filesystem.
+     - :class:`here <dissect.target.filesystems.apfs.ApfsFilesystem>`
    * - BTRFS
-     - :class:`<dissect.target.filesystems.btrfs.BtrfsFilesystem>`
-     - BTRFS filesystem with support for subvolumes.
-   * - CpIO
-     - :class:`<dissect.target.filesystems.cpio.CpioFilesystem>`
+     - Binary-tree file system with support for subvolumes.
+     - :class:`here <dissect.target.filesystems.btrfs.BtrfsFilesystem>`
+   * - CPIO
      - CPIO archive format.
-   * - EXFAT
-     - :class:`<dissect.target.filesystems.exfat.ExfatFilesystem>`
-     - Microsoft EXFAT filesystem.
+     - :class:`here <dissect.target.filesystems.cpio.CpioFilesystem>`
+   * - exFAT
+     - Microsoft Extensible File Allocation Table filesystem.
+     - :class:`here <dissect.target.filesystems.exfat.ExfatFilesystem>`
    * - Ext2, Ext3, Ext4
-     - :class:`<dissect.target.filesystems.extfs.ExtFilesystem>`
      - Linux EXT family filesystems.
+     - :class:`here <dissect.target.filesystems.extfs.ExtFilesystem>`
    * - FAT
-     - :class:`<dissect.target.filesystems.fat.FatFilesystem>`
-     - FAT12/16/32 filesystem.
+     - File Allocation Table 12/16/32-bit filesystem.
+     - :class:`here <dissect.target.filesystems.fat.FatFilesystem>`
    * - FFS
-     - :class:`<dissect.target.filesystems.ffs.FfsFilesystem>`
-     - Fast File System (BSD).
+     - Fast Filesystem (BSD).
+     - :class:`here <dissect.target.filesystems.ffs.FfsFilesystem>`
    * - JFFS
-     - :class:`<dissect.target.filesystems.jffs.JffsFilesystem>`
-     - Journaling Flash File System.
-   * - Network File Share
-     - :class:`<dissect.target.filesystems.nfs.NfsFilesystem>`
-     - NFS share filesystem.
+     - Journaling Flash Filesystem.
+     - :class:`here <dissect.target.filesystems.jffs.JffsFilesystem>`
+   * - NFS
+     - Network File Share filesystem. Gives the ability to connect to an NFS share
+     - :class:`here <dissect.target.filesystems.nfs.NfsFilesystem>`
    * - NTFS
-     - :class:`<dissect.target.filesystems.ntfs.NtfsFilesystem>`
-     - Microsoft NTFS filesystem.
-   * - Overlay2 <dissect.target.filesystems.overlay.Overlay2Filesystem>`, :class:`Overlay
-     - :class:`<dissect.target.filesystems.overlay.OverlayFilesystem>`
-     - Overlay filesystem used in container environments.
-   * - QnxFs
-     - :class:`<dissect.target.filesystems.qnxfs.QnxFilesystem>`
-     - QNX filesystem.
+     - Microsoft NT Filesystem.
+     - :class:`here <dissect.target.filesystems.ntfs.NtfsFilesystem>`
+   * - Overlay
+     - Overlay filesystem combines multiple layers into one singular filesystem. This filesystem is used for container formats for Docker or Podman.
+     - :class:`here <dissect.target.filesystems.overlay.OverlayFilesystem>`
+   * - Overlay2
+     - Overlay2 Filesystem is a more efficient version of the Overlay filesystem.
+     - :class:`here <dissect.target.filesystems.overlay.Overlay2Filesystem>`
+   * - QNX4, QNX6
+     - QNX filesystem, commonly used in the QNX RTOS.
+     - :class:`here <dissect.target.filesystems.qnxfs.QnxFilesystem>`
    * - SquashFS
-     - :class:`<dissect.target.filesystems.squashfs.SquashFSFilesystem>`
-     - Compressed read-only filesystem.
+     - Compressed read-only filesystem used by linux systems.
+     - :class:`here <dissect.target.filesystems.squashfs.SquashFSFilesystem>`
    * - Virtual Backup Files
-     - :class:`<dissect.target.filesystems.vbk.VbkFilesystem>`
      - Filesystem representation of VBK backup files.
+     - :class:`here <dissect.target.filesystems.vbk.VbkFilesystem>`
    * - VMFS
-     - :class:`<dissect.target.filesystems.vmfs.VmfsFilesystem>`
      - VMware VMFS filesystem.
+     - :class:`here <dissect.target.filesystems.vmfs.VmfsFilesystem>`
    * - XFS
-     - :class:`<dissect.target.filesystems.xfs.XfsFilesystem>`
      - High-performance journaling filesystem
+     - :class:`here <dissect.target.filesystems.xfs.XfsFilesystem>`
 
 Operating Systems
 ~~~~~~~~~~~~~~~~~
