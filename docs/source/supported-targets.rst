@@ -382,54 +382,55 @@ This includes both standard filesystems and formats that resemble filesystem beh
 Operating Systems
 ~~~~~~~~~~~~~~~~~
 
-Dissect includes a range of ``OSPlugins`` that help identify the operating system present on a target.
-These plugins analyze disk data to determine the system type, enabling more accurate queries such as retrieving user or network information.
+Dissect supports various operating systems, where Dissect tries to automatically figure out what operating system is on the disk.
+This kind of detection enables more accurate queries for retrieving user and network information.
 
 Below is a list of supported operating systems that Dissect can detect.
 
 .. list-table:: Supported Operating Systems
    :header-rows: 1
-   :widths: 20
+   :widths: 45 5
 
    * - Operating System
-   * - Android
-     - :class:`<dissect.target.plugins.os.unix.linux.android._os.AndroidPlugin>`
-   * - Bsd
-     - :class:`<dissect.target.plugins.os.unix.bsd._os.BsdPlugin>`
-   * - Citrix
-     - :class:`<dissect.target.plugins.os.unix.bsd.citrix._os.CitrixPlugin>`
-   * - Darwin
-     - :class:`<dissect.target.plugins.os.unix.bsd.darwin._os.DarwinPlugin>`
-   * - Debian
-     - :class:`<dissect.target.plugins.os.unix.linux.debian._os.DebianPlugin>`
-   * - ESXi
-     - :class:`<dissect.target.plugins.os.unix.esxi._os.ESXiPlugin>`
-   * - Fortinet
-     - :class:`<dissect.target.plugins.os.unix.linux.fortios._os.FortiOSPlugin>`
-   * - FreeBSD
-     - :class:`<dissect.target.plugins.os.unix.bsd.freebsd._os.FreeBsdPlugin>`
-   * - iOS
-     - :class:`<dissect.target.plugins.os.unix.bsd.darwin.ios._os.IOSPlugin>`
-   * - Generic Linux
-     - :class:`<dissect.target.plugins.os.unix.linux._os.LinuxPlugin>`
-   * - MacOS
-     - :class:`<dissect.target.plugins.os.unix.bsd.darwin.macos._os.MacOSPlugin>`
-   * - OpenBSD
-     - :class:`<dissect.target.plugins.os.unix.bsd.openbsd._os.OpenBsdPlugin>`
-   * - Proxmox
-     - :class:`<dissect.target.plugins.os.unix.linux.debian.proxmox._os.ProxmoxPlugin>`
-   * - RedHat
-     - :class:`<dissect.target.plugins.os.unix.linux.redhat._os.RedHatPlugin>`
+     - API
    * - RES
-     - :class:`<dissect.target.loaders.res.ResOSPlugin>`
-   * - OpenSusSE
-     - :class:`<dissect.target.plugins.os.unix.linux.suse._os.SuSEPlugin>`
-   * - Unix
-     - :class:`<dissect.target.plugins.os.unix._os.UnixPlugin>`
-   * - Vyos
-     - :class:`<dissect.target.plugins.os.unix.linux.debian.vyos._os.VyosPlugin>`
+     - :class:`here <dissect.target.loaders.res.ResOSPlugin>`
    * - Windows
-     - :class:`<dissect.target.plugins.os.windows._os.WindowsPlugin>`
+     - :class:`here <dissect.target.plugins.os.windows._os.WindowsPlugin>`
+   * - Unix
+     - :class:`here <dissect.target.plugins.os.unix._os.UnixPlugin>`
+   * - ESXi
+     - :class:`here <dissect.target.plugins.os.unix.esxi._os.ESXiPlugin>`
+   * - BSD
+     - :class:`here <dissect.target.plugins.os.unix.bsd._os.BsdPlugin>`
+   * - Citrix
+     - :class:`here <dissect.target.plugins.os.unix.bsd.citrix._os.CitrixPlugin>`
+   * - FreeBSD
+     - :class:`here <dissect.target.plugins.os.unix.bsd.freebsd._os.FreeBsdPlugin>`
+   * - OpenBSD
+     - :class:`here <dissect.target.plugins.os.unix.bsd.openbsd._os.OpenBsdPlugin>`
+   * - Darwin
+     - :class:`here <dissect.target.plugins.os.unix.bsd.darwin._os.DarwinPlugin>`
+   * - iOS
+     - :class:`here <dissect.target.plugins.os.unix.bsd.darwin.ios._os.IOSPlugin>`
+   * - MacOS
+     - :class:`here <dissect.target.plugins.os.unix.bsd.darwin.macos._os.MacOSPlugin>`
+   * - Generic Linux
+     - :class:`here <dissect.target.plugins.os.unix.linux._os.LinuxPlugin>`
+   * - Android
+     - :class:`here <dissect.target.plugins.os.unix.linux.android._os.AndroidPlugin>`
+   * - Fortinet
+     - :class:`here <dissect.target.plugins.os.unix.linux.fortios._os.FortiOSPlugin>`
+   * - OpenSUSE
+     - :class:`here <dissect.target.plugins.os.unix.linux.suse._os.SuSEPlugin>`
+   * - RedHat
+     - :class:`here <dissect.target.plugins.os.unix.linux.redhat._os.RedHatPlugin>`
+   * - Debian
+     - :class:`here <dissect.target.plugins.os.unix.linux.debian._os.DebianPlugin>`
+   * - Proxmox
+     - :class:`here <dissect.target.plugins.os.unix.linux.debian.proxmox._os.ProxmoxPlugin>`
+   * - VyOS
+     - :class:`here <dissect.target.plugins.os.unix.linux.debian.vyos._os.VyosPlugin>`
 
 Child Targets
 ~~~~~~~~~~~~~
