@@ -13,9 +13,9 @@ The goal is to build a virtual representation of the original system.
 
    For a deeper dive into how loaders work, see :doc:`loaders </advanced/loaders>`.
 
-In most cases, the appropriate loader is selected automatically based on the the file it encounters.
-This can be based on the file extension, a directory structure inside the file or a specific configuration inside the file.
-However, a loader can be selected manually using ``-L <loader type>`` flag or with URI-style notation ``<loader type>://``.
+In most cases, Dissect selects the appropriate loader automatically based on the file you target.
+This can be based on the file extension, a specific directory structure inside the file (e.g. inside a zip file) or a specific configuration inside the file.
+However, there is an option to select a loader manually using ``-L <loader type>`` flag or with URI-style notation ``<loader type>://``.
 
 .. code-block:: bash
 
@@ -25,157 +25,158 @@ However, a loader can be selected manually using ``-L <loader type>`` flag or wi
 
 .. list-table:: Supported Loaders
    :header-rows: 1
-   :widths: 15 10 25
+   :widths: 15 20 10 5
 
    * - Name
-     - Loader type
-     - File extensions
      - Description
+     - Extension
+     - Type
    * - Android Backup
-     - :class:`ab <dissect.target.loaders.ab.AndroidBackupLoader>`
-     - ``.ab``
      - Android backup files.
+     - ``.ab``
+     - :class:`ab <dissect.target.loaders.ab.AndroidBackupLoader>`
    * - Carbon Black
-     - :class:`cb <dissect.target.loaders.cb.CbLoader>`
-     - 
      - Carbon Black Live Response endpoints. Can only be used directly with ``cb://`` or ``-L cb``.
+     -
+     - :class:`cb <dissect.target.loaders.cb.CbLoader>`
    * - Cellebrite
-     - :class:`cellebrite <dissect.target.loaders.cellebrite.CellebriteLoader>`
-     - ``.ufdx``, ``.ufd``
      - Cellebrite UFED exports files.
+     - ``.ufdx``, ``.ufd``
+     - :class:`cellebrite <dissect.target.loaders.cellebrite.CellebriteLoader>`
    * - Directory
-     - :class:`dir <dissect.target.loaders.dir.DirLoader>`
-     - 
      - Use a local directory as the root of a virtual filesystem.
+     -
+     - :class:`dir <dissect.target.loaders.dir.DirLoader>`
    * - Hyper-V
-     - :class:`hyperv <dissect.target.loaders.hyperv.HyperVLoader>`
-     - ``.vmcx``, ``.xml``
      - Microsoft Hyper-V configuration files.
+     - ``.vmcx``, ``.xml``
+     - :class:`hyperv <dissect.target.loaders.hyperv.HyperVLoader>`
    * - Itunes Backup
-     - :class:`itunes <dissect.target.loaders.itunes.ITunesLoader>`
-     -
      - iTunes backup files. Only from a directory that contains a ``Manifest.plist`` file.
+     -
+     - :class:`itunes <dissect.target.loaders.itunes.ITunesLoader>`
    * - Kape
-     - :class:`kape <dissect.target.loaders.kape.KapeLoader>`
-     - ``.vhdx`` or ``directory/``
      - KAPE forensic image format files. Only if the file or directory contains Kape specific directories.
+     - ``.vhdx`` or ``directory/``
+     - :class:`kape <dissect.target.loaders.kape.KapeLoader>`
    * - Libvirt
-     - :class:`libvirt <dissect.target.loaders.libvirt.LibvirtLoader>`
-     - ``.xml``
      - Libvirt xml configuration files.
+     - ``.xml``
+     - :class:`libvirt <dissect.target.loaders.libvirt.LibvirtLoader>`
    * - Local
-     - :class:`local <dissect.target.loaders.local.LocalLoader>`
      - Interpret the local system inside Dissect.
+     -
+     - :class:`local <dissect.target.loaders.local.LocalLoader>`
    * - Log
-     - :class:`log <dissect.target.loaders.log.LogLoader>`
-     - 
      - Target specific log files. Can only be used directly with ``cb://`` or ``-L log``.
+     -
+     - :class:`log <dissect.target.loaders.log.LogLoader>`
    * - MQTT
-     - :class:`mqtt <dissect.target.loaders.mqtt.MqttLoader>`
-     -
      - MQTT broker. Can only be used directly with ``mqtt://`` or ``-L mqtt``.
+     -
+     - :class:`mqtt <dissect.target.loaders.mqtt.MqttLoader>`
    * - OVA
-     - :class:`ova <dissect.target.loaders.ova.OvaLoader>`
-     - ``.ova``
      - Virtual Appliance files.
+     - ``.ova``
+     - :class:`ova <dissect.target.loaders.ova.OvaLoader>`
    * - Overlay
-     - :class:`overlay <dissect.target.loaders.overlay.OverlayLoader>`,
-     -
      - Construct a filesystem of the different layers of a ``podman`` container directory.
-   * - Overlay2
-     - :class:`overlay2 <dissect.target.loaders.overlay2.Overlay2Loader>`
      -
+     - :class:`overlay <dissect.target.loaders.overlay.OverlayLoader>`,
+   * - Overlay2
      - Construct a filesystem of the different layers of a ``docker`` container directory.
+     -
+     - :class:`overlay2 <dissect.target.loaders.overlay2.Overlay2Loader>`
    * - Open Virtualization Format
-     - :class:`ovf <dissect.target.loaders.ovf.OvfLoader>`
-     - ``.ovf``
      - Open Virtualization Format (OVF) files.
+     - ``.ovf``
+     - :class:`ovf <dissect.target.loaders.ovf.OvfLoader>`
    * - Phobos
-     - :class:`phobos <dissect.target.loaders.phobos.PhobosLoader>`
-     - ``.eight``
      - Phobos Ransomware files.
+     - ``.eight``
+     - :class:`phobos <dissect.target.loaders.phobos.PhobosLoader>`
    * - Proxmox
-     - :class:`proxmox <dissect.target.loaders.proxmox.ProxmoxLoader>`
-     - ``.conf``
      - Proxmox VM configuration files.
+     - ``.conf``
+     - :class:`proxmox <dissect.target.loaders.proxmox.ProxmoxLoader>`
    * - Parallels VM
+     - Parallels VM directory (.pvm) and the conviguration file (config.pvs)
+     - ``.pvm``, ``config.pvs``
      - :class:`pvm <dissect.target.loaders.pvm.PvmLoader>`,
        :class:`pvs <dissect.target.loaders.pvs.PvsLoader>`
-     - ``.pvm``, ``config.pvs``
-     - Parallels VM directory (.pvm) and the conviguration file (config.pvs)
    * - Raw
-     - :class:`raw <dissect.target.loaders.raw.RawLoader>`,
-       :class:`multiraw <dissect.target.loaders.multiraw.MultiRawLoader>`
-     - 
      - Raw binary files such as disk images.
        To load multiple raw containers in a single target, use ``MultiRaw``.
        To use this loader automatically use ``+`` to chain disks. E.g. ``/dev/vda+/dev/vdb`` 
+     - 
+     - :class:`raw <dissect.target.loaders.raw.RawLoader>`,
+       :class:`multiraw <dissect.target.loaders.multiraw.MultiRawLoader>`
    * - Remote
-     - :class:`remote <dissect.target.loaders.remote.RemoteLoader>`
-     -
      - Connect to a remote target that runs a compatible Dissect agent. Can only be used directly with ``remote://`` or ``-L remote``.
-   * - SMB
-     - :class:`smb <dissect.target.loaders.smb.SmbLoader>`
      -
+     - :class:`remote <dissect.target.loaders.remote.RemoteLoader>`
+   * - SMB
      - Use an SMB connection to user remote SMB servers as a target.
        This particular loader requires ``impacket`` to be installed.
        Can only be used directly with ``smb://`` or ``-L smb``.
+     -
+     - :class:`smb <dissect.target.loaders.smb.SmbLoader>`
    * - Tanium
-     - :class:`tanium <dissect.target.loaders.tanium.TaniumLoader>`
-     -
      - Tanium forensic image format files.
-   * - Tar
-     - :class:`tar <dissect.target.loaders.tar.TarLoader>`
-     - ``.tar``, ``.tar.<comp>``, ``.t<comp>``
-     - (Compressed) Tar files, docker container images and output files from Acquire or UAC.
-   * - Target
-     - :class:`target <dissect.target.loaders.target.TargetLoader>`
-     - ``.target``
-     - Load target system using a target file.
-   * - Unix-like Artifacts Collector
-     - :class:`uac <dissect.target.loaders.uac.UacLoader>`
      -
+     - :class:`tanium <dissect.target.loaders.tanium.TaniumLoader>`
+   * - Tar
+     - (Compressed) Tar files, docker container images and output files from Acquire or UAC.
+     - ``.tar``, ``.tar.<comp>``, ``.t<comp>``
+     - :class:`tar <dissect.target.loaders.tar.TarLoader>`
+   * - Target
+     - Load target system using a target file.
+     - ``.target``
+     - :class:`target <dissect.target.loaders.target.TargetLoader>`
+   * - Unix-like Artifacts Collector
      - UAC tool output. Detects whether the directory contains ``uac.log`` and a ``[root]`` directory.
+     -
+     - :class:`uac <dissect.target.loaders.uac.UacLoader>`
    * - UTM
-     - :class:`utm <dissect.target.loaders.utm.UtmLoader>`
-     - ``*.utm/`` directory.
      - UTM virtual machine files.
+     - ``*.utm/`` directory.
+     - :class:`utm <dissect.target.loaders.utm.UtmLoader>`
    * - VB
-     - :class:`vb <dissect.target.loaders.vb.VBLoader>`
-     - .. TODO:
      - .. TODO: looks like it supports rawcopy or something.
+     -
+     - :class:`vb <dissect.target.loaders.vb.VBLoader>`
    * - Virtual Box
-     - :class:`vbox <dissect.target.loaders.vbox.VBoxLoader>`
-     - ``.vbox``
      - Oracle VirtualBox files.
+     - ``.vbox``
+     - :class:`vbox <dissect.target.loaders.vbox.VBoxLoader>`
    * - Veaam Backup
-     - :class:`vbk <dissect.target.loaders.vbk.VbkLoader>`
-     - ``.vbk``
      - Load Veaam Backup (VBK) files.
+     - ``.vbk``
+     - :class:`vbk <dissect.target.loaders.vbk.VbkLoader>`
    * - Velociraptor
-     - :class:`velociraptor <dissect.target.loaders.velociraptor.VelociraptorLoader>`
-     - 
      - Rapid7 Velociraptor forensic image files. Either loads in the zip file or a directory containing the contents.
+     -
+     - :class:`velociraptor <dissect.target.loaders.velociraptor.VelociraptorLoader>`
    * - Virtual Machine Archive
-     - :class:`vma <dissect.target.loaders.vma.VmaLoader>`
-     - ``.vma``
      - Proxmox Virtual Machine Archive files.
+     - ``.vma``
+     - :class:`vma <dissect.target.loaders.vma.VmaLoader>`
    * - VMware Fusion
-     - :class:`vmwarevm <dissect.target.loaders.vmwarevm.VmwarevmLoader>`
-     - ``.vmwarevm``
      - VMware Fusion virtual machines.
+     - ``.vmwarevm``
+     - :class:`vmwarevm <dissect.target.loaders.vmwarevm.VmwarevmLoader>`
    * - VMware VM configuration
-     - :class:`vmx <dissect.target.loaders.vmx.VmxLoader>`
-     - ``.vmx``
      - VMware virtual machine configuration files.
+     - ``.vmx``
+     - :class:`vmx <dissect.target.loaders.vmx.VmxLoader>`
    * - XVA
-     - :class:`xva <dissect.target.loaders.xva.XvaLoader>`
-     - ``.xva``
      - Citrix Hypervisor format files.
+     - ``.xva``
+     - :class:`xva <dissect.target.loaders.xva.XvaLoader>`
    * - Zip
-     - :class:`zip <dissect.target.loaders.zip.ZipLoader>`
-     - ``.zip``
      - Zip files themselves or load the output of tools like Acquire or UAC.
+     - ``.zip``
+     - :class:`zip <dissect.target.loaders.zip.ZipLoader>`
 
 Containers
 ~~~~~~~~~~
