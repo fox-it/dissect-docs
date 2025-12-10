@@ -437,7 +437,7 @@ Child Targets
 
 Dissect supports identifying, listing and querying *child targets*.
 These are targets within other targets.
-These can include virtual machines, containers, or other environments nested inside a target.
+This can include virtual machines, containers, or other environments nested inside a target.
 Child targets are discovered using configuration files or metadata present on the host or target.
 Dissect can recursively query these targets, allowing it to detect deeply nested environments automatically.
 
@@ -447,47 +447,48 @@ Dissect can recursively query these targets, allowing it to detect deeply nested
 
 .. list-table:: Supported Child Targets
    :header-rows: 1
-   :widths: 15 35
+   :widths: 15 35 5
 
    * - Child Target
      - Description
+     - API
    * - Colima
-     - :class:`<dissect.target.plugins.child.colima.ColimaChildTargetPlugin>`
-     - Child target plugin that yields Colima containers.
+     - Colima container format, which is a runtime for both linux and macOS.
+     - :class:`here <dissect.target.plugins.child.colima.ColimaChildTargetPlugin>`
    * - Docker
-     - :class:`<dissect.target.plugins.child.docker.DockerChildTargetPlugin>`
-     - Child target plugin that yields from Docker overlay2fs containers.
+     - The Docker overlay2fs containers that available on the system.
+     - :class:`here <dissect.target.plugins.child.docker.DockerChildTargetPlugin>`
    * - ESXi
-     - :class:`<dissect.target.plugins.child.esxi.ESXiChildTargetPlugin>`
-     - Child target plugin that yields from ESXi VM inventory.
+     - The VM inventory on ESXi machines.
+     - :class:`here <dissect.target.plugins.child.esxi.ESXiChildTargetPlugin>`
    * - Hyper-v
-     - :class:`<dissect.target.plugins.child.hyperv.HyperVChildTargetPlugin>`
-     - Child target plugin that yields from Hyper-V VM inventory.
+     - The VM inventory on Hyper-V Windows hosts.
+     - :class:`here <dissect.target.plugins.child.hyperv.HyperVChildTargetPlugin>`
    * - Lima
-     - :class:`<dissect.target.plugins.child.lima.LimaChildTargetPlugin>`
-     - Child target plugin that yields Lima VMs.
+     - Lima, Linux Machines, is a container / VM runtime that supports different container engines such as docker, podman, and kubernetes.
+     - :class:`here <dissect.target.plugins.child.lima.LimaChildTargetPlugin>`
    * - Parallels
-     - :class:`<dissect.target.plugins.child.parallels.ParallelsChildTargetPlugin>`
-     - Child target plugin that yields Parallels Desktop VM files.
+     - The Parallels Desktop inventory, Parallels is a hypervisor for Mac computers.
+     - :class:`here <dissect.target.plugins.child.parallels.ParallelsChildTargetPlugin>`
    * - Podman
-     - :class:`<dissect.target.plugins.child.podman.PodmanChildTargetPlugin>`
-     - Child target plugin that yields from Podman overlayfs containers
+     - Podman, a container runtime engine such as Docker.
+     - :class:`here <dissect.target.plugins.child.podman.PodmanChildTargetPlugin>`
    * - Proxmox
-     - :class:`<dissect.target.plugins.child.proxmox.ProxmoxChildTargetPlugin>`
-     - Child target plugin that yields from the VM listing.
+     - Proxmox is a debian based virtualization platform.
+     - :class:`here <dissect.target.plugins.child.proxmox.ProxmoxChildTargetPlugin>`
    * - Qemu
-     - :class:`<dissect.target.plugins.child.qemu.QemuChildTargetPlugin>`
-     - Child target plugin that yields all QEMU domains from a KVM libvirt deamon.
+     - All QEMU virtual machines created by the KVM libvirt deamon.
+     - :class:`here <dissect.target.plugins.child.qemu.QemuChildTargetPlugin>`
    * - VirtualBox
-     - :class:`<dissect.target.plugins.child.virtualbox.VirtualBoxChildTargetPlugin>`
-     - Child target plugin that yields from Oracle VirtualBox VMs.
+     - Oracle VirtualBox VMs.
+     - :class:`here <dissect.target.plugins.child.virtualbox.VirtualBoxChildTargetPlugin>`
    * - Virtuozzo
-     - :class:`<dissect.target.plugins.child.virtuozzo.VirtuozzoChildTargetPlugin>`
-     - Child target plugin that yields from Virtuozzo container's root.
+     - All the vms from the Virtuozzo container's root directory ``vz/root/$VEID``.
+     - :class:`here <dissect.target.plugins.child.virtuozzo.VirtuozzoChildTargetPlugin>`
    * - Vmware Workstation
-     - :class:`<dissect.target.plugins.child.vmware_workstation.VmwareWorkstationChildTargetPlugin>`
-     - Child target plugin that yields from VMware Workstation VM inventory.
+     - All the VMs registerd within the VMWare workstation VM inventory.
+     - :class:`here <dissect.target.plugins.child.vmware_workstation.VmwareWorkstationChildTargetPlugin>`
    * - WSL
-     - :class:`<dissect.target.plugins.child.wsl.WSLChildTargetPlugin>`
-     - Child target plugin that yields Windos Subsystem Linux VHDX file locations.
+     - All the Windows Subsystem Linux VHDX file locations.
+     - :class:`here <dissect.target.plugins.child.wsl.WSLChildTargetPlugin>`
 
