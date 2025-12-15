@@ -1,21 +1,23 @@
 Supported targets
 -----------------
 
-Dissect supports a large range of formats. From various disk images, volume systems, file systems and operating systems, to tarballs and proprietary backup formats, and everything combined! This page aims to provide you with an overview of what you can expect Dissect to be able to handle!
+Dissect supports a large range of formats.
+From various disk images, volume systems, file systems and operating systems, to tarballs and proprietary backup formats, and everything combined!
+This page aims to provide you with an overview of what you can expect Dissect to be able to handle!
 
 Loaders
 ~~~~~~~
 
-Loaders provide a way to interact with a "target" by combining and accessing source data into usable components for ``dissect.target``.
-The goal is to build a virtual representation of the original system.
+Loaders provide a way to interact with a "target" by combining and accessing source data into usable parts.
+This creates a virtual version of the original system.
 
 .. seealso::
 
    For a deeper dive into how loaders work, see :doc:`loaders </advanced/loaders>`.
 
 In most cases, Dissect selects the appropriate loader automatically based on the file you target.
-This can be based on the file extension, a specific directory structure inside the file (e.g. inside a zip file) or a specific configuration inside the file.
-However, there is an option to select a loader manually using ``-L <loader type>`` flag or with URI-style notation ``<loader type>://``.
+It does this by looking at things like the file type, folder structure or special configurations files.
+If needed, you can choose the loader yourself by using ``-L <loader type>`` option or by using the URI-style notation ``<loader type>://``.
 
 .. code-block:: bash
 
@@ -142,7 +144,7 @@ However, there is an option to select a loader manually using ``-L <loader type>
      - ``*.utm/`` directory.
      - :class:`utm <dissect.target.loaders.utm.UtmLoader>`
    * - VB
-     - .. TODO: looks like it supports rawcopy or something.
+     - Construct a target from files created by RawCopy
      -
      - :class:`vb <dissect.target.loaders.vb.VBLoader>`
    * - Virtual Box
@@ -181,8 +183,8 @@ However, there is an option to select a loader manually using ``-L <loader type>
 Containers
 ~~~~~~~~~~
 
-Containers provide an interface for Dissect to interact with a disk-like structure in a consistent way.
-These can be files or a harddisk.
+Containers lets Dissect interact with a disk-like structure in a consistent way.
+These can be virtual machine files, forensic containers or a harddisk itself.
 
 .. seealso::
 
@@ -259,8 +261,7 @@ Dissect supports the following partition schemes to divide a disk into multiple 
    * - Master Boot Record
      - :class:`here <dissect.volume.disk.schemes.mbr.MBR>`
 
-Besides the standard partition tables used in most computer systems.
-Dissect supports volume systems used for RAID configurations or logical volumes that span multiple disks.
+Besides these standard partition tables used in most computer systems, Dissect supports disks in RAID configurations or disks with logical volumes that span multiple disks.
 
 .. seealso::
 
@@ -288,9 +289,9 @@ The table below showcases the different supported volume systems.
      - VMFS is a clustered filesystem developed by VMWare on an ESXi type hosts.
      - :class:`here <dissect.target.volumes.vmfs.VmfsVolumeSystem>`
 
-Dissect also supports decryption for some well known formats.
-The decryption functionality can be accessed with the (``-K``) or a keychain value (``-Kv``) inside the Dissect tooling.
-Dissect supports the following encrypted volume systems
+Dissect also has decryption capability for some well known systems.
+This functionality can be accessed with a keychain file (specified with ``-K``) with multiple passphrases or a keychain value (``-Kv``) using Dissect.
+Dissect supports the following encryption formats.
 
 .. list-table:: Supported Encrypted Volume Systems
    :header-rows: 1
@@ -382,8 +383,8 @@ This includes both standard filesystems and formats that resemble filesystem beh
 Operating Systems
 ~~~~~~~~~~~~~~~~~
 
-Dissect supports various operating systems, where Dissect tries to automatically figure out what operating system is on the disk.
-This kind of detection enables more accurate queries for retrieving user and network information.
+Dissect supports various operating systems, where Dissect tries to automatically figure out what operating system is available on the disk.
+Once the operating system is known, it enables the user to get more accurate information from the system, for example, the user andretrieve user or network information.
 
 Below is a list of supported operating systems that Dissect can detect.
 
@@ -436,10 +437,9 @@ Child Targets
 ~~~~~~~~~~~~~
 
 Dissect supports identifying, listing and querying *child targets*.
-These are targets within other targets.
-This can include virtual machines, containers, or other environments nested inside a target.
-Child targets are discovered using configuration files or metadata present on the host or target.
-Dissect can recursively query these targets, allowing it to detect deeply nested environments automatically.
+These are systems within other systems and can include virtual machines, containers or any other environment inside a "target".
+Dissect finds these systems by looking inside configuration files on the systems.
+It can even look deeper, and look inside those systems within systems for even more *child targets*.
 
 .. seealso::
 
