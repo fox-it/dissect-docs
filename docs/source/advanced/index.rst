@@ -11,3 +11,4 @@ Advanced
     /advanced/filesystems
     /advanced/plugins
     /advanced/record_descriptors
+    /advanced/records
