@@ -140,7 +140,8 @@ extension.
 
     $ rdump services.rec -w services.rec.out
 
-If no ``-w`` argument is provided, ``rdump`` writes the records to standard output in its default line-based format.
+When the ``-w`` argument is omitted, ``rdump`` sends records to standard output.
+The output format adapts to the destination: a human-readable, line-based format for terminals (TTYs), and a serialized format when piped to another command (e.g., ``rdump | xxd``).
 
 Usage
 -----
