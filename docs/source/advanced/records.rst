@@ -33,13 +33,21 @@ Here's an example of writing records to a JSON file:
 
 .. code-block:: python
 
-    from flow.record import RecordWriter, Record
+    from flow.record import RecordDescriptor, RecordWriter
 
+    # define our descriptor
+    MyRecord = RecordDescriptor("my/record", [
+        ("net.ipaddress", "ip"),
+        ("string", "description"),
+    ])
+
+    # define some records
     records = [
-        Record(myfield="value1"),
-        Record(myfield="value2"),
+        MyRecord("1.1.1.1", "cloudflare dns"),
+        MyRecord("8.8.8.8", "google dns"),
     ]
 
+    # write the records to disk
     with RecordWriter("jsonfile://output.json?indent=2") as writer:
         for record in records:
             writer.write(record)
