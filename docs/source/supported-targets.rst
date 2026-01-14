@@ -69,10 +69,6 @@ If needed, you can choose the loader yourself by using ``-L <loader type>`` opti
      - Interpret the local system inside Dissect.
      -
      - :class:`local <dissect.target.loaders.local.LocalLoader>`
-   * - Log
-     - Target specific log files. Can only be used directly with ``cb://`` or ``-L log``.
-     -
-     - :class:`log <dissect.target.loaders.log.LogLoader>`
    * - MQTT
      - MQTT broker. Can only be used directly with ``mqtt://`` or ``-L mqtt``.
      -
@@ -93,10 +89,6 @@ If needed, you can choose the loader yourself by using ``-L <loader type>`` opti
      - Open Virtualization Format (OVF) files.
      - ``.ovf``
      - :class:`ovf <dissect.target.loaders.ovf.OvfLoader>`
-   * - Phobos
-     - Phobos Ransomware files.
-     - ``.eight``
-     - :class:`phobos <dissect.target.loaders.phobos.PhobosLoader>`
    * - Proxmox
      - Proxmox VM configuration files.
      - ``.conf``
@@ -143,10 +135,6 @@ If needed, you can choose the loader yourself by using ``-L <loader type>`` opti
      - UTM virtual machine files.
      - ``*.utm/`` directory.
      - :class:`utm <dissect.target.loaders.utm.UtmLoader>`
-   * - VB
-     - Construct a target from files created by RawCopy
-     -
-     - :class:`vb <dissect.target.loaders.vb.VBLoader>`
    * - Virtual Box
      - Oracle VirtualBox files.
      - ``.vbox``
@@ -394,8 +382,6 @@ Below is a list of supported operating systems that Dissect can detect.
 
    * - Operating System
      - API
-   * - RES
-     - :class:`here <dissect.target.loaders.res.ResOSPlugin>`
    * - Windows
      - :class:`here <dissect.target.plugins.os.windows._os.WindowsPlugin>`
    * - Unix
