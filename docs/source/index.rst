@@ -80,7 +80,7 @@ Or you can start by taking a look at some community articles and videos:
 :doc:`/resources/dissect-in-action` or
 :doc:`/resources/talks-and-conferences` to begin with.
 
-Get in touch, join us on `Github <https://github.com/fox-it/dissect>`_!
+Get in touch, join us on `GitHub <https://github.com/fox-it/dissect>`_!
 
 
 .. toctree::

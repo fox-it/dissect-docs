@@ -21,9 +21,9 @@ If needed, you can choose the loader yourself by using ``-L <loader type>`` opti
 
 .. code-block:: bash
 
+   target-query -f func /path/to/target.ab
    target-query -f func -L ab /path/to/target
    target-query -f func ab:///path/to/target
-   target-query -f func /path/to/target.ab
 
 .. list-table:: Supported Loaders
    :header-rows: 1
@@ -53,12 +53,12 @@ If needed, you can choose the loader yourself by using ``-L <loader type>`` opti
      - Microsoft Hyper-V configuration files.
      - ``.vmcx``, ``.xml``
      - :class:`hyperv <dissect.target.loaders.hyperv.HyperVLoader>`
-   * - Itunes Backup
+   * - iTunes Backup
      - iTunes backup files. Only from a directory that contains a ``Manifest.plist`` file.
      -
      - :class:`itunes <dissect.target.loaders.itunes.ITunesLoader>`
-   * - Kape
-     - KAPE forensic image format files. Only if the file or directory contains Kape specific directories.
+   * - KAPE
+     - KAPE forensic image format files. Only if the file or directory contains KAPE specific directories.
      - ``.vhdx`` or ``directory/``
      - :class:`kape <dissect.target.loaders.kape.KapeLoader>`
    * - Libvirt
@@ -183,8 +183,8 @@ If needed, you can choose the loader yourself by using ``-L <loader type>`` opti
 Containers
 ~~~~~~~~~~
 
-Containers lets Dissect interact with a disk-like structure in a consistent way.
-These can be virtual machine files, forensic containers or a harddisk itself.
+Containers let Dissect interact with a disk-like structure in a consistent way.
+These can be virtual machine files, forensic containers or a hard disk itself.
 
 .. seealso::
 
@@ -267,7 +267,7 @@ Besides these standard partition tables used in most computer systems, Dissect s
 
     For more details, see :doc:`volumes <advanced/volumes>`.
 
-The table below showcases the different supported volume systems.
+The table below lists the different supported volume systems.
 
 .. list-table:: Supported Volume Systems
    :header-rows: 1
@@ -290,7 +290,7 @@ The table below showcases the different supported volume systems.
      - :class:`here <dissect.target.volumes.vmfs.VmfsVolumeSystem>`
 
 Dissect also has decryption capability for some well known systems.
-This functionality can be accessed with a keychain file (specified with ``-K``) with multiple passphrases or a keychain value (``-Kv``) using Dissect.
+This functionality can be accessed with a keychain file (specified with ``-K``) with multiple passphrases or a keychain value (``-Kv``) in most Dissect tools.
 Dissect supports the following encryption formats.
 
 .. list-table:: Supported Encrypted Volume Systems
@@ -303,7 +303,7 @@ Dissect supports the following encryption formats.
    * - Linux Unified Key Setup
      - LUKS encrypted volume system. These are the standard specification for disk encryption on linux systems.
      - :class:`here <dissect.target.volumes.luks.LUKSVolumeSystem>`
-   * - Bitlocker
+   * - BitLocker
      - BitLocker encrypted volume system. Used by Windows systems
      - :class:`here <dissect.target.volumes.bde.BitlockerVolumeSystem>`
 
@@ -384,7 +384,7 @@ Operating Systems
 ~~~~~~~~~~~~~~~~~
 
 Dissect supports various operating systems, where Dissect tries to automatically figure out what operating system is available on the disk.
-Once the operating system is known, it enables the user to get more accurate information from the system, for example, the user andretrieve user or network information.
+Once the operating system is known, it enables the user to get more accurate information from the system, for example, the user or network configuration.
 
 Below is a list of supported operating systems that Dissect can detect.
 
@@ -414,13 +414,13 @@ Below is a list of supported operating systems that Dissect can detect.
      - :class:`here <dissect.target.plugins.os.unix.bsd.darwin._os.DarwinPlugin>`
    * - iOS
      - :class:`here <dissect.target.plugins.os.unix.bsd.darwin.ios._os.IOSPlugin>`
-   * - MacOS
+   * - macOS
      - :class:`here <dissect.target.plugins.os.unix.bsd.darwin.macos._os.MacOSPlugin>`
    * - Generic Linux
      - :class:`here <dissect.target.plugins.os.unix.linux._os.LinuxPlugin>`
    * - Android
      - :class:`here <dissect.target.plugins.os.unix.linux.android._os.AndroidPlugin>`
-   * - Fortinet
+   * - FortiOS
      - :class:`here <dissect.target.plugins.os.unix.linux.fortios._os.FortiOSPlugin>`
    * - OpenSUSE
      - :class:`here <dissect.target.plugins.os.unix.linux.suse._os.SuSEPlugin>`
@@ -453,19 +453,19 @@ It can even look deeper, and look inside those systems within systems for even m
      - Description
      - API
    * - Colima
-     - Colima container format, which is a runtime for both linux and macOS.
+     - Colima container format, which is a runtime for both Linux and macOS.
      - :class:`here <dissect.target.plugins.child.colima.ColimaChildTargetPlugin>`
    * - Docker
-     - The Docker overlay2fs containers that available on the system.
+     - The Docker overlay2fs containers that are available on the system.
      - :class:`here <dissect.target.plugins.child.docker.DockerChildTargetPlugin>`
    * - ESXi
      - The VM inventory on ESXi machines.
      - :class:`here <dissect.target.plugins.child.esxi.ESXiChildTargetPlugin>`
-   * - Hyper-v
+   * - Hyper-V
      - The VM inventory on Hyper-V Windows hosts.
      - :class:`here <dissect.target.plugins.child.hyperv.HyperVChildTargetPlugin>`
    * - Lima
-     - Lima, Linux Machines, is a container / VM runtime that supports different container engines such as docker, podman, and kubernetes.
+     - Lima, Linux Machines, is a container / VM runtime that supports different container engines such as Docker, Podman, and Kubernetes.
      - :class:`here <dissect.target.plugins.child.lima.LimaChildTargetPlugin>`
    * - Parallels
      - The Parallels Desktop inventory, Parallels is a hypervisor for Mac computers.
@@ -476,19 +476,19 @@ It can even look deeper, and look inside those systems within systems for even m
    * - Proxmox
      - Proxmox is a debian based virtualization platform.
      - :class:`here <dissect.target.plugins.child.proxmox.ProxmoxChildTargetPlugin>`
-   * - Qemu
+   * - QEMU
      - All QEMU virtual machines created by the KVM libvirt deamon.
      - :class:`here <dissect.target.plugins.child.qemu.QemuChildTargetPlugin>`
    * - VirtualBox
      - Oracle VirtualBox VMs.
      - :class:`here <dissect.target.plugins.child.virtualbox.VirtualBoxChildTargetPlugin>`
    * - Virtuozzo
-     - All the vms from the Virtuozzo container's root directory ``vz/root/$VEID``.
+     - All the Virtuozzo containers.
      - :class:`here <dissect.target.plugins.child.virtuozzo.VirtuozzoChildTargetPlugin>`
-   * - Vmware Workstation
-     - All the VMs registerd within the VMWare workstation VM inventory.
+   * - VMware Workstation
+     - All the VMs registerd within the VMware Workstation VM inventory.
      - :class:`here <dissect.target.plugins.child.vmware_workstation.VmwareWorkstationChildTargetPlugin>`
-   * - WSL
-     - All the Windows Subsystem Linux VHDX file locations.
+   * - WSL2
+     - All the Windows Subsystem for Linux 2 instances.
      - :class:`here <dissect.target.plugins.child.wsl.WSLChildTargetPlugin>`
 
