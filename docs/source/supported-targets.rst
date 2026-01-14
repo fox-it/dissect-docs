@@ -9,7 +9,7 @@ Loaders
 ~~~~~~~
 
 Loaders provide a way to interact with a "target" by combining and accessing source data into usable parts.
-This creates a virtual version of the original system.
+This creates a virtual representation of the original system.
 
 .. seealso::
 
@@ -111,7 +111,7 @@ If needed, you can choose the loader yourself by using ``-L <loader type>`` opti
      - :class:`remote <dissect.target.loaders.remote.RemoteLoader>`
    * - SMB
      - Use an SMB connection to user remote SMB servers as a target.
-       This particular loader requires ``impacket`` to be installed.
+       This loader requires ``impacket`` to be installed, which can be done by installing `dissect.target[smb]`.
        Can only be used directly with ``smb://`` or ``-L smb``.
      -
      - :class:`smb <dissect.target.loaders.smb.SmbLoader>`
@@ -266,9 +266,10 @@ The table below lists the different supported volume systems.
      - API
    * - Disk Data Format
      - DDF is a RAID data format that describes how data is formatted across raid groups.
+       Commonly used by Dell RAID controllers.
      - :class:`here <dissect.target.volumes.ddf.DdfVolumeSystem>`
-   * - Logical Volume Manager
-     - LVM is a device mapper framework that can make multiple volumes on a single disk.
+   * - Logical Volume Manager 2
+     - LVM2 is a device mapper framework that can make multiple volumes on a single disk.
      - :class:`here <dissect.target.volumes.lvm.LvmVolumeSystem>`
    * - Multiple Device driver
      - Linux MD RAID volume system. A software based RAID system.
