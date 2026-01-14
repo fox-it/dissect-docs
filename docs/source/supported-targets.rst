@@ -178,6 +178,11 @@ These can be virtual machine files, forensic containers or a hard disk itself.
 
    For a deeper understanding on how containers work, see :doc:`containers <advanced/containers>`.
 
+Dissect has two methods to find the appropriate container automatically.
+The first one is based on the file extension, while the other is based on a magic value inside the file.
+
+As an example, the qcow2 container gets selected if the file extension is `.qcow2` or if the first bytes of the file are b"QFI\xfb".
+
 The table below lists the supported container formats.
 
 .. list-table:: Supported Containers
