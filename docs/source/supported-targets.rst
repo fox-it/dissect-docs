@@ -1,4 +1,4 @@
-Supported targets
+Supported Targets
 -----------------
 
 Dissect supports a large range of formats.
@@ -13,160 +13,147 @@ This creates a virtual representation of the original system.
 
 .. seealso::
 
-   For a deeper dive into how loaders work, see :doc:`loaders </advanced/loaders>`.
+  For a deeper dive into how loaders work, see :doc:`loaders </advanced/loaders>`.
 
 In most cases, Dissect selects the appropriate loader automatically based on the file you target.
 It does this by looking at things like the file type, folder structure or special configurations files.
 If needed, you can choose the loader yourself by using ``-L <loader type>`` option or by using the URI-style notation ``<loader type>://``.
 
-.. code-block:: bash
+.. code-block:: console
 
-   target-query -f func /path/to/target.ab
-   target-query -f func -L ab /path/to/target
-   target-query -f func ab:///path/to/target
+  target-query -f func /path/to/target.ab
+  target-query -f func -L ab /path/to/target
+  target-query -f func ab:///path/to/target
 
-.. list-table:: Supported Loaders
-   :header-rows: 1
-   :widths: 15 20 10 5
+.. important::
 
-   * - Name
-     - Description
-     - Extension
-     - Type
-   * - Android Backup
-     - Android backup files.
-     - ``.ab``
-     - :class:`ab <dissect.target.loaders.ab.AndroidBackupLoader>`
-   * - Carbon Black
-     - Carbon Black Live Response endpoints. Can only be used directly with ``cb://`` or ``-L cb``.
-     -
-     - :class:`cb <dissect.target.loaders.cb.CbLoader>`
-   * - Cellebrite
-     - Cellebrite UFED exports files.
-     - ``.ufdx``, ``.ufd``
-     - :class:`cellebrite <dissect.target.loaders.cellebrite.CellebriteLoader>`
-   * - Directory
-     - Use a local directory as the root of a virtual filesystem.
-     -
-     - :class:`dir <dissect.target.loaders.dir.DirLoader>`
-   * - Hyper-V
-     - Microsoft Hyper-V configuration files.
-     - ``.vmcx``, ``.xml``
-     - :class:`hyperv <dissect.target.loaders.hyperv.HyperVLoader>`
-   * - iTunes Backup
-     - iTunes backup files. Only from a directory that contains a ``Manifest.plist`` file.
-     -
-     - :class:`itunes <dissect.target.loaders.itunes.ITunesLoader>`
-   * - KAPE
-     - KAPE forensic image format files. Only if the file or directory contains KAPE specific directories.
-     - ``.vhdx`` or ``directory/``
-     - :class:`kape <dissect.target.loaders.kape.KapeLoader>`
-   * - Libvirt
-     - Libvirt xml configuration files.
-     - ``.xml``
-     - :class:`libvirt <dissect.target.loaders.libvirt.LibvirtLoader>`
-   * - Local
-     - Interpret the local system inside Dissect.
-     -
-     - :class:`local <dissect.target.loaders.local.LocalLoader>`
-   * - MQTT
-     - MQTT broker. Can only be used directly with ``mqtt://`` or ``-L mqtt``.
-     -
-     - :class:`mqtt <dissect.target.loaders.mqtt.MqttLoader>`
-   * - OVA
-     - Virtual Appliance files.
-     - ``.ova``
-     - :class:`ova <dissect.target.loaders.ova.OvaLoader>`
-   * - Overlay
-     - Construct a filesystem of the different layers of a ``podman`` container directory.
-     -
-     - :class:`overlay <dissect.target.loaders.overlay.OverlayLoader>`,
-   * - Overlay2
-     - Construct a filesystem of the different layers of a ``docker`` container directory.
-     -
-     - :class:`overlay2 <dissect.target.loaders.overlay2.Overlay2Loader>`
-   * - Open Virtualization Format
-     - Open Virtualization Format (OVF) files.
-     - ``.ovf``
-     - :class:`ovf <dissect.target.loaders.ovf.OvfLoader>`
-   * - Proxmox
-     - Proxmox VM configuration files.
-     - ``.conf``
-     - :class:`proxmox <dissect.target.loaders.proxmox.ProxmoxLoader>`
-   * - Parallels VM
-     - Parallels VM directory (.pvm) and the conviguration file (config.pvs)
-     - ``.pvm``, ``config.pvs``
-     - :class:`pvm <dissect.target.loaders.pvm.PvmLoader>`,
-       :class:`pvs <dissect.target.loaders.pvs.PvsLoader>`
-   * - Raw
-     - Raw binary files such as disk images.
-       To load multiple raw containers in a single target, use ``MultiRaw``.
-       To use this loader automatically use ``+`` to chain disks. E.g. ``/dev/vda+/dev/vdb`` 
-     - 
-     - :class:`raw <dissect.target.loaders.raw.RawLoader>`,
-       :class:`multiraw <dissect.target.loaders.multiraw.MultiRawLoader>`
-   * - Remote
-     - Connect to a remote target that runs a compatible Dissect agent. Can only be used directly with ``remote://`` or ``-L remote``.
-     -
-     - :class:`remote <dissect.target.loaders.remote.RemoteLoader>`
-   * - SMB
-     - Use an SMB connection to user remote SMB servers as a target.
-       This loader requires ``impacket`` to be installed, which can be done by installing `dissect.target[smb]`.
-       Can only be used directly with ``smb://`` or ``-L smb``.
-     -
-     - :class:`smb <dissect.target.loaders.smb.SmbLoader>`
-   * - Tanium
-     - Tanium forensic image format files.
-     -
-     - :class:`tanium <dissect.target.loaders.tanium.TaniumLoader>`
-   * - Tar
-     - (Compressed) Tar files, docker container images and output files from Acquire or UAC.
-     - ``.tar``, ``.tar.<comp>``, ``.t<comp>``
-     - :class:`tar <dissect.target.loaders.tar.TarLoader>`
-   * - Target
-     - Load target system using a target file.
-     - ``.target``
-     - :class:`target <dissect.target.loaders.target.TargetLoader>`
-   * - Unix-like Artifacts Collector
-     - UAC tool output. Detects whether the directory contains ``uac.log`` and a ``[root]`` directory.
-     -
-     - :class:`uac <dissect.target.loaders.uac.UacLoader>`
-   * - UTM
-     - UTM virtual machine files.
-     - ``*.utm/`` directory.
-     - :class:`utm <dissect.target.loaders.utm.UtmLoader>`
-   * - Virtual Box
-     - Oracle VirtualBox files.
-     - ``.vbox``
-     - :class:`vbox <dissect.target.loaders.vbox.VBoxLoader>`
-   * - Veaam Backup
-     - Load Veaam Backup (VBK) files.
-     - ``.vbk``
-     - :class:`vbk <dissect.target.loaders.vbk.VbkLoader>`
-   * - Velociraptor
-     - Rapid7 Velociraptor forensic image files. Either loads in the zip file or a directory containing the contents.
-     -
-     - :class:`velociraptor <dissect.target.loaders.velociraptor.VelociraptorLoader>`
-   * - Virtual Machine Archive
-     - Proxmox Virtual Machine Archive files.
-     - ``.vma``
-     - :class:`vma <dissect.target.loaders.vma.VmaLoader>`
-   * - VMware Fusion
-     - VMware Fusion virtual machines.
-     - ``.vmwarevm``
-     - :class:`vmwarevm <dissect.target.loaders.vmwarevm.VmwarevmLoader>`
-   * - VMware VM configuration
-     - VMware virtual machine configuration files.
-     - ``.vmx``
-     - :class:`vmx <dissect.target.loaders.vmx.VmxLoader>`
-   * - XVA
-     - Citrix Hypervisor format files.
-     - ``.xva``
-     - :class:`xva <dissect.target.loaders.xva.XvaLoader>`
-   * - Zip
-     - Zip files themselves or load the output of tools like Acquire or UAC.
-     - ``.zip``
-     - :class:`zip <dissect.target.loaders.zip.ZipLoader>`
+  Just because it does not have a loader, does not mean Dissect cannot open it! In those cases, Dissect falls back to a "raw loader",
+  which allows it to be opened as any of the :ref:`supported containers <supported-targets:Containers>` or even
+  :ref:`supported filesystems <supported-targets:Filesystems>`. Whether a target is supported
+  as a loader, a container or a filesystem depends on implementation details for that specific format.
+
+.. list-table:: Supported loaders
+  :header-rows: 1
+  :widths: 20 15 5
+
+  * - Description
+    - Format
+    - API
+  * - Android backup
+    - ``.ab``
+    - :mod:`ab <dissect.target.loaders.ab>`
+  * - Acquire
+    - ZIP or tar with Acquire structure
+    - :mod:`acquire <dissect.target.loaders.acquire>`
+  * - AccessData AD1
+    - ``.ad1``
+    - :mod:`ad1 <dissect.target.loaders.ad1>`
+  * - Carbon Black Live Response endpoint
+    - ``cb://`` or ``-L cb`` [#f1]_
+    - :mod:`cb <dissect.target.loaders.cb>`
+  * - Cellebrite UFED export
+    - ``.ufdx``, ``.ufd``
+    - :mod:`cellebrite <dissect.target.loaders.cellebrite>`
+  * - Docker and OCI container images
+    - tar file with Docker or OCI image structure
+    - :mod:`containerimage <dissect.target.loaders.containerimage>`
+  * - Local directory
+    - Common OS structure (``path/Windows/System32`` or ``path/etc``)
+    - :mod:`dir <dissect.target.loaders.dir>`
+  * - Microsoft Hyper-V virtual machine configuration
+    - ``.vmcx``, ``.xml``
+    - :mod:`hyperv <dissect.target.loaders.hyperv>`
+  * - iTunes backup
+    - Directory with iTunes backup structure
+    - :mod:`itunes <dissect.target.loaders.itunes>`
+  * - KAPE
+    - Directory or ``.vhdx`` with KAPE structure
+    - :mod:`kape <dissect.target.loaders.kape>`
+  * - Libvirt XML configuration
+    - ``.xml``
+    - :mod:`libvirt <dissect.target.loaders.libvirt>`
+  * - Local system (automatically load all drives such as ``/dev/sda`` or ``\\.\PhysicalDrive0``)
+    - ``local``
+    - :mod:`local <dissect.target.loaders.local>`
+  * - MQTT broker
+    - ``mqtt://`` or ``-L mqtt`` [#f2]_
+    - :mod:`mqtt <dissect.target.loaders.mqtt>`
+  * - Netscaler Techsupport Collector
+    - tar with Netscaler Techsupport structure
+    - :mod:`nscollector <dissect.target.loaders.nscollector>`
+  * - Open Virtual Appliance (OVA)
+    - ``.ova``
+    - :mod:`ova <dissect.target.loaders.ova>`
+  * - Podman OCI overlay
+    - Directory with Podman overlay structure
+    - :mod:`overlay <dissect.target.loaders.overlay>`
+  * - Docker overlay2
+    - Directory with Docker overlay2 structure
+    - :mod:`overlay2 <dissect.target.loaders.overlay2>`
+  * - Open Virtualization Format (OVF)
+    - ``.ovf``
+    - :mod:`ovf <dissect.target.loaders.ovf>`
+  * - Proxmox virtual machine configuration
+    - ``.conf``
+    - :mod:`proxmox <dissect.target.loaders.proxmox>`
+  * - Parallels virtual machine directory
+    - ``.pvm``,
+    - :mod:`pvm <dissect.target.loaders.pvm>`
+  * - Parallels virtual machine configuration
+    - ``config.pvs``
+    - :mod:`pvs <dissect.target.loaders.pvs>`
+  * - Single raw binary file
+    - Default fallback for unknown files
+    - :mod:`raw <dissect.target.loaders.raw>`
+  * - Multiple raw binary files
+    - Paths with ``+`` (``/dev/vda+/dev/vdb``)
+    - :mod:`multiraw <dissect.target.loaders.multiraw>`
+  * - Remote Dissect agent
+    - ``remote://`` or ``-L remote``
+    - :mod:`remote <dissect.target.loaders.remote>`
+  * - Remote SMB server
+    - ``smb://`` or ``-L smb`` [#f3]_
+    - :mod:`smb <dissect.target.loaders.smb>`
+  * - Tanium
+    - Directory with Tanium structure
+    - :mod:`tanium <dissect.target.loaders.tanium>`
+  * - (Compressed) tar
+    - ``.tar``, ``.tar.<comp>``, ``.t<comp>``
+    - :mod:`tar <dissect.target.loaders.tar>`
+  * - Unix-like Artifacts Collector (UAC)
+    - Directory, ZIP or tar with UAC structure
+    - :mod:`uac <dissect.target.loaders.uac>`
+  * - UTM virtual machine
+    - ``.utm``
+    - :mod:`utm <dissect.target.loaders.utm>`
+  * - Oracle VirtualBox virtual machine
+    - ``.vbox``
+    - :mod:`vbox <dissect.target.loaders.vbox>`
+  * - Veeam Backup (VBK)
+    - ``.vbk``
+    - :mod:`vbk <dissect.target.loaders.vbk>`
+  * - Rapid7 Velociraptor
+    - Directory or ZIP with Velociraptor structure
+    - :mod:`velociraptor <dissect.target.loaders.velociraptor>`
+  * - Proxmox Virtual Machine Archive (VMA)
+    - ``.vma``
+    - :mod:`vma <dissect.target.loaders.vma>`
+  * - VMware Fusion virtual machine
+    - ``.vmwarevm``
+    - :mod:`vmwarevm <dissect.target.loaders.vmwarevm>`
+  * - VMware virtual machine configuration
+    - ``.vmx``
+    - :mod:`vmx <dissect.target.loaders.vmx>`
+  * - Citrix Hypervisor backup (XVA)
+    - ``.xva``
+    - :mod:`xva <dissect.target.loaders.xva>`
+  * - ZIP
+    - ``.zip``
+    - :mod:`zip <dissect.target.loaders.zip>`
+
+.. [#f1] Requires ``dissect.target[cb]``
+.. [#f2] Requires ``dissect.target[mqtt]``
+.. [#f3] Requires ``dissect.target[smb]``
 
 Containers
 ~~~~~~~~~~
@@ -176,128 +163,103 @@ These can be virtual machine files, forensic containers or a hard disk itself.
 
 .. seealso::
 
-   For a deeper understanding on how containers work, see :doc:`containers <advanced/containers>`.
+  For a deeper understanding on how containers work, see :doc:`containers <advanced/containers>`.
 
 Dissect can select the appropriate container automatically based on either the file extension or file magic.
 For example, the QCOW2 container gets selected if the file extension is ``.qcow2`` or if the first bytes of the file are ``b"QFI\xfb"``.
 
-The table below lists the supported container formats.
+.. list-table:: Supported containers
+  :header-rows: 1
+  :widths: 15 5 5
 
-.. list-table:: Supported Containers
-   :header-rows: 1
-   :widths: 20 20 5 5
-
-   * - Container
-     - Description
-     - Extension
-     - API
-   * - Apple Sparse Image Format
-     - A sparse disk format introduced by Apple with near native SSD speeds.
-     - ``.asif``
-     - :class:`asif <dissect.target.containers.asif.AsifContainer>`
-   * - Expert Witness Disk Image Format
-     - FTK Expert witness data format.
-     - ``.E01``, ``.L01``, ``.Ex01``, ``.Lx01`` 
-     - :class:`ewf <dissect.target.containers.ewf.EwfContainer>`
-   * - Fortinet Firmware
-     - Interprets and decompresses a Fortinet firmware file.
-     - ``*-fortinet.out``
-     - :class:`fortifw <dissect.target.containers.fortifw.FortiFirmwareContainer>`
-   * - HDD
-     - Parallels HDD virtual disk implementation.
-     - ``.hdd``
-     - :class:`hdd <dissect.target.containers.hdd.HddContainer>`
-   * - HDS
-     - Parallels sparse hard disk format
-     - ``.hds``
-     - :class:`hds <dissect.target.containers.hds.HdsContainer>`
-   * - Qcow2
-     - QEMU Copy On Write virtual disk format.
-     - ``.qcow2``
-     - :class:`qcow2 <dissect.target.containers.qcow2.QCow2Container>`
-   * - VDI
-     - The virtualbox harddisk format.
-     - ``.vdi``
-     - :class:`vdi <dissect.target.containers.vdi.VdiContainer>`
-   * - Virtual Hard Disk
-     - The original virtual hard disk format developed by Microsoft. Mainly used by the Hyper-V hypervisor.
-     - ``.vhd``
-     - :class:`vhd <dissect.target.containers.vhd.VhdContainer>`
-   * - Virtual Hard Disk X
-     - Virtual Hard Disk v2, the successor of VHD, and the new default on Hyper-V.
-     - ``.vhdx``
-     - :class:`vhdx <dissect.target.containers.vhdx.VhdxContainer>`
-   * - VMware disk format
-     - VMware virtual hard disks.
-     - ``.vmdk``
-     - :class:`vmdk <dissect.target.containers.vmdk.VmdkContainer>`
+  * - Description
+    - Format
+    - API
+  * - Apple Sparse Image Format
+    - ``.asif``
+    - :mod:`asif <dissect.target.containers.asif>`
+  * - FTK Expert Witness Disk Image Format (EWF)
+    - ``.E01``, ``.L01``
+    - :mod:`ewf <dissect.target.containers.ewf>`
+  * - Fortinet firmware
+    - ``*-fortinet.out``
+    - :mod:`fortifw <dissect.target.containers.fortifw>`
+  * - Parallels HDD virtual disk
+    - ``.hdd``
+    - :mod:`hdd <dissect.target.containers.hdd>`
+  * - Parallels HDS sparse virtual disk
+    - ``.hds``
+    - :mod:`hds <dissect.target.containers.hds>`
+  * - QEMU QCOW2
+    - ``.qcow2``
+    - :mod:`qcow2 <dissect.target.containers.qcow2>`
+  * - VirtualBox VDI virtual disk
+    - ``.vdi``
+    - :mod:`vdi <dissect.target.containers.vdi>`
+  * - Hyper-V VHD virtual disk
+    - ``.vhd``
+    - :mod:`vhd <dissect.target.containers.vhd>`
+  * - Hyper-V VHDX virtual disk
+    - ``.vhdx``
+    - :mod:`vhdx <dissect.target.containers.vhdx>`
+  * - VMware virtual disk
+    - ``.vmdk``
+    - :mod:`vmdk <dissect.target.containers.vmdk>`
 
 Partition Schemes and Volume Systems
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Dissect supports the following partition schemes to divide a disk into multiple logical volumes.
+Dissect supports most common partition schemes. Nested partitions are supported as well.
 
 .. list-table:: Supported Partition Schemes
-   :header-rows: 1
-   :widths: 45 5
+  :header-rows: 1
+  :widths: 20 5
 
-   * - Partition Scheme
-     - API
-   * - Apple Partition Map
-     - :class:`apm <dissect.volume.disk.schemes.apm.APM>`
-   * - BSD Disklabel
-     - :class:`bsd <dissect.volume.disk.schemes.bsd.BSD>`
-   * - GUID Partition Table
-     - :class:`gpt <dissect.volume.disk.schemes.gpt.GPT>`
-   * - Master Boot Record
-     - :class:`mbr <dissect.volume.disk.schemes.mbr.MBR>`
+  * - Description
+    - API
+  * - Apple Partition Map (APM)
+    - :mod:`apm <dissect.volume.disk.schemes.apm>`
+  * - BSD Disklabel
+    - :mod:`bsd <dissect.volume.disk.schemes.bsd>`
+  * - GUID Partition Table (GPT)
+    - :mod:`gpt <dissect.volume.disk.schemes.gpt>`
+  * - Master Boot Record (MBR)
+    - :mod:`mbr <dissect.volume.disk.schemes.mbr>`
 
-Besides these standard partition tables used in most computer systems, Dissect supports disks in RAID configurations or disks with logical volumes that span multiple disks.
+Besides these standard partition schemes, Dissect supports disks in RAID configurations or disks with logical volumes that span multiple disks.
 
 .. seealso::
 
-    For more details, see :doc:`volumes <advanced/volumes>`.
+  For more details, see :doc:`volumes <advanced/volumes>`.
 
-The table below lists the different supported volume systems.
+.. list-table:: Supported volume systems
+  :header-rows: 1
+  :widths: 20 5
 
-.. list-table:: Supported Volume Systems
-   :header-rows: 1
-   :widths: 20 30 5
-
-   * - Volume System
-     - Description
-     - API
-   * - Disk Data Format
-     - DDF is a RAID data format that describes how data is formatted across raid groups.
-       Commonly used by Dell RAID controllers.
-     - :class:`ddf <dissect.target.volumes.ddf.DdfVolumeSystem>`
-   * - Logical Volume Manager 2
-     - LVM2 is a device mapper framework that can make multiple volumes on a single disk.
-     - :class:`lvm2 <dissect.target.volumes.lvm.LvmVolumeSystem>`
-   * - Multiple Device driver
-     - Linux MD RAID volume system. A software based RAID system.
-     - :class:`md <dissect.target.volumes.md.MdVolumeSystem>`
-   * - Virtual Machine Filesystem
-     - VMFS is a clustered filesystem developed by VMWare on an ESXi type hosts.
-     - :class:`vmfs <dissect.target.volumes.vmfs.VmfsVolumeSystem>`
+  * - Description
+    - API
+  * - DDF (Disk Data Format) RAID, common in Dell RAID controllers
+    - :mod:`ddf <dissect.target.volumes.ddf>`
+  * - LVM2
+    - :mod:`lvm2 <dissect.target.volumes.lvm>`
+  * - Linux MD RAID
+    - :mod:`md <dissect.target.volumes.md>`
+  * - VMFS LVM
+    - :mod:`vmfs <dissect.target.volumes.vmfs>`
 
 Dissect also has decryption capability for some well known systems.
 This functionality can be accessed with a keychain file (specified with ``-K``) with multiple passphrases or a keychain value (``-Kv``) in most Dissect tools.
-Dissect supports the following encryption formats.
 
-.. list-table:: Supported Encrypted Volume Systems
-   :header-rows: 1
-   :widths: 20 30 5
+.. list-table:: Supported encrypted volume systems
+  :header-rows: 1
+  :widths: 20 5
 
-   * - Encrypted volume system
-     - Description
-     - API
-   * - Linux Unified Key Setup
-     - LUKS encrypted volume system. These are the standard specification for disk encryption on linux systems.
-     - :class:`luks <dissect.target.volumes.luks.LUKSVolumeSystem>`
-   * - BitLocker
-     - BitLocker encrypted volume system. Used by Windows systems
-     - :class:`bde <dissect.target.volumes.bde.BitlockerVolumeSystem>`
+  * - Description
+    - API
+  * - LUKS (version 1 and 2)
+    - :mod:`luks <dissect.target.volumes.luks>`
+  * - BitLocker (all configurations and versions, including EOW)
+    - :mod:`bde <dissect.target.volumes.bde>`
 
 Filesystems
 ~~~~~~~~~~~
@@ -306,179 +268,146 @@ In Dissect, filesystems go beyond traditional disk-based structures.
 If it behaves like a filesystem, Dissect can likely treat it as one.
 This includes both standard filesystems and formats that resemble filesystem behavior.
 
+There might be some overlap with loaders and containers, as some formats can function in multiple roles,
+or need implementation in different areas to work correctly.
+
 .. seealso::
 
-   For more details, see :doc:`Filesystems </advanced/filesystems>`.
+  For more details, see :doc:`Filesystems </advanced/filesystems>`.
 
-.. list-table:: Supported Filesystems
-   :header-rows: 1
-   :widths: 20 30 5
+.. list-table:: Supported filesystems
+  :header-rows: 1
+  :widths: 20 5
 
-   * - Filesystem
-     - Description
-     - API
-   * - AD1
-     - Forensic container format (AccessData AD1).
-     - :class:`ad1 <dissect.target.filesystems.ad1.AD1Filesystem>`
-   * - APFS
-     - Apple Filesystem.
-     - :class:`apfs-container <dissect.target.filesystems.apfs.ApfsFilesystem>`
-   * - BTRFS
-     - Binary-tree file system with support for subvolumes.
-     - :class:`btrfs <dissect.target.filesystems.btrfs.BtrfsFilesystem>`
-   * - CPIO
-     - CPIO archive format.
-     - :class:`cpio <dissect.target.filesystems.cpio.CpioFilesystem>`
-   * - exFAT
-     - Microsoft Extensible File Allocation Table filesystem.
-     - :class:`exfat <dissect.target.filesystems.exfat.ExfatFilesystem>`
-   * - Ext2, Ext3, Ext4
-     - Linux EXT family filesystems.
-     - :class:`ext <dissect.target.filesystems.extfs.ExtFilesystem>`
-   * - FAT
-     - File Allocation Table 12/16/32-bit filesystem.
-     - :class:`fat <dissect.target.filesystems.fat.FatFilesystem>`
-   * - FFS
-     - Fast Filesystem (BSD).
-     - :class:`ffs <dissect.target.filesystems.ffs.FfsFilesystem>`
-   * - JFFS
-     - Journaling Flash Filesystem.
-     - :class:`jffs <dissect.target.filesystems.jffs.JffsFilesystem>`
-   * - NFS
-     - Network File Share filesystem. Gives the ability to connect to an NFS share
-     - :class:`nfs <dissect.target.filesystems.nfs.NfsFilesystem>`
-   * - NTFS
-     - Microsoft NT Filesystem.
-     - :class:`ntfs <dissect.target.filesystems.ntfs.NtfsFilesystem>`
-   * - Overlay
-     - Overlay filesystem combines multiple layers into one singular filesystem. This filesystem is used for container formats for Docker or Podman.
-     - :class:`overlay <dissect.target.filesystems.overlay.OverlayFilesystem>`
-   * - Overlay2
-     - Overlay2 Filesystem is a more efficient version of the Overlay filesystem.
-     - :class:`overlay2 <dissect.target.filesystems.overlay.Overlay2Filesystem>`
-   * - QNX4, QNX6
-     - QNX filesystem, commonly used in the QNX RTOS.
-     - :class:`qnxfs <dissect.target.filesystems.qnxfs.QnxFilesystem>`
-   * - SquashFS
-     - Compressed read-only filesystem used by linux systems.
-     - :class:`squashfs <dissect.target.filesystems.squashfs.SquashFSFilesystem>`
-   * - Virtual Backup Files
-     - Filesystem representation of VBK backup files.
-     - :class:`vbk <dissect.target.filesystems.vbk.VbkFilesystem>`
-   * - VMFS
-     - VMware VMFS filesystem.
-     - :class:`vmfs <dissect.target.filesystems.vmfs.VmfsFilesystem>`
-   * - XFS
-     - High-performance journaling filesystem
-     - :class:`xfs <dissect.target.filesystems.xfs.XfsFilesystem>`
+  * - Description
+    - API
+  * - AccessData AD1
+    - :mod:`ad1 <dissect.target.filesystems.ad1>`
+  * - Apple File System (APFS)
+    - :mod:`apfs <dissect.target.filesystems.apfs>`
+  * - Linux Btrfs
+    - :mod:`btrfs <dissect.target.filesystems.btrfs>`
+  * - CPIO archive
+    - :mod:`cpio <dissect.target.filesystems.cpio>`
+  * - Linux cramfs
+    - :mod:`cramfs <dissect.target.filesystems.cramfs>`
+  * - exFAT
+    - :mod:`exfat <dissect.target.filesystems.exfat>`
+  * - Linux EXT2, EXT3, EXT4
+    - :mod:`extfs <dissect.target.filesystems.extfs>`
+  * - FAT12, FAT16, FAT32
+    - :mod:`fat <dissect.target.filesystems.fat>`
+  * - BSD Fast Filesystem (FFS)
+    - :mod:`ffs <dissect.target.filesystems.ffs>`
+  * - Linux Journaling Flash Filesystem (JFFS)
+    - :mod:`jffs <dissect.target.filesystems.jffs>`
+  * - Network File Share (NFS)
+    - :mod:`nfs <dissect.target.filesystems.nfs>`
+  * - Microsoft NTFS
+    - :mod:`ntfs <dissect.target.filesystems.ntfs>`
+  * - QNX4 and QNX6
+    - :mod:`qnxfs <dissect.target.filesystems.qnxfs>`
+  * - Linux SquashFS
+    - :mod:`squashfs <dissect.target.filesystems.squashfs>`
+  * - Veeam Backup (VBK)
+    - :mod:`vbk <dissect.target.filesystems.vbk>`
+  * - VMware (VMFS)
+    - :mod:`vmfs <dissect.target.filesystems.vmfs>`
+  * - VMware vmtar
+    - :mod:`vmtar <dissect.target.filesystems.vmtar>`
+  * - Linux XFS
+    - :mod:`xfs <dissect.target.filesystems.xfs>`
 
 Operating Systems
 ~~~~~~~~~~~~~~~~~
 
-Dissect supports various operating systems, where Dissect tries to automatically figure out what operating system is available on the disk.
-Once the operating system is known, it enables the user to get more accurate information from the system, for example, the user or network configuration.
+Dissect tries to automatically figure out what operating system is available on the target, based on known file locations and structures.
+Once the operating system is known, it enables you to get more accurate information from the system, for example, the user or network configuration.
 
-Below is a list of supported operating systems that Dissect can detect.
+.. list-table:: Supported operating systems
+  :header-rows: 1
+  :widths: 20 5
 
-.. list-table:: Supported Operating Systems
-   :header-rows: 1
-   :widths: 45 5
-
-   * - Operating System
-     - API
-   * - Windows
-     - :class:`windows <dissect.target.plugins.os.windows._os.WindowsPlugin>`
-   * - Unix
-     - :class:`unix <dissect.target.plugins.os.unix._os.UnixPlugin>`
-   * - ESXi
-     - :class:`esxi <dissect.target.plugins.os.unix.esxi._os.ESXiPlugin>`
-   * - BSD
-     - :class:`bsd <dissect.target.plugins.os.unix.bsd._os.BsdPlugin>`
-   * - Citrix
-     - :class:`citrix <dissect.target.plugins.os.unix.bsd.citrix._os.CitrixPlugin>`
-   * - FreeBSD
-     - :class:`freebsd <dissect.target.plugins.os.unix.bsd.freebsd._os.FreeBsdPlugin>`
-   * - OpenBSD
-     - :class:`openbsd <dissect.target.plugins.os.unix.bsd.openbsd._os.OpenBsdPlugin>`
-   * - Darwin
-     - :class:`darwin <dissect.target.plugins.os.unix.bsd.darwin._os.DarwinPlugin>`
-   * - iOS
-     - :class:`ios <dissect.target.plugins.os.unix.bsd.darwin.ios._os.IOSPlugin>`
-   * - macOS
-     - :class:`macos <dissect.target.plugins.os.unix.bsd.darwin.macos._os.MacOSPlugin>`
-   * - Generic Linux
-     - :class:`linux <dissect.target.plugins.os.unix.linux._os.LinuxPlugin>`
-   * - Android
-     - :class:`android <dissect.target.plugins.os.unix.linux.android._os.AndroidPlugin>`
-   * - FortiOS
-     - :class:`fortios <dissect.target.plugins.os.unix.linux.fortios._os.FortiOSPlugin>`
-   * - OpenSUSE
-     - :class:`opensuse <dissect.target.plugins.os.unix.linux.suse._os.SuSEPlugin>`
-   * - RedHat
-     - :class:`redhat <dissect.target.plugins.os.unix.linux.redhat._os.RedHatPlugin>`
-   * - Debian
-     - :class:`debian <dissect.target.plugins.os.unix.linux.debian._os.DebianPlugin>`
-   * - Proxmox
-     - :class:`proxmox <dissect.target.plugins.os.unix.linux.debian.proxmox._os.ProxmoxPlugin>`
-   * - VyOS
-     - :class:`vyos <dissect.target.plugins.os.unix.linux.debian.vyos._os.VyosPlugin>`
+  * - Description
+    - API
+  * - Windows
+    - :mod:`windows <dissect.target.plugins.os.windows._os>`
+  * - Generic Unix
+    - :mod:`unix <dissect.target.plugins.os.unix._os>`
+  * - BSD
+    - :mod:`unix.bsd <dissect.target.plugins.os.unix.bsd._os>`
+  * - Citrix
+    - :mod:`unix.bsd.citrix <dissect.target.plugins.os.unix.bsd.citrix._os>`
+  * - FreeBSD
+    - :mod:`unix.bsd.freebsd <dissect.target.plugins.os.unix.bsd.freebsd._os>`
+  * - OpenBSD
+    - :mod:`unix.bsd.openbsd <dissect.target.plugins.os.unix.bsd.openbsd._os>`
+  * - Generic Darwin
+    - :mod:`unix.bsd.darwin <dissect.target.plugins.os.unix.bsd.darwin._os>`
+  * - iOS
+    - :mod:`unix.bsd.darwin.ios <dissect.target.plugins.os.unix.bsd.darwin.ios._os>`
+  * - macOS
+    - :mod:`unix.bsd.darwin.macos <dissect.target.plugins.os.unix.bsd.darwin.macos._os>`
+  * - ESXi
+    - :mod:`unix.esxi <dissect.target.plugins.os.unix.esxi._os>`
+  * - Generic Linux
+    - :mod:`unix.linux <dissect.target.plugins.os.unix.linux._os>`
+  * - Android
+    - :mod:`unix.linux.android <dissect.target.plugins.os.unix.linux.android._os>`
+  * - FortiOS
+    - :mod:`unix.linux.fortios <dissect.target.plugins.os.unix.linux.fortios._os>`
+  * - OpenSUSE
+    - :mod:`unix.linux.suse <dissect.target.plugins.os.unix.linux.suse._os>`
+  * - RedHat
+    - :mod:`unix.linux.redhat <dissect.target.plugins.os.unix.linux.redhat._os>`
+  * - Debian
+    - :mod:`unix.linux.debian <dissect.target.plugins.os.unix.linux.debian._os>`
+  * - Proxmox
+    - :mod:`unix.linux.debian.proxmox <dissect.target.plugins.os.unix.linux.debian.proxmox._os>`
+  * - VyOS
+    - :mod:`unix.linux.debian.vyos <dissect.target.plugins.os.unix.linux.debian.vyos._os>`
 
 Child Targets
 ~~~~~~~~~~~~~
 
 Dissect supports identifying, listing and querying *child targets*.
-These are systems within other systems and can include virtual machines, containers or any other environment inside a "target".
-Dissect finds these systems by looking inside configuration files on the systems.
-It can even look deeper, and look inside those systems within systems for even more *child targets*.
+These are targets within other targets, such as virtual machines or containers.
+Dissect finds these by looking inside configuration files on a target.
+It can do this recursively, and look for *child targets* inside the *child targets* for even more *child targets*.
 
 .. seealso::
 
-   For more details, see :ref:`Child targets <advanced/targets:Targets in targets>`.
+  For more details, see :ref:`Child targets <advanced/targets:Targets in targets>`.
 
-.. list-table:: Supported Child Targets
-   :header-rows: 1
-   :widths: 15 35 5
+.. list-table:: Supported child targets
+  :header-rows: 1
+  :widths: 20 5
 
-   * - Child Target
-     - Description
-     - API
-   * - Colima
-     - Colima container format, which is a runtime for both Linux and macOS.
-     - :class:`colima <dissect.target.plugins.child.colima.ColimaChildTargetPlugin>`
-   * - Docker
-     - The Docker overlay2fs containers that are available on the system.
-     - :class:`docker <dissect.target.plugins.child.docker.DockerChildTargetPlugin>`
-   * - ESXi
-     - The VM inventory on ESXi machines.
-     - :class:`esxi <dissect.target.plugins.child.esxi.ESXiChildTargetPlugin>`
-   * - Hyper-V
-     - The VM inventory on Hyper-V Windows hosts.
-     - :class:`hyper-v <dissect.target.plugins.child.hyperv.HyperVChildTargetPlugin>`
-   * - Lima
-     - Lima, Linux Machines, is a container / VM runtime that supports different container engines such as Docker, Podman, and Kubernetes.
-     - :class:`lima <dissect.target.plugins.child.lima.LimaChildTargetPlugin>`
-   * - Parallels
-     - The Parallels Desktop inventory, Parallels is a hypervisor for Mac computers.
-     - :class:`parallels <dissect.target.plugins.child.parallels.ParallelsChildTargetPlugin>`
-   * - Podman
-     - Podman, a container runtime engine such as Docker.
-     - :class:`podman <dissect.target.plugins.child.podman.PodmanChildTargetPlugin>`
-   * - Proxmox
-     - Proxmox is a debian based virtualization platform.
-     - :class:`proxmox <dissect.target.plugins.child.proxmox.ProxmoxChildTargetPlugin>`
-   * - QEMU
-     - All QEMU virtual machines created by the KVM libvirt deamon.
-     - :class:`qemu <dissect.target.plugins.child.qemu.QemuChildTargetPlugin>`
-   * - VirtualBox
-     - Oracle VirtualBox VMs.
-     - :class:`virtualbox <dissect.target.plugins.child.virtualbox.VirtualBoxChildTargetPlugin>`
-   * - Virtuozzo
-     - All the Virtuozzo containers.
-     - :class:`virtuozzo <dissect.target.plugins.child.virtuozzo.VirtuozzoChildTargetPlugin>`
-   * - VMware Workstation
-     - All the VMs registerd within the VMware Workstation VM inventory.
-     - :class:`vmware <dissect.target.plugins.child.vmware_workstation.VmwareWorkstationChildTargetPlugin>`
-   * - WSL2
-     - All the Windows Subsystem for Linux 2 instances.
-     - :class:`wsl <dissect.target.plugins.child.wsl.WSLChildTargetPlugin>`
-
+  * - Description
+    - API
+  * - Colima containers
+    - :mod:`colima <dissect.target.plugins.child.colima>`
+  * - Docker containers
+    - :mod:`docker <dissect.target.plugins.child.docker>`
+  * - ESXi virtual machines
+    - :mod:`esxi <dissect.target.plugins.child.esxi>`
+  * - Hyper-V virtual machines
+    - :mod:`hyperv <dissect.target.plugins.child.hyperv>`
+  * - Lima containers and virtual machines
+    - :mod:`lima <dissect.target.plugins.child.lima>`
+  * - Parallels virtual machines
+    - :mod:`parallels <dissect.target.plugins.child.parallels>`
+  * - Podman containers
+    - :mod:`podman <dissect.target.plugins.child.podman>`
+  * - Proxmox virtual machines
+    - :mod:`proxmox <dissect.target.plugins.child.proxmox>`
+  * - QEMU virtual machines
+    - :mod:`qemu <dissect.target.plugins.child.qemu>`
+  * - Oracle VirtualBox virtual machines
+    - :mod:`virtualbox <dissect.target.plugins.child.virtualbox>`
+  * - Virtuozzo containers
+    - :mod:`virtuozzo <dissect.target.plugins.child.virtuozzo>`
+  * - VMware Workstation virtual machines
+    - :mod:`vmware_workstation <dissect.target.plugins.child.vmware_workstation>`
+  * - Windows Subsystem for Linux 2 (WSL2) instances
+    - :mod:`wsl <dissect.target.plugins.child.wsl>`

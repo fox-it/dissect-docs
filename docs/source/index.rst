@@ -18,17 +18,17 @@ Usage Example
 -------------
 
 One of the most prominent tools that Dissect offers is called *target-query*.
-With this simple command you can, for example, extract all user accounts from a disk image: 
+With this simple command you can, for example, extract all user accounts from a disk image:
 
 .. code-block:: console
 
     $ target-query pc.img -f users
-    
+
     <windows/user ... name='systemprofile' ...>
     <windows/user ... name='LocalService' ...>
     <windows/user ... name='NetworkService' ...>
     <windows/user ... name='Mr. Evil' ...>
-    
+
 To see what other useful artefacts you can query use ``-l``:
 
 .. code-block:: console
@@ -92,9 +92,9 @@ Get in touch, join us on `GitHub <https://github.com/fox-it/dissect>`_!
     :caption: Basics
     :hidden:
 
-    Install </install>
-    Supported Targets </supported-targets>
-    Tutorial </tutorial>
+    /install
+    /supported-targets
+    /tutorial
     Querying </target-query>
     Shell </target-shell>
     Mount </target-mount>
