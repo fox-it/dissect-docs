@@ -73,8 +73,9 @@ if os.getenv("NO_AUTOAPI"):
     api_dir = Path(__file__).parent / "api"
 
     for dir_name in ["acquire/nop", "dissect/nop", "flow/nop"]:
-        api_dir.joinpath(dir_name).mkdir(parents=True, exist_ok=True)
-        api_dir.joinpath(dir_name, "index.rst").write_text(":orphan:\n\nTITLE\n#####\n")
+        if not (nop_dir := api_dir.joinpath(dir_name)).exists():
+            nop_dir.mkdir(parents=True, exist_ok=True)
+            nop_dir.joinpath("index.rst").write_text(":orphan:\n\nTITLE\n#####\n")
 
 else:
     extensions.append("autoapi.extension")
