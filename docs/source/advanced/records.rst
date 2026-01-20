@@ -20,6 +20,8 @@ For example, to write records to a gzip-compressed file, you can use:
 
     $ rdump <source> -w output.rec.gz
 
+This will write the records to ``output.rec.gz`` in the default record stream format, compressed with gzip.
+
 Writing Records with Python
 ---------------------------
 
@@ -66,6 +68,8 @@ Some common adapters include:
 * ``line``: For writing to the console in a human-readable format.
 
 You can get a full list of available adapters by running ``rdump --list-adapters``.
+
+Some adapters require extra dependencies, which will be shown in the output as well.
 
 .. seealso::
 

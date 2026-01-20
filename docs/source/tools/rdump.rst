@@ -140,8 +140,22 @@ extension.
 
     $ rdump services.rec -w services.rec.out
 
-When the ``-w`` argument is omitted, ``rdump`` sends records to standard output.
-The output format adapts to the destination: a human-readable, line-based format for terminals (TTYs), and a serialized format when piped to another command (e.g., ``rdump | xxd``).
+When the ``-w`` argument is omitted, ``rdump`` prints the string representation of the records to standard output, which is useful for piping to tools like ``grep`` or ``less``.
+
+If you want to output the record output to another ``rdump`` process you need to use ``-w -``, which will write the records in binary stream format to standard output. 
+
+For example, you can chain ``rdump`` with common Linux command-line tools to analyze records. In this example, we extract image paths from a record source, sort them, count occurrences, and display the top 5 most common paths:
+
+.. code-block:: console
+
+    $ rdump services.rec -w - | rdump -f "{imagepath}" | sort | uniq -c | sort -rn | head -n 5
+    [reading from stdin]
+     104 %SystemRoot%\system32\svchost.exe
+      71 %SystemRoot%\System32\svchost.exe
+      28 %systemroot%\system32\svchost.exe
+      12 None
+       3 %SystemRoot%\system32\lsass.exe
+
 
 Usage
 -----
