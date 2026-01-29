@@ -120,7 +120,42 @@ For example, we can output just the hostname, name and image path of a Windows s
 Writing records
 ---------------
 
-Something about writing records, e.g. auto detection of filename for compression.
+``rdump`` can write records to a file, which can be used as input for ``rdump`` at a later stage. To write
+records to a file, the ``-w`` or ``--writer`` argument can be used.
+
+The output format and compression type are automatically detected based on the filename extension. For example, to
+write to a gzip compressed file, simply use the ``.gz`` extension in your output file.
+
+.. code-block:: console
+
+    $ rdump services.rec -w services.rec.gz
+
+This will read the records from ``services.rec`` and write them to a new gzip compressed file named ``services.rec.gz``.
+Other supported compression formats are ``.bz2``, ``.zst`` (zstandard), and ``.lz4``.
+
+If you want to write the records to a file without any compression, just use a filename without a compression
+extension.
+
+.. code-block:: console
+
+    $ rdump services.rec -w services.rec.out
+
+When the ``-w`` argument is omitted, ``rdump`` prints the string representation of the records to standard output, which is useful for piping to tools like ``grep`` or ``less``.
+
+If you want to output the record output to another ``rdump`` process you need to use ``-w -``, which will write the records in binary stream format to standard output. 
+
+For example, you can chain ``rdump`` with common Linux command-line tools to analyze records. In this example, we extract image paths from a record source, sort them, count occurrences, and display the top 5 most common paths:
+
+.. code-block:: console
+
+    $ rdump services.rec -w - | rdump -f "{imagepath}" | sort | uniq -c | sort -rn | head -n 5
+    [reading from stdin]
+     104 %SystemRoot%\system32\svchost.exe
+      71 %SystemRoot%\System32\svchost.exe
+      28 %systemroot%\system32\svchost.exe
+      12 None
+       3 %SystemRoot%\system32\lsass.exe
+
 
 Usage
 -----
