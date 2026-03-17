@@ -57,48 +57,34 @@ a VMDK for reading:
 Many of the parsers in this package behave in a very similar way, so check the API reference to see how to utilize the
 parser you need.
 
-Open QCOW2 snapshots
-~~~~~~~~~~~~~~~~~~~~
+Opening QCOW2 disks & backing-files
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For `qcow2` images there is support for backing-files and it can either be automatically loaded when opening a target.
-The backing-file will automatically be read from the `qcow2` headers and dissect will attempt to load it.
+The QCOW2 parser provided by this library can be used to open QCOW2 disk images, including snapshots and backing-files.
+When opening a QCOW2 image as a target, any backing-files are automatically loaded and resolved.
 
-.. code-block:: python
-  target = Target.open(target_path)
-  print(target.users())
-
-Or, for more control, the path to the backing file can be passed when initializing a `qcow2` disk:
+For example, to open a QCOW2 image along with its backing-file:
 
 .. code-block:: python
-  def open_qcow2_with_backing_file(snapshot_path: Path, backing_path: Path):
-      # Open base QCOW2 image
-      backing_fh = backing_path.open("rb")
-      base_qcow2 = qcow2.QCow2(backing_fh)
-      base_stream = base_qcow2.open()
 
-      # Open snapshot QCOW2 image with base as backing file
-      snapshot_fh = snapshot_path.open("rb")
-      snapshot_qcow2 = qcow2.QCow2(
-          snapshot_fh,
-          backing_file=base_stream
-      )
-      snapshot_stream = snapshot_qcow2.open()
+    from dissect.hypervisor.disk.qcow2 import QCow2
 
-      return snapshot_stream, snapshot_fh, backing_fh, base_stream
+    with open("/path/to/base-image.qcow2", "rb") as base_image, \
+    open("/path/to/backing-file.qcow2", "rb") as backing_file:
+        qcow2 = QCow2(base_image, backing_file=backing_file)
 
-  def analyze_image(snapshot_path: Path, backing_path: Path):
-      # Open the QCOW2 snapshot along with its backing file and get file/stream handles
-      snapshot_stream, snapshot_fh, backing_fh, base_stream = open_qcow2_with_backing_file(snapshot_path, backing_path)
+        print(qcow2.open().read(512))
+        print(qcow2.backing_file.read(512))
 
-      # Create a new Dissect target to analyze the disk image
-      target = Target()
-      # Add the snapshot stream to the target’s disks
-      target.disks.add(snapshot_stream)
-      # Resolve all disks, volumes and filesystems and load an operating system on the current
-      target.apply()
+When opening a QCOW2 image using the dissect.target :class:`~dissect.target.target.Target` class, any backing-files
+are automatically loaded and resolved. For example:
 
-      # Collect data from the snapshot
-      print(target.users())
+.. code-block:: python
+  
+    from dissect.target import Target
+
+    target = Target("/path/to/base-image.qcow2")  # Automatically resolves backing-files
+    print(target.hostname)
 
 Tools
 -----
