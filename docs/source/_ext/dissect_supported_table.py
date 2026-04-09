@@ -4,6 +4,7 @@ from typing_extensions import override
 
 from sphinx.application import Sphinx
 from sphinx.util.logging import getLogger
+from sphinx.util.console import colorize
 from sphinx.addnodes import pending_xref
 from docutils.parsers.rst.directives.tables import ListTable
 from docutils.parsers.rst import directives
@@ -11,6 +12,7 @@ from docutils import nodes
 
 
 LOGGER = getLogger(__name__)
+DISSECT_PREFIX = colorize("bold", "[Dissect] ")
 
 
 class SupportedTargetTable(ListTable):
@@ -32,7 +34,11 @@ class SupportedTargetTable(ListTable):
         if result and isinstance(result[0], nodes.table):
             table_node = result[0]
             table_name = table_node[0].astext()
-            LOGGER.info("Gathering references from table '%s'", table_name)
+            LOGGER.info(
+                DISSECT_PREFIX
+                + colorize("darkgreen", "Gathering references from table '%s'"),
+                table_name,
+            )
             module_references = self._gather_table_references(table_node)
 
         if module_references:
@@ -55,7 +61,11 @@ class SupportedTargetTable(ListTable):
         return references
 
     def validate_references(self, table_name: str, module_references: list[str]):
-        LOGGER.info("Validating module references from table '%s'", table_name)
+        LOGGER.info(
+            DISSECT_PREFIX
+            + colorize("darkgreen", "Validating module references from table '%s'"),
+            table_name,
+        )
         check_path: str = self.options.get("submodule-path")
         root = Path(__file__).parent.parent.parent.parent
 
@@ -76,16 +86,24 @@ class SupportedTargetTable(ListTable):
             relative_file = file.relative_to(submodule_dir)
 
             if file.stem in black_list:
-                LOGGER.debug("Skipping %s", relative_file)
+                LOGGER.debug(
+                    DISSECT_PREFIX + colorize("darkgrey", "Skipping %s"), relative_file
+                )
                 continue
             if file.stem not in module_references:
                 LOGGER.warning(
-                    "Missing documentation entry for %s in table '%s'",
+                    DISSECT_PREFIX
+                    + colorize(
+                        "darkred", "Missing documentation entry for %s in table '%s'"
+                    ),
                     relative_file,
                     table_name,
                 )
 
-        LOGGER.info("Done validating table '%s'", table_name)
+        LOGGER.info(
+            DISSECT_PREFIX + colorize("darkgreen", "Done validating table '%s'"),
+            table_name,
+        )
 
 
 def setup(app: Sphinx) -> dict[str, Any]:
