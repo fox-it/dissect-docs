@@ -51,6 +51,7 @@ extensions = [
     "sphinx_copybutton",
     "sphinx_design",
     "dissect_plugins",
+    "supported_table",
 ]
 
 # Define the canonical URL if you are using a custom domain on Read the Docs

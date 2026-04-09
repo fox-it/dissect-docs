@@ -32,9 +32,11 @@ If needed, you can choose the loader yourself by using ``-L <loader type>`` opti
   :ref:`supported filesystems <supported-targets:Filesystems>`. Whether a target is supported
   as a loader, a container or a filesystem depends on implementation details for that specific format.
 
-.. list-table:: Supported loaders
+.. supported-table:: Supported loaders
   :header-rows: 1
   :widths: 20 15 5
+  :submodule-path: dissect.target/dissect/target/loaders
+  :blacklist: cyber,phobos,itunes,target,vb,asdf,log,vmsupport,res,direct,profile,pvs
 
   * - Description
     - Format
@@ -168,9 +170,11 @@ These can be virtual machine files, forensic containers or a hard disk itself.
 Dissect can select the appropriate container automatically based on either the file extension or file magic.
 For example, the QCOW2 container gets selected if the file extension is ``.qcow2`` or if the first bytes of the file are ``b"QFI\xfb"``.
 
-.. list-table:: Supported containers
+.. supported-table:: Supported containers
   :header-rows: 1
   :widths: 15 5 5
+  :submodule-path: dissect.target/dissect/target/containers
+  :blacklist: raw,asdf,hds,split
 
   * - Description
     - Format
@@ -211,9 +215,10 @@ Partition Schemes and Volume Systems
 
 Dissect supports most common partition schemes. Nested partitions are supported as well.
 
-.. list-table:: Supported Partition Schemes
+.. supported-table:: Supported Partition Schemes
   :header-rows: 1
   :widths: 20 5
+  :submodule-path: dissect.volume/dissect/volume/disk/schemes
 
   * - Description
     - API
@@ -232,9 +237,11 @@ Besides these standard partition schemes, Dissect supports disks in RAID configu
 
   For more details, see :doc:`volumes <advanced/volumes>`.
 
-.. list-table:: Supported volume systems
+.. supported-table:: Supported volume systems
   :header-rows: 1
   :widths: 20 5
+  :submodule-path: dissect.target/dissect/target/volumes
+  :blacklist: disk,luks,bde
 
   * - Description
     - API
@@ -250,9 +257,11 @@ Besides these standard partition schemes, Dissect supports disks in RAID configu
 Dissect also has decryption capability for some well known systems.
 This functionality can be accessed with a keychain file (specified with ``-K``) with multiple passphrases or a keychain value (``-Kv``) in most Dissect tools.
 
-.. list-table:: Supported encrypted volume systems
+.. supported-table:: Supported encrypted volume systems
   :header-rows: 1
   :widths: 20 5
+  :submodule-path: dissect.target/dissect/target/volumes
+  :blacklist: disk,ddf,lvm,md,vmfs
 
   * - Description
     - API
@@ -275,9 +284,11 @@ or need implementation in different areas to work correctly.
 
   For more details, see :doc:`Filesystems </advanced/filesystems>`.
 
-.. list-table:: Supported filesystems
+.. supported-table:: Supported filesystems
   :header-rows: 1
   :widths: 20 5
+  :submodule-path: dissect.target/dissect/target/filesystems
+  :blacklist: zip,smb,itunes,cb,overlay,ntds,tar,dir
 
   * - Description
     - API
@@ -324,9 +335,12 @@ Operating Systems
 Dissect tries to automatically figure out what operating system is available on the target, based on known file locations and structures.
 Once the operating system is known, it enables you to get more accurate information from the system, for example, the user or network configuration.
 
-.. list-table:: Supported operating systems
+.. supported-table:: Supported operating systems
   :header-rows: 1
   :widths: 20 5
+  :submodule-path: dissect.target/dissect/target/plugins
+  :glob-pattern: **/_os.py
+  :blacklist: default
 
   * - Description
     - API
@@ -379,9 +393,10 @@ It can do this recursively, and look for *child targets* inside the *child targe
 
   For more details, see :ref:`Child targets <advanced/targets:Targets in targets>`.
 
-.. list-table:: Supported child targets
+.. supported-table:: Supported child targets
   :header-rows: 1
   :widths: 20 5
+  :submodule-path: dissect.target/dissect/target/plugins/child
 
   * - Description
     - API
