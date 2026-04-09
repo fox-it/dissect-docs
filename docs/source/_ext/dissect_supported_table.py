@@ -107,7 +107,7 @@ class SupportedTargetTable(ListTable):
 
 
 def setup(app: Sphinx) -> dict[str, Any]:
-    app.add_directive("supported-table", SupportedTargetTable)
+    app.add_directive("dissect-supported-table", SupportedTargetTable)
     return {
         "version": "0.1",
         "parallel_read_safe": True,
