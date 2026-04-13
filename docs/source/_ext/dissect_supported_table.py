@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from pathlib import Path
 from typing import Any
 from typing_extensions import override
@@ -19,7 +21,7 @@ class SupportedTargetTable(ListTable):
     """Extended list-table directive that validates if we have all our supported target modules documented."""
 
     option_spec = ListTable.option_spec.copy()
-    option_spec["submodule-path"] = directives.unchanged_required
+    option_spec["source-path"] = directives.unchanged_required
     option_spec["blacklist"] = directives.unchanged
     option_spec["glob-pattern"] = directives.unchanged
 
@@ -66,11 +68,12 @@ class SupportedTargetTable(ListTable):
             + colorize("darkgreen", "Validating module references from table '%s'"),
             table_name,
         )
-        check_path: str = self.options.get("submodule-path")
-        root = Path(__file__).parent.parent.parent.parent
+        check_path: str = self.options.get("source-path")
+        # Get the environment for the sphinx app
+        environment = self.state.document.settings.env
+        dissect_projects_dir = environment.config.dissect_projects_path
 
-        submodule_dir = root / "submodules"
-        search_path = submodule_dir / check_path
+        search_path = dissect_projects_dir / check_path
 
         black_list = set()
         black_list.update(["__init__"])
@@ -79,17 +82,18 @@ class SupportedTargetTable(ListTable):
         )
 
         glob = self.options.get("glob-pattern", "*.py")
-        for file in search_path.glob(glob):
+        for file in search_path.glob(glob.strip("'\"")):
             if file.name == "_os.py":
                 file = file.parent
 
-            relative_file = file.relative_to(submodule_dir)
+            relative_file = file.relative_to(dissect_projects_dir)
 
             if file.stem in black_list:
                 LOGGER.debug(
                     DISSECT_PREFIX + colorize("darkgrey", "Skipping %s"), relative_file
                 )
                 continue
+
             if file.stem not in module_references:
                 LOGGER.warning(
                     DISSECT_PREFIX
@@ -107,6 +111,9 @@ class SupportedTargetTable(ListTable):
 
 
 def setup(app: Sphinx) -> dict[str, Any]:
+    app.add_config_value(
+        "dissect_projects_path", Path(__file__).parent.parent.parent.parent, "html"
+    )
     app.add_directive("dissect-supported-table", SupportedTargetTable)
     return {
         "version": "0.1",

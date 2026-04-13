@@ -183,6 +183,8 @@ suppress_warnings = [
     "ref.python",
 ]
 
+dissect_projects_path = Path(__file__).parent.parent.parent / "submodules"
+
 
 def autoapi_skip_hook(app: Sphinx, what: str, name: str, obj, skip: bool, options: list[str]) -> bool:
     # Do not skip OS modules in dissect.target (caught by `private-members`)

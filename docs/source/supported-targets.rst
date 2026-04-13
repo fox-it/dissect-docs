@@ -35,7 +35,7 @@ If needed, you can choose the loader yourself by using ``-L <loader type>`` opti
 .. dissect-supported-table:: Supported loaders
   :header-rows: 1
   :widths: 20 15 5
-  :submodule-path: dissect.target/dissect/target/loaders
+  :source-path: dissect.target/dissect/target/loaders
   :blacklist: cyber,phobos,itunes,target,vb,asdf,log,vmsupport,res,direct,profile,pvs
 
   * - Description
@@ -173,7 +173,7 @@ For example, the QCOW2 container gets selected if the file extension is ``.qcow2
 .. dissect-supported-table:: Supported containers
   :header-rows: 1
   :widths: 15 5 5
-  :submodule-path: dissect.target/dissect/target/containers
+  :source-path: dissect.target/dissect/target/containers
   :blacklist: raw,asdf,hds,split
 
   * - Description
@@ -218,7 +218,7 @@ Dissect supports most common partition schemes. Nested partitions are supported 
 .. dissect-supported-table:: Supported Partition Schemes
   :header-rows: 1
   :widths: 20 5
-  :submodule-path: dissect.volume/dissect/volume/disk/schemes
+  :source-path: dissect.volume/dissect/volume/disk/schemes
 
   * - Description
     - API
@@ -240,7 +240,7 @@ Besides these standard partition schemes, Dissect supports disks in RAID configu
 .. dissect-supported-table:: Supported volume systems
   :header-rows: 1
   :widths: 20 5
-  :submodule-path: dissect.target/dissect/target/volumes
+  :source-path: dissect.target/dissect/target/volumes
   :blacklist: disk,luks,bde
 
   * - Description
@@ -260,7 +260,7 @@ This functionality can be accessed with a keychain file (specified with ``-K``) 
 .. dissect-supported-table:: Supported encrypted volume systems
   :header-rows: 1
   :widths: 20 5
-  :submodule-path: dissect.target/dissect/target/volumes
+  :source-path: dissect.target/dissect/target/volumes
   :blacklist: disk,ddf,lvm,md,vmfs
 
   * - Description
@@ -287,7 +287,7 @@ or need implementation in different areas to work correctly.
 .. dissect-supported-table:: Supported filesystems
   :header-rows: 1
   :widths: 20 5
-  :submodule-path: dissect.target/dissect/target/filesystems
+  :source-path: dissect.target/dissect/target/filesystems
   :blacklist: zip,smb,itunes,cb,overlay,ntds,tar,dir
 
   * - Description
@@ -338,8 +338,8 @@ Once the operating system is known, it enables you to get more accurate informat
 .. dissect-supported-table:: Supported operating systems
   :header-rows: 1
   :widths: 20 5
-  :submodule-path: dissect.target/dissect/target/plugins
-  :glob-pattern: **/_os.py
+  :source-path: dissect.target/dissect/target/plugins
+  :glob-pattern: "**/_os.py"
   :blacklist: default
 
   * - Description
@@ -396,7 +396,7 @@ It can do this recursively, and look for *child targets* inside the *child targe
 .. dissect-supported-table:: Supported child targets
   :header-rows: 1
   :widths: 20 5
-  :submodule-path: dissect.target/dissect/target/plugins/child
+  :source-path: dissect.target/dissect/target/plugins/child
 
   * - Description
     - API
