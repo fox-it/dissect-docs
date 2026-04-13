@@ -82,7 +82,7 @@ class SupportedTargetTable(ListTable):
         )
 
         glob = self.options.get("glob-pattern", "*.py")
-        for file in search_path.glob(glob.strip("'\"")):
+        for file in search_path.glob(glob):
             if file.name == "_os.py":
                 file = file.parent
 

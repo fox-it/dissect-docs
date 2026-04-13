@@ -339,7 +339,7 @@ Once the operating system is known, it enables you to get more accurate informat
   :header-rows: 1
   :widths: 20 5
   :source-path: dissect.target/dissect/target/plugins
-  :glob-pattern: "**/_os.py"
+  :glob-pattern: **/_os.py
   :blacklist: default
 
   * - Description
