@@ -57,6 +57,35 @@ a VMDK for reading:
 Many of the parsers in this package behave in a very similar way, so check the API reference to see how to utilize the
 parser you need.
 
+Opening QCOW2 disks & backing-files
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The QCOW2 parser provided by this library can be used to open QCOW2 disk images, including snapshots and backing-files.
+When opening a QCOW2 image as a target, any backing-files are automatically loaded and resolved.
+
+For example, to open a QCOW2 image along with its backing-file:
+
+.. code-block:: python
+
+    from dissect.hypervisor.disk.qcow2 import QCow2
+
+    with open("/path/to/base-image.qcow2", "rb") as base_image, \
+    open("/path/to/backing-file.qcow2", "rb") as backing_file:
+        qcow2 = QCow2(base_image, backing_file=backing_file)
+
+        print(qcow2.open().read(512))
+        print(qcow2.backing_file.read(512))
+
+When opening a QCOW2 image using the dissect.target :class:`~dissect.target.target.Target` class, any backing-files
+are automatically loaded and resolved. For example:
+
+.. code-block:: python
+  
+    from dissect.target import Target
+
+    target = Target("/path/to/base-image.qcow2")  # Automatically resolves backing-files
+    print(target.hostname)
+
 Tools
 -----
 
