@@ -51,6 +51,7 @@ extensions = [
     "sphinx_copybutton",
     "sphinx_design",
     "dissect_plugins",
+    "dissect_supported_table",
 ]
 
 # Define the canonical URL if you are using a custom domain on Read the Docs
@@ -181,6 +182,8 @@ suppress_warnings = [
     # https://github.com/sphinx-doc/sphinx/issues/4961
     "ref.python",
 ]
+
+dissect_projects_path = Path(__file__).parent.parent.parent / "submodules"
 
 
 def autoapi_skip_hook(app: Sphinx, what: str, name: str, obj, skip: bool, options: list[str]) -> bool:
