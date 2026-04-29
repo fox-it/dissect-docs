@@ -48,12 +48,25 @@ Submodules
 {% endblock %}
 {% block content %}
 {% if obj.all is not none %}
-{% set visible_children = obj.children|selectattr("short_name", "in", obj.all)|list %}
+{% set visible_children = obj.children|selectattr("short_name", "in", obj.all)|rejectattr("imported")|list %}
+{% set re_exports = obj.children|selectattr("short_name", "in", obj.all)|selectattr("imported")|list %}
 {% elif obj.type is equalto("package") %}
 {% set visible_children = obj.children|selectattr("display")|list %}
 {% else %}
 {% set visible_children = obj.children|selectattr("display")|rejectattr("imported")|list %}
 {% endif %}
+
+{% if re_exports %}
+Re-Exports
+~~~~~~~~~~
+
+.. autoapisummary::
+
+{% for klass in re_exports %}
+   {{ klass.obj["original_path"] }}
+{% endfor %}
+{% endif %}
+
 {% if visible_children %}
 {{ obj.type|title }} Contents
 {{ "-" * obj.type|length }}---------
