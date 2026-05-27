@@ -90,7 +90,7 @@ class SupportedTargetTable(ListTable):
 
             if file.stem in black_list:
                 LOGGER.debug(
-                    DISSECT_PREFIX + colorize("darkgrey", "Skipping %s"), relative_file
+                    DISSECT_PREFIX + colorize("darkgray", "Skipping %s"), relative_file
                 )
                 continue
 
