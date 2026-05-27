@@ -28,6 +28,7 @@ sys.path.append(os.path.abspath("./_ext"))
 
 project = "Dissect"
 copyright = "2023, Fox-IT part of NCC Group"
+copyright = "2025, Fox-IT part of NCC Group"
 author = "Fox-IT part of NCC Group"
 
 # The full version, including alpha/beta/rc tags
@@ -190,6 +191,21 @@ def autoapi_skip_hook(app: Sphinx, what: str, name: str, obj, skip: bool, option
     # Do not skip OS modules in dissect.target (caught by `private-members`)
     if name.endswith("._os") and what == "module":
         skip = False
+
+    # These entries have the issue that certain module or classes get exposed by __all__, however, this shadows a module
+    # that uses the same name, so we ignore them for now
+    if (
+        name
+        in [
+            "dissect.qnxfs.c_qnx4",
+            "dissect.qnxfs.c_qnx6",
+            "dissect.cstruct.cstruct",
+            "flow.record.stream",
+            "dissect.shellitem.lnk.c_lnk",
+        ]
+        and what != "module"
+    ):
+        skip = True
     return skip
 
 
