@@ -131,12 +131,13 @@ that may have had its superblock or ``$BOOT`` destroyed:
 Targets in targets
 ------------------
 
-Dissect also supports the concept of targets within targets, referred to as child targets. For example, when a
-target contains a ``.vmdk`` file within itself, we can tell ``dissect.target`` to load that target from within the
-context of the first target. This can be useful when dealing with hypervisors.
+Dissect also supports the concept of targets within targets, referred to as child targets.
+Child targets are especially useful for dealing with hypervisors. With the child target feature
+you can query virtual machines that are running on a host. Because of the way Dissect handles the
+underlying data streams you can query these virtual machines regardless of the locks the host
+operating system has on these files. It is even possible to explore the contents of the child targets
+using ``target-shell`` just like regular targets!
 
-Say, for example, we opened a Hyper-V target locally from ``\\.\PhysicalDrive0``, we can parse the metadata
-in ``ProgramData/Microsoft/Windows/Hyper-V/data.vmcx`` that tells us where all of the virtual machines are stored.
-Then we can then use these paths and tell ``dissect.target`` to load another target from there. Reading all of these
-files will still happen from ``\\.\PhysicalDrive0``, passing through the various abstraction layers of ``dissect.target``.
-This allows Dissect to read the disks from running virtual machines, regardless of locks the operating has on these files.
+.. hint::
+
+    Learn more about child targets :doc:`here </advanced/children>`.
