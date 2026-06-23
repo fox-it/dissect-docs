@@ -60,7 +60,47 @@ or ``-Kv`` to provide a passphrase.
 For more information on the ``-K``, ``--keychain-file`` and ``-Kv``, ``--keychain-value`` arguments, please refer to
 :doc:`/usage/disk-encryption`.
 
-    
+
+Loader arguments
+~~~~~~~~~~~~~~~~
+
+Some loaders accept additional options to control how the target is loaded.
+These options are passed on the command line alongside ``-L``. For example,
+the LocalLoader accepts a ``--force-directory-fs`` flag to force the use of a
+directory filesystem on all drives:
+
+.. code-block:: console
+
+    $ target-query local -L local --force-directory-fs -f osinfo
+
+Loader arguments are also processed when no explicit ``-L`` is given. In that
+case, Dissect infers the appropriate loader from the target path automatically
+and still picks up any matching loader arguments:
+
+.. code-block:: console
+
+    $ target-query local --force-directory-fs -f osinfo
+
+URI form
+""""""""
+
+A target can also be specified as a URI that encodes the loader, the path, and
+loader arguments in a single string. The format is
+``<scheme>://<path>?<param>=<value>``, where the scheme is the loader name and
+the query string carries the loader arguments:
+
+.. code-block:: console
+
+    $ target-query "local://?force-directory-fs=1" -f osinfo
+
+This is equivalent to the argument-style example above and can be useful for
+scripting or for storing fully self-contained target references.
+
+When a target is already given as a URI, any CLI loader arguments such as
+``--force-directory-fs`` are ignored — the URI is the authoritative
+specification and takes precedence.
+
+
 Querying
 ~~~~~~~~
 
